@@ -1,4 +1,4 @@
-### About GCube
+## About GCube
 
 GCube is a cube type module which include stepper motor, battery, sensors and BLE 5.0 cpu based board.
 With just 1 GCube you are able to make robotics and more and more GCubes you have, you can build any kind of robot.
