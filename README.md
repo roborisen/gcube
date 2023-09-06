@@ -10,6 +10,14 @@ www.roborisen.com   qna@roborisen.com
 https://www.youtube.com/watch?v=7Jo-E6HqMLE&list=PLTuN0ch4ELT2Z2eEUd5Rg8uWnCpc2gXtN
 
 
+## How to connect Micro:bit to GCube
+* Step 1: Load program to Micro:bit using this GCube custom blocks
+* Step 2: Attach Micro:bit to GCube using GCube-Edge connector module
+* Step 3: Turn on the GCube of Step 2 (for dot-matrix application, you should attach dot matrix to GCube in advance)
+* Step 4: Click twice of the other GCubes (to defined number at Step 1 user program)
+* Step 5: If all GCubes are connected then the main mission of user program will be started
+
+
 ## Micro:bit gcube block URL
 
 이 저장소는 MakeCode에서 **확장**으로 추가될 수 있습니다.
