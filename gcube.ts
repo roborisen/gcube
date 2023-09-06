@@ -18,25 +18,25 @@ function invValue(a: number) {
 }
 
 function matrixLine(aaa: string) {
-    let t_matrix = 0
-    for (let i = 0; i < 8; i++) { if (aaa.charAt(3 * i + 2) == '#') t_matrix = t_matrix | (1 << (7 - i)) }
-    return t_matrix
+    let tMatrix = 0
+    for (let i = 0; i < 8; i++) { if (aaa.charAt(3 * i + 2) == '#') tMatrix = tMatrix | (1 << (7 - i)) }
+    return tMatrix
 }
 
 function sendMatrixData(cn: number, t1: number, t2: number, t3: number, t4: number, t5: number, t6: number, t7: number, t8: number): void {
-    num_data[2] = t1
-    num_data[3] = t2
-    num_data[4] = t3
-    num_data[5] = t4
-    num_data[6] = t5
-    num_data[7] = t6
-    num_data[8] = t7
-    num_data[9] = t8
+    numData[2] = t1
+    numData[3] = t2
+    numData[4] = t3
+    numData[5] = t4
+    numData[6] = t5
+    numData[7] = t6
+    numData[8] = t7
+    numData[9] = t8
 
     let temp = cn - 1;
-    num_data[0] = 0x51 + temp
-    num_data[1] = invValue(0x51 + temp)
-    sendGcube(num_data)
+    numData[0] = 0x51 + temp
+    numData[1] = invValue(0x51 + temp)
+    sendGcube(numData)
 }
 
 function isValidMatrix(roll: number[], ii: number) {
@@ -47,8 +47,8 @@ function isValidMatrix(roll: number[], ii: number) {
     return test
 }
 
-let num_data: number[] = []
-let rolling_image: string[] = []
+let numData: number[] = []
+let rollingImage: string[] = []
 let rowData: Buffer = null
 let connectStage = 0
 let connectedCubeNumber = 0
@@ -77,37 +77,37 @@ namespace gCube {
 
         for (let i = 0; i < 8 * 8; i++) roll[i] = 0
 
-        let x_position = 0
-        let y_position = 0
+        let xPosition = 0
+        let yPosition = 0
 
         //infinite loop for stop_rolling_matrix_image
         let temp = connectedCubeNumber - 1; // the number of dot matrix plugged GCubes
 
         while (1) {
 
-            x_position = input.acceleration(Dimension.X) * 4 / 1024
-            y_position = input.acceleration(Dimension.Y) * 4 / 1024
+            xPosition = input.acceleration(Dimension.X) * 4 / 1024
+            yPosition = input.acceleration(Dimension.Y) * 4 / 1024
 
             if (cubeIndex > 0) {
                 for (let i = 0; i < 8; i++) roll[i] = 0
-                for (let y = y_position; y < 8; y++) {
+                for (let y = yPosition; y < 8; y++) {
                     if (y >= 0) {
-                        if (x_position >= 0)
-                            roll[y] = matrixLine(rolling_image[Math.trunc(y - y_position)]) >> Math.trunc(x_position)
+                        if (xPosition >= 0)
+                            roll[y] = matrixLine(rollingImage[Math.trunc(y - yPosition)]) >> Math.trunc(xPosition)
                         else
-                            roll[y] = matrixLine(rolling_image[Math.trunc(y - y_position)]) << Math.trunc(-1 * x_position)
+                            roll[y] = matrixLine(rollingImage[Math.trunc(y - yPosition)]) << Math.trunc(-1 * xPosition)
                     }
                 }
 
                 sendMatrixData(cubeIndex, roll[0], roll[1], roll[2], roll[3], roll[4], roll[5], roll[6], roll[7])
             } else {
                 for (let i = 0; i < 8; i++) roll[i] = 0
-                for (let y = y_position; y < 8; y++) {
+                for (let y = yPosition; y < 8; y++) {
                     if (y >= 0) {
-                        if (x_position >= 0)
-                            roll[y] = matrixLine(rolling_image[Math.trunc(y - y_position)]) >> Math.trunc(x_position)
+                        if (xPosition >= 0)
+                            roll[y] = matrixLine(rollingImage[Math.trunc(y - yPosition)]) >> Math.trunc(xPosition)
                         else
-                            roll[y] = matrixLine(rolling_image[Math.trunc(y - y_position)]) << Math.trunc(-1 * x_position)
+                            roll[y] = matrixLine(rollingImage[Math.trunc(y - yPosition)]) << Math.trunc(-1 * xPosition)
                     }
                 }
 
@@ -132,28 +132,28 @@ namespace gCube {
 
         for (let i = 0; i < 8 * 8; i++) roll[i] = 0
 
-        let current_roll_index = 0
+        let currentRollIndex = 0
         let dur_index = 0
 
         //infinite loop for stop_rolling_matrix_image
         let temp = connectedCubeNumber - 1; // the number of dot matrix plugged GCubes
-        let total_line = temp * 8
-        let rolling_flag = true
+        let totalLine = temp * 8
+        let rollingFlag = true
 
-        while (rolling_flag) {
-            for (let i = 0; i < total_line; i++) roll[i] = 0
+        while (rollingFlag) {
+            for (let i = 0; i < totalLine; i++) roll[i] = 0
 
-            for (let s = current_roll_index; s < current_roll_index + 8; s++) {
-                roll[s % total_line] = matrixLine(rolling_image[s - current_roll_index])
+            for (let s = currentRollIndex; s < currentRollIndex + 8; s++) {
+                roll[s % totalLine] = matrixLine(rollingImage[s - currentRollIndex])
             }
-            current_roll_index++;
-            current_roll_index = current_roll_index % total_line
+            currentRollIndex++;
+            currentRollIndex = currentRollIndex % totalLine
 
             for (let i = 0; i < temp; i++) {
                 sendMatrixData(i + 1, roll[8 * i + 0], roll[8 * i + 1], roll[8 * i + 2], roll[8 * i + 3], roll[8 * i + 4], roll[8 * i + 5], roll[8 * i + 6], roll[8 * i + 7])
             }
 
-            if (duration != 0 && dur_index >= duration * 20) rolling_flag = false // 50msed * 20 = 1sec
+            if (duration != 0 && dur_index >= duration * 20) rollingFlag = false // 50msed * 20 = 1sec
         }
     }
 
@@ -172,14 +172,14 @@ namespace gCube {
      */
     //% block
     export function defaultRollingMatrixImage(dm: string, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void {
-        rolling_image[0] = t1
-        rolling_image[1] = t2
-        rolling_image[2] = t3
-        rolling_image[3] = t4
-        rolling_image[4] = t5
-        rolling_image[5] = t6
-        rolling_image[6] = t7
-        rolling_image[7] = t8
+        rollingImage[0] = t1
+        rollingImage[1] = t2
+        rollingImage[2] = t3
+        rollingImage[3] = t4
+        rollingImage[4] = t5
+        rollingImage[5] = t6
+        rollingImage[6] = t7
+        rollingImage[7] = t8
     }
 
 
@@ -219,8 +219,8 @@ namespace gCube {
     export function setAllGcubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
-            num_data = [0x41 + temp, invValue(0x40 + temp), a7, a6, a5, a4, a3, a2, a1, a0]
-            sendGcube(num_data)
+            numData = [0x41 + temp, invValue(0x40 + temp), a7, a6, a5, a4, a3, a2, a1, a0]
+            sendGcube(numData)
         }
     }
 
@@ -233,8 +233,8 @@ namespace gCube {
     //% block="set servo motor angle to $servoAngle of the gcube $cubeIndex"
     export function setAGcubeServoAngle(cubeIndex: number, servoAngle: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
-            num_data = [0x40, invValue(0x40), cubeIndex, servoAngle, 0, 0, 0, 0, 0, 0]
-            sendGcube(num_data)
+            numData = [0x40, invValue(0x40), cubeIndex, servoAngle, 0, 0, 0, 0, 0, 0]
+            sendGcube(numData)
         }
     }
 
@@ -250,8 +250,8 @@ namespace gCube {
     export function setAllGcubeRotationAngle(dm: string, r3: number, r2: number, r1: number, r0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
-            num_data = [0x39 + temp, invValue(0x39 + temp), (r3 >> 8) & 0xFF, r3 & 0xFF, (r2 >> 8) & 0xFF, r2 & 0xFF, (r1 >> 8) & 0xFF, r1 & 0xFF, (r0 >> 8) & 0xFF, r0 & 0xFF]
-            sendGcube(num_data)
+            numData = [0x39 + temp, invValue(0x39 + temp), (r3 >> 8) & 0xFF, r3 & 0xFF, (r2 >> 8) & 0xFF, r2 & 0xFF, (r1 >> 8) & 0xFF, r1 & 0xFF, (r0 >> 8) & 0xFF, r0 & 0xFF]
+            sendGcube(numData)
         }
     }
 
@@ -264,8 +264,8 @@ namespace gCube {
     //% block="set rotation angle to $rotationAngle of the gcube $cubeIndex"
     export function setAGcubeRotationAngle(cubeIndex: number, rotationAngle: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
-            num_data = [0x38, invValue(0x38), cubeIndex, (rotationAngle >> 8) & 0xFF, rotationAngle & 0xFF, 0, 0, 0, 0, 0]
-            sendGcube(num_data)
+            numData = [0x38, invValue(0x38), cubeIndex, (rotationAngle >> 8) & 0xFF, rotationAngle & 0xFF, 0, 0, 0, 0, 0]
+            sendGcube(numData)
         }
     }
 
@@ -277,8 +277,8 @@ namespace gCube {
     export function stopAllGcubeMotor(): void {
         if (connectStage == 2) {
             for (let i = 0; i < connectedCubeNumber; i++) {
-                num_data = [0x30, invValue(0x30), i, 0, 0, 0, 0, 0, 0, 0]
-                sendGcube(num_data)
+                numData = [0x30, invValue(0x30), i, 0, 0, 0, 0, 0, 0, 0]
+                sendGcube(numData)
             }
         }
     }
@@ -300,8 +300,8 @@ namespace gCube {
     export function setAllGcubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
-            num_data = [0x31 + temp, invValue(0x30 + temp), s7, s6, s5, s4, s3, s2, s1, s0]
-            sendGcube(num_data)
+            numData = [0x31 + temp, invValue(0x30 + temp), s7, s6, s5, s4, s3, s2, s1, s0]
+            sendGcube(numData)
         }
     }
 
@@ -314,8 +314,8 @@ namespace gCube {
     //% block="set motor speed to $motorSpeed of the gcube $cubeIndex"
     export function setAGcubeSpeed(cubeIndex: number, motorSpeed: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
-            num_data = [0x30, invValue(0x30), cubeIndex, motorSpeed, 0, 0, 0, 0, 0, 0]
-            sendGcube(num_data)
+            numData = [0x30, invValue(0x30), cubeIndex, motorSpeed, 0, 0, 0, 0, 0, 0]
+            sendGcube(numData)
         }
     }
 
@@ -329,8 +329,8 @@ namespace gCube {
         if (connectStage == 1) {
             while (1) {
                 pause(1000)
-                num_data = [0x21, invValue(0x21), 0, 0, 0, 0, 0, 0, 0, 0]
-                sendGcube(num_data)
+                numData = [0x21, invValue(0x21), 0, 0, 0, 0, 0, 0, 0, 0]
+                sendGcube(numData)
 
                 rowData = serial.readBuffer(3)
                 if (rowData.length == 3) {
@@ -365,8 +365,8 @@ namespace gCube {
                 if (rowData[0] == 16 && rowData[1] == 0 && rowData[2] == 0) {
                     led.plot(2, 2)
                     pause(20);
-                    num_data = [0x10, invValue(0x10), 0, 0, 0, 112, 0, 0, 0, 0]
-                    sendGcube(num_data)
+                    numData = [0x10, invValue(0x10), 0, 0, 0, 112, 0, 0, 0, 0]
+                    sendGcube(numData)
                     connectStage = 1;
                 }
             }
