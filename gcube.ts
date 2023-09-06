@@ -67,10 +67,10 @@ namespace gCube {
 
     /**
      * TODO: start shifting matrix image
-     * @param CubeIndex Cube index number eg:1
+     * @param cubeIndex Cube index number eg:1
      */
-    //% block="start shifting matrix image for the GCube $CubeIndex"
-    export function startShiftingMatrixImage(CubeIndex: number): void {
+    //% block="start shifting matrix image for the gcube $cubeIndex"
+    export function startShiftingMatrixImage(cubeIndex: number): void {
         if (connectStage < 2) return
 
         let roll: number[] = []
@@ -88,7 +88,7 @@ namespace gCube {
             x_position = input.acceleration(Dimension.X) * 4 / 1024
             y_position = input.acceleration(Dimension.Y) * 4 / 1024
 
-            if (CubeIndex > 0) {
+            if (cubeIndex > 0) {
                 for (let i = 0; i < 8; i++) roll[i] = 0
                 for (let y = y_position; y < 8; y++) {
                     if (y >= 0) {
@@ -99,7 +99,7 @@ namespace gCube {
                     }
                 }
 
-                sendMatrixData(CubeIndex, roll[0], roll[1], roll[2], roll[3], roll[4], roll[5], roll[6], roll[7])
+                sendMatrixData(cubeIndex, roll[0], roll[1], roll[2], roll[3], roll[4], roll[5], roll[6], roll[7])
             } else {
                 for (let i = 0; i < 8; i++) roll[i] = 0
                 for (let y = y_position; y < 8; y++) {
@@ -195,7 +195,7 @@ namespace gCube {
      * @param t7 image line, eg: "__-__-__-__-__-__-__-__-__"
      * @param t8 image line, eg: "__-__-__-__-__-__-__-__-__"
      */
-    //% block="set matrix'image of the GCube $cn $t1 $t2 $t3 $t4 $t5 $t6 $t7 $t8"
+    //% block="set matrix'image of the gcube $cn $t1 $t2 $t3 $t4 $t5 $t6 $t7 $t8"
     export function setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void {
         if (connectStage == 2) {
             sendMatrixData(cn, matrixLine(t1), matrixLine(t2), matrixLine(t3), matrixLine(t4), matrixLine(t5), matrixLine(t6), matrixLine(t7), matrixLine(t8))
@@ -227,13 +227,13 @@ namespace gCube {
 
     /**
      * TODO: set a GCube's servo motor angle
-     * @param CubeIndex GCube number, eg: 1
-     * @param ServoAngle GCube number, eg: 90
+     * @param cubeIndex GCube number, eg: 1
+     * @param servoAngle GCube number, eg: 90
      */
-    //% block="set servo motor angle to $ServoAngle of the GCube $CubeIndex"
-    export function setAGcubeServoAngle(CubeIndex: number, ServoAngle: number): void {
-        if (connectStage == 2 && CubeIndex < connectedCubeNumber) {
-            num_data = [0x40, invValue(0x40), CubeIndex, ServoAngle, 0, 0, 0, 0, 0, 0]
+    //% block="set servo motor angle to $servoAngle of the gcube $cubeIndex"
+    export function setAGcubeServoAngle(cubeIndex: number, servoAngle: number): void {
+        if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
+            num_data = [0x40, invValue(0x40), cubeIndex, servoAngle, 0, 0, 0, 0, 0, 0]
             sendGcube(num_data)
         }
     }
@@ -258,13 +258,13 @@ namespace gCube {
 
     /**
      * TODO: set a GCube's motor rotation angle
-     * @param CubeIndex GCube number(0, 1, ...), eg: 1
-     * @param RotationAngle GCube number(-1000~1000), eg: 90
+     * @param cubeIndex GCube number(0, 1, ...), eg: 1
+     * @param rotationAngle GCube number(-1000~1000), eg: 90
      */
-    //% block="set rotation angle to $RotationAngle of the GCube $CubeIndex"
-    export function setAGcubeRotationAngle(CubeIndex: number, RotationAngle: number): void {
-        if (connectStage == 2 && CubeIndex < connectedCubeNumber) {
-            num_data = [0x38, invValue(0x38), CubeIndex, (RotationAngle >> 8) & 0xFF, RotationAngle & 0xFF, 0, 0, 0, 0, 0]
+    //% block="set rotation angle to $rotationAngle of the gcube $cubeIndex"
+    export function setAGcubeRotationAngle(cubeIndex: number, rotationAngle: number): void {
+        if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
+            num_data = [0x38, invValue(0x38), cubeIndex, (rotationAngle >> 8) & 0xFF, rotationAngle & 0xFF, 0, 0, 0, 0, 0]
             sendGcube(num_data)
         }
     }
@@ -273,7 +273,7 @@ namespace gCube {
     /**
      * TODO: stop all of the GCube's motor
      */
-    //% block="stop all of the GCube's motor"
+    //% block="stop all of the gcube's motor"
     export function stopAllGcubeMotor(): void {
         if (connectStage == 2) {
             for (let i = 0; i < connectedCubeNumber; i++) {
@@ -308,13 +308,13 @@ namespace gCube {
 
     /**
      * TODO: set a GCube's motor speed
-     * @param CubeIndex GCube number, eg: 1
-     * @param MotorSpeed GCube number, eg: 100
+     * @param cubeIndex GCube number, eg: 1
+     * @param motorSpeed GCube number, eg: 100
      */
-    //% block="set motor speed to $MotorSpeed of the GCube $CubeIndex"
-    export function setAGcubeSpeed(CubeIndex: number, MotorSpeed: number): void {
-        if (connectStage == 2 && CubeIndex < connectedCubeNumber) {
-            num_data = [0x30, invValue(0x30), CubeIndex, MotorSpeed, 0, 0, 0, 0, 0, 0]
+    //% block="set motor speed to $motorSpeed of the gcube $cubeIndex"
+    export function setAGcubeSpeed(cubeIndex: number, motorSpeed: number): void {
+        if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
+            num_data = [0x30, invValue(0x30), cubeIndex, motorSpeed, 0, 0, 0, 0, 0, 0]
             sendGcube(num_data)
         }
     }
@@ -324,7 +324,7 @@ namespace gCube {
      * wait for all GCubes are connected
      * @param cnumber GCube number, eg: 2
      */
-    //% block="wait for $cnumber GCubes are connected"
+    //% block="wait for $cnumber gcubes are connected"
     export function waitAllGcubesConnect(cnumber: number): void {
         if (connectStage == 1) {
             while (1) {
