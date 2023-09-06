@@ -5,11 +5,11 @@
 */
 
 function sendGcube(xdata: any[]) {
-    let send_data = pins.createBuffer(10);
+    let sendData = pins.createBuffer(10);
     for (let i = 0; i <= 9; i++) {
-        send_data.setNumber(NumberFormat.UInt8LE, i, xdata[i]);
+        sendData.setNumber(NumberFormat.UInt8LE, i, xdata[i]);
     }
-    serial.writeBuffer(send_data)
+    serial.writeBuffer(sendData)
     pause(50) //Wait for the next command
 }
 
@@ -133,7 +133,7 @@ namespace gCube {
         for (let i = 0; i < 8 * 8; i++) roll[i] = 0
 
         let currentRollIndex = 0
-        let dur_index = 0
+        let durIndex = 0
 
         //infinite loop for stop_rolling_matrix_image
         let temp = connectedCubeNumber - 1; // the number of dot matrix plugged GCubes
@@ -153,7 +153,7 @@ namespace gCube {
                 sendMatrixData(i + 1, roll[8 * i + 0], roll[8 * i + 1], roll[8 * i + 2], roll[8 * i + 3], roll[8 * i + 4], roll[8 * i + 5], roll[8 * i + 6], roll[8 * i + 7])
             }
 
-            if (duration != 0 && dur_index >= duration * 20) rollingFlag = false // 50msed * 20 = 1sec
+            if (duration != 0 && durIndex >= duration * 20) rollingFlag = false // 50msed * 20 = 1sec
         }
     }
 
