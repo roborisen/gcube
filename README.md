@@ -38,7 +38,7 @@ https://www.youtube.com/watch?v=7Jo-E6HqMLE&list=PLTuN0ch4ELT2Z2eEUd5Rg8uWnCpc2g
 
 ## Example project
 <pre><code>
-	input.onButtonPressed(Button.A, function () {
+input.onButtonPressed(Button.A, function () {
     gCube.setAGcubeSpeed(0, 100)
     gCube.setAGcubeSpeed(1, 100)
 })
