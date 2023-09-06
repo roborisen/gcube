@@ -1,1 +1,12 @@
-// 테스트는 여기로 이동합니다; 이 패키지가 확장으로 사용될 때 컴파일되지 않을 것 입니다.
+input.onButtonPressed(Button.A, function () {
+    gCube.setAGcubeSpeed(0, 100)
+    gCube.setAGcubeSpeed(1, 100)
+})
+input.onButtonPressed(Button.B, function () {
+    gCube.stopAllGcubeMotor()
+})
+gCube.waitFirstGcubeConnect()
+gCube.waitAllGcubesConnect(2)
+basic.forever(function () {
+
+})
