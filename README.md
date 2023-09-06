@@ -35,6 +35,39 @@ https://www.youtube.com/watch?v=7Jo-E6HqMLE&list=PLTuN0ch4ELT2Z2eEUd5Rg8uWnCpc2g
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
 
 
+
+## Example project
+<pre><code>
+	input.onButtonPressed(Button.A, function () {
+    gCube.setAGcubeSpeed(0, 100)
+    gCube.setAGcubeSpeed(1, 100)
+})
+input.onButtonPressed(Button.AB, function () {
+    gCube.startShiftingMatrixImage(0)
+})
+input.onButtonPressed(Button.B, function () {
+    gCube.stopAllGcubeMotor()
+})
+gCube.waitFirstGcubeConnect()
+gCube.waitAllGcubesConnect(3)
+gCube.defaultRollingMatrixImage(
+"A",
+"__-__-__-__-__-__-__-__-__",
+"__-__-__-__-__-__-__-__-__",
+"__-__-__-__#__#__-__-__-__",
+"__-__-__#__#__#__#__-__-__",
+"__-__-__#__#__#__#__-__-__",
+"__-__-__-__#__#__-__-__-__",
+"__-__-__-__-__-__-__-__-__",
+"__-__-__-__-__-__-__-__-__"
+)
+basic.forever(function () {
+	
+})
+
+</code></pre>
+
+
 ## API's for GCube
 
 ### sendGcube(xdata: any[])
