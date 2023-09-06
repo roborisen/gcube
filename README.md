@@ -1,4 +1,5 @@
-&&& About GCube
+### About GCube
+
 GCube is a cube type module which include stepper motor, battery, sensors and BLE 5.0 cpu based board.
 With just 1 GCube you are able to make robotics and more and more GCubes you have, you can build any kind of robot.
 We've released this extension for Micro:bit users to use GCube for robotics and IoT projects.
@@ -6,6 +7,7 @@ We've released this extension for Micro:bit users to use GCube for robotics and 
 More information:
 www.roborisen.com   qna@roborisen.com
 https://www.youtube.com/watch?v=7Jo-E6HqMLE&list=PLTuN0ch4ELT2Z2eEUd5Rg8uWnCpc2gXtN
+
 
 ## Micro:bit gcube block URL
 
