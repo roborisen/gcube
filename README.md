@@ -1,3 +1,13 @@
+&&& About GCube
+GCube is a cube type module which include stepper motor, battery, sensors and BLE 5.0 cpu based board.
+With just 1 GCube you are able to make robotics and more and more GCubes you have, you can build any kind of robot.
+We've released this extension for Micro:bit users to use GCube for robotics and IoT projects.
+
+More information:
+www.roborisen.com   qna@roborisen.com
+https://www.youtube.com/watch?v=7Jo-E6HqMLE&list=PLTuN0ch4ELT2Z2eEUd5Rg8uWnCpc2gXtN
+
+## Micro:bit gcube block URL
 
 > 이 페이지를 [https://roborisen.github.io/gcube/](https://roborisen.github.io/gcube/)으로 열기
 
@@ -20,5 +30,11 @@ MakeCode에서 이 저장소를 편집합니다.
 
 #### 메타데이터(검색, 렌더링에 사용)
 
-* for PXT/microbit
+* for PXT/microbit/GCube
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+
+
+#### API's for GCube
+
+
+
