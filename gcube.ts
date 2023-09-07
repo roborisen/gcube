@@ -1,10 +1,6 @@
 
-/**
-* 이 파일을 사용해, 만든 함수와 블록들을 정의해두세요.
-* 다음에서 더 살펴보기: https://makecode.microbit.org/blocks/custom
-*/
 
-function sendGcube(xdata: any[]) {
+function sendGcube(xdata: any[]) { //Send UART data to GCube
     let sendData = pins.createBuffer(10);
     for (let i = 0; i <= 9; i++) {
         sendData.setNumber(NumberFormat.UInt8LE, i, xdata[i]);
@@ -39,13 +35,6 @@ function sendMatrixData(cn: number, t1: number, t2: number, t3: number, t4: numb
     sendGcube(numData)
 }
 
-function isValidMatrix(roll: number[], ii: number) {
-    let test = 0
-    for (let s = ii * 8; s < ii * 8 + 8; s++) {
-        test += roll[s]
-    }
-    return test
-}
 
 let numData: number[] = []
 let rollingImage: string[] = []
@@ -66,7 +55,7 @@ serial.setTxBufferSize(10)
 namespace gCube {
 
     /**
-     * TODO: start shifting matrix image
+     * start shifting matrix image along the acceleration data of Micro:bit
      * @param cubeIndex Cube index number eg:1
      */
     //% block="start shifting matrix image for the gcube $cubeIndex"
@@ -121,7 +110,7 @@ namespace gCube {
 
 
     /**
-     * TODO: start rolling matrix image
+     * start rolling matrix image
      * @param duration time(rotation number) eg:1000
      */
     //% block="start rolling matrix image for $duration seconds"
@@ -159,7 +148,7 @@ namespace gCube {
 
 
     /**
-     * TODO: set default rolling display image of dot Matrix 8x8 of GCube
+     * set default rolling display image of 8x8 dot Matrix of GCube
      * @param dm Dummy index, eg: A
      * @param t1 image line, eg: "__-__-__-__-__-__-__-__-__"
      * @param t2 image line, eg: "__-__-__-__-__-__-__-__-__"
@@ -184,7 +173,7 @@ namespace gCube {
 
 
     /**
-     * TODO: set display image for dot matrix 8x8 of GCube from GCube 1 ~ GCube8
+     * set display image for 8x8 dot matrix of GCube from GCube 1 ~ GCube8
      * @param cn GCube index, eg: 1
      * @param t1 image line, eg: "__-__-__-__-__-__-__-__-__"
      * @param t2 image line, eg: "__-__-__-__-__-__-__-__-__"
@@ -204,7 +193,7 @@ namespace gCube {
 
 
     /**
-     * TODO: set all GCube's servo motor angle
+     * set all GCube's servo motor to each angle
      * @param dm Dummy index, eg: A
      * @param a7 angle of Cube 7 servo, eg: 0
      * @param a6 angle of Cube 6 servo, eg: 0
@@ -226,7 +215,7 @@ namespace gCube {
 
 
     /**
-     * TODO: set a GCube's servo motor angle
+     * set a GCube's servo motor to an angle
      * @param cubeIndex GCube number, eg: 1
      * @param servoAngle GCube number, eg: 90
      */
@@ -239,7 +228,7 @@ namespace gCube {
     }
 
     /**
-     * TODO: set all GCube's motor rotation angle
+     * set all GCube's motor to each rotation angle
      * @param dm Dummy index, eg: A
      * @param r3 rotation angle of Cube 3 or 7, eg: 90
      * @param r2 angle of Cube 2 or 6, eg: 90
@@ -262,7 +251,7 @@ namespace gCube {
 
 
     /**
-     * TODO: set a GCube's motor rotation angle
+     * set a GCube's motor to a rotation angle
      * @param cubeIndex GCube number(0, 1, ...), eg: 1
      * @param rotationAngle GCube number(-1000~1000), eg: 90
      */
@@ -277,7 +266,7 @@ namespace gCube {
 
 
     /**
-     * TODO: stop all of the GCube's motor
+     * stop all of the GCube's motor
      */
     //% block="stop all of the gcube's motor"
     export function stopAllGcubeMotor(): void {
@@ -291,7 +280,7 @@ namespace gCube {
 
 
     /**
-     * TODO: set all GCube's motor speed
+     * set all GCube's motor to each speed
      * @param dm Dummy index, eg: A
      * @param s7 speed of Cube 7, eg: 0
      * @param s6 speed of Cube 6, eg: 0
@@ -313,7 +302,7 @@ namespace gCube {
 
 
     /**
-     * TODO: set a GCube's motor speed
+     * set a GCube's motor to a speed
      * @param cubeIndex GCube number, eg: 1
      * @param motorSpeed GCube number, eg: 100
      */
@@ -327,7 +316,7 @@ namespace gCube {
 
 
     /**
-     * wait for all GCubes are connected
+     * wait for all GCubes are connected for user's project
      * @param cnumber GCube number, eg: 2
      */
     //% block="wait for $cnumber gcubes are connected"
@@ -361,7 +350,7 @@ namespace gCube {
     }
 
     /**
-     * TODO: wait for first GCube is connected
+     * wait for first GCube is connected
      */
     //% block="wait for the first GCube is connected"
     export function waitFirstGcubeConnect(): void {
