@@ -250,8 +250,13 @@ namespace gCube {
     export function setAllGcubeRotationAngle(dm: string, r3: number, r2: number, r1: number, r0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
+            r3 = 100 * r3 / 18;
+            r2 = 100 * r2 / 18;
+            r1 = 100 * r1 / 18;
+            r0 = 100 * r0 / 18;
+
             numData = [0x39 + temp, invValue(0x39 + temp), (r3 >> 8) & 0xFF, r3 & 0xFF, (r2 >> 8) & 0xFF, r2 & 0xFF, (r1 >> 8) & 0xFF, r1 & 0xFF, (r0 >> 8) & 0xFF, r0 & 0xFF]
-            sendGcube(numData)
+            sendGcube(numData);
         }
     }
 
@@ -264,6 +269,7 @@ namespace gCube {
     //% block="set rotation angle to $rotationAngle of the gcube $cubeIndex"
     export function setAGcubeRotationAngle(cubeIndex: number, rotationAngle: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
+            rotationAngle = 100 * rotationAngle/18
             numData = [0x38, invValue(0x38), cubeIndex, (rotationAngle >> 8) & 0xFF, rotationAngle & 0xFF, 0, 0, 0, 0, 0]
             sendGcube(numData)
         }
