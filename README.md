@@ -19,16 +19,6 @@ https://www.youtube.com/watch?v=7Jo-E6HqMLE&list=PLTuN0ch4ELT2Z2eEUd5Rg8uWnCpc2g
 * Step 5: If all GCubes are connected then the main mission of main routine of user program will be started
 
 
-## Micro:bit gcube block URL
-
-This repository is available on the MakeCode extension
-
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/) 
-* Click **New project**
-* Extension open along gear menu on the right-up side
-* **https://github.com/roborisen/gcube** search and import
-
-
 
 #### MetaData(Search keyword)
 
