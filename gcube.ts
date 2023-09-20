@@ -1,58 +1,59 @@
 
 
-function sendGCube(xdata: any[]) { //Send UART data to GCube
-    let sendData = pins.createBuffer(10);
-    for (let i = 0; i <= 9; i++) {
-        sendData.setNumber(NumberFormat.UInt8LE, i, xdata[i]);
-    }
-    serial.writeBuffer(sendData)
-    pause(50) //Wait for the next command
-}
-
-function invValue(a: number) {
-    return a / 16 + (a & 0x0F) * 16
-}
-
-function matrixLine(aaa: string) {
-    let tMatrix = 0
-    for (let i = 0; i < 8; i++) { if (aaa.charAt(3 * i + 2) == '#') tMatrix = tMatrix | (1 << (7 - i)) }
-    return tMatrix
-}
-
-function sendMatrixData(cn: number, t1: number, t2: number, t3: number, t4: number, t5: number, t6: number, t7: number, t8: number): void {
-    numData[2] = t1
-    numData[3] = t2
-    numData[4] = t3
-    numData[5] = t4
-    numData[6] = t5
-    numData[7] = t6
-    numData[8] = t7
-    numData[9] = t8
-
-    let temp = cn - 1;
-    numData[0] = 0x51 + temp
-    numData[1] = invValue(0x51 + temp)
-    sendGCube(numData)
-}
-
-
-let numData: number[] = []
-let rollingImage: string[] = []
-let rowData: Buffer = null
-let connectStage = 0
-let connectedCubeNumber = 0
-
-
-serial.redirect(SerialPin.P1, SerialPin.P0, 115200)
-serial.setRxBufferSize(10)
-serial.setTxBufferSize(10)
-
 
 /**
  * GCube blocks
  */
 //% weight=100 color=#111111 icon="\uf0fe"
 namespace GCube {
+
+    function sendGCube(xdata: any[]) { //Send UART data to GCube
+        let sendData = pins.createBuffer(10);
+        for (let i = 0; i <= 9; i++) {
+            sendData.setNumber(NumberFormat.UInt8LE, i, xdata[i]);
+        }
+        serial.writeBuffer(sendData)
+        pause(50) //Wait for the next command
+    }
+
+    function invValue(a: number) {
+        return a / 16 + (a & 0x0F) * 16
+    }
+
+    function matrixLine(aaa: string) {
+        let tMatrix = 0
+        for (let i = 0; i < 8; i++) { if (aaa.charAt(3 * i + 2) == '#') tMatrix = tMatrix | (1 << (7 - i)) }
+        return tMatrix
+    }
+
+    function sendMatrixData(cn: number, t1: number, t2: number, t3: number, t4: number, t5: number, t6: number, t7: number, t8: number): void {
+        numData[2] = t1
+        numData[3] = t2
+        numData[4] = t3
+        numData[5] = t4
+        numData[6] = t5
+        numData[7] = t6
+        numData[8] = t7
+        numData[9] = t8
+
+        let temp = cn - 1;
+        numData[0] = 0x51 + temp
+        numData[1] = invValue(0x51 + temp)
+        sendGCube(numData)
+    }
+
+
+    let numData: number[] = []
+    let rollingImage: string[] = []
+    let rowData: Buffer = null
+    let connectStage = 0
+    let connectedCubeNumber = 0
+
+
+    serial.redirect(SerialPin.P1, SerialPin.P0, 115200)
+    serial.setRxBufferSize(10)
+    serial.setTxBufferSize(10)
+
 
     /**
      * The image moves according to the micro:bit's acceleration sensor value.
