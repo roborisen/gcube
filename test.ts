@@ -1,12 +1,12 @@
 input.onButtonPressed(Button.A, function () {
-    gCube.setAGcubeSpeed(0, 100)
-    gCube.setAGcubeSpeed(1, 100)
+    GCube.setAGCubeSpeed(0, 100)
+    GCube.setAGCubeSpeed(1, 100)
 })
 input.onButtonPressed(Button.B, function () {
-    gCube.stopAllGcubeMotor()
+    GCube.stopAllGCubeMotor()
 })
-gCube.waitFirstGcubeConnect()
-gCube.waitAllGcubesConnect(2)
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(2)
 basic.forever(function () {
 
 })
