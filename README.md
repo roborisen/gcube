@@ -31,9 +31,9 @@ www.roborisen.com   qna@roborisen.com
 ## API's for GCube
 
 ### sendGcube(xdata: any[])
-	* Description: Sends UART data to a device referred to as "GCube."
+	* Description: Sends serial data to a device referred to as "GCube."
 	* Parameters:
-	xdata (Array): An array containing data to be transmitted over UART.
+	xdata (Array): An array containing data to be transmitted over serial.
 
 ### sendMatrixData(cn: number, t1: number, t2: number, t3: number, t4: number, t5: number, t6: number, t7: number, t8: number)
 	* Description: Prepares and sends matrix data to a device.
