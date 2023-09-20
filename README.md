@@ -6,6 +6,7 @@ We've released this extension for Micro:bit users to use GCube for robotics and 
 
 More information:
 www.roborisen.com   qna@roborisen.com
+
 [English manual] https://drive.google.com/drive/folders/11JqWqxEkSc4-BoQamWtnHFTjx67_udxD
 
 
