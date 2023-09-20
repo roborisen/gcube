@@ -49,13 +49,13 @@ serial.setTxBufferSize(10)
 
 
 /**
- * Custom blocks
+ * GCube blocks
  */
 //% weight=100 color=#111111 icon="\uf0fe"
 namespace GCube {
 
     /**
-     * start shifting matrix image along the acceleration data of Micro:bit
+     * The image moves according to the micro:bit's acceleration sensor value.
      * @param cubeIndex Cube index number eg:1
      */
     //% block="start shifting matrix image for the GCube $cubeIndex"
@@ -110,7 +110,7 @@ namespace GCube {
 
 
     /**
-     * start rolling matrix image
+     * start rolling matrix image for a given period
      * @param duration time(rotation number) eg:1000
      */
     //% block="start rolling matrix image for $duration seconds"
@@ -148,7 +148,7 @@ namespace GCube {
 
 
     /**
-     * set default rolling display image of 8x8 dot Matrix of GCube
+     * set default rolling display image of 8x8 dot Matrix of a GCube
      * @param dm Dummy index, eg: A
      * @param t1 image line, eg: "__-__-__-__-__-__-__-__-__"
      * @param t2 image line, eg: "__-__-__-__-__-__-__-__-__"
@@ -173,7 +173,7 @@ namespace GCube {
 
 
     /**
-     * set display image for 8x8 dot matrix of GCube from GCube 1 ~ GCube8
+     * set display image for 8x8 dot matrix of GCube from GCube 1 ~ GCube 8
      * @param cn GCube index, eg: 1
      * @param t1 image line, eg: "__-__-__-__-__-__-__-__-__"
      * @param t2 image line, eg: "__-__-__-__-__-__-__-__-__"
