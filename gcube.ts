@@ -231,22 +231,46 @@ namespace GCube {
     /**
      * set all GCube's motor to each rotation angle
      * @param dm Dummy index, eg: A
-     * @param r3 rotation angle of Cube 3 or 7, eg: 90
-     * @param r2 angle of Cube 2 or 6, eg: 90
-     * @param r1 angle of Cube 1 or 5, eg: 90
-     * @param r0 angle of Cube 0 or 4, eg: 90
+     * @param r7 rotation angle of Cube 7, eg: 180
+     * @param r6 rotation angle of Cube 6, eg: 180
+     * @param r5 rotation angle of Cube 5, eg: 180
+     * @param r4 rotation angle of Cube 4, eg: 180
+     * @param r3 rotation angle of Cube 3, eg: 180
+     * @param r2 rotation angle of Cube 2, eg: 180
+     * @param r1 rotation angle of Cube 1, eg: 180
+     * @param r0 rotation angle of Cube 0, eg: 180
      */
     //% block
-    export function setAllGCubeRotationAngle(dm: string, r3: number, r2: number, r1: number, r0: number): void {
+    export function setAllGCubeRotationAngle(dm: string, r7: number, r6: number, r5: number, r4: number, r3: number, r2: number, r1: number, r0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
-            r3 = 100 * r3 / 18;
-            r2 = 100 * r2 / 18;
-            r1 = 100 * r1 / 18;
-            r0 = 100 * r0 / 18;
 
-            numData = [0x39 + temp, invValue(0x39 + temp), (r3 >> 8) & 0xFF, r3 & 0xFF, (r2 >> 8) & 0xFF, r2 & 0xFF, (r1 >> 8) & 0xFF, r1 & 0xFF, (r0 >> 8) & 0xFF, r0 & 0xFF]
-            sendGCube(numData);
+            if(temp<3){
+                r3 = 100 * r3 / 18;
+                r2 = 100 * r2 / 18;
+                r1 = 100 * r1 / 18;
+                r0 = 100 * r0 / 18;
+
+                numData = [0x39 + temp, invValue(0x39 + temp), (r3 >> 8) & 0xFF, r3 & 0xFF, (r2 >> 8) & 0xFF, r2 & 0xFF, (r1 >> 8) & 0xFF, r1 & 0xFF, (r0 >> 8) & 0xFF, r0 & 0xFF]
+                sendGCube(numData);
+            }else{
+                r3 = 100 * r3 / 18;
+                r2 = 100 * r2 / 18;
+                r1 = 100 * r1 / 18;
+                r0 = 100 * r0 / 18;
+
+                numData = [0x39 + 2, invValue(0x39 + 2), (r3 >> 8) & 0xFF, r3 & 0xFF, (r2 >> 8) & 0xFF, r2 & 0xFF, (r1 >> 8) & 0xFF, r1 & 0xFF, (r0 >> 8) & 0xFF, r0 & 0xFF]
+                sendGCube(numData);
+
+                r7 = 100 * r7 / 18;
+                r6 = 100 * r6 / 18;
+                r5 = 100 * r5 / 18;
+                r4 = 100 * r4 / 18;
+
+                numData = [0x39 + temp, invValue(0x39 + temp), (r7 >> 8) & 0xFF, r7 & 0xFF, (r6 >> 8) & 0xFF, r6 & 0xFF, (r5 >> 8) & 0xFF, r5 & 0xFF, (r4 >> 8) & 0xFF, r4 & 0xFF]
+                sendGCube(numData);
+
+            }
         }
     }
 
@@ -254,7 +278,7 @@ namespace GCube {
     /**
      * set a GCube's motor to a rotation angle
      * @param cubeIndex GCube number(0, 1, ...), eg: 1
-     * @param rotationAngle GCube number(-1000~1000), eg: 90
+     * @param rotationAngle GCube number(-1000~1000), eg: 180
      */
     //% block="set rotation angle to $rotationAngle of the GCube $cubeIndex"
     export function setAGCubeRotationAngle(cubeIndex: number, rotationAngle: number): void {
