@@ -28,9 +28,21 @@ www.roborisen.com   qna@roborisen.com
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
 
 
-## API's for GCube
+## Blocks of GCube
 
-### sendGcube(xdata: any[])
+### sendGCube(xdata: any[])
+
+``` blocks
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(2)
+```
+
+
+
+
+## API's of GCube
+
+### sendGCube(xdata: any[])
 	* Description: Sends serial data to a device referred to as "GCube."
 	* Parameters:
 	xdata (Array): An array containing data to be transmitted over serial.
@@ -63,52 +75,52 @@ www.roborisen.com   qna@roborisen.com
 	cn (Number): The index of the target GCube.
 	t1, t2, t3, t4, t5, t6, t7, t8 (String): Image lines for the 8x8 dot matrix.
 
-### setAllGcubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number)
+### setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number)
 	* Description: Sets the angles of servo motors for all GCubes.
 	* Parameters:
 	dm (String): Dummy index.
 	a7, a6, a5, a4, a3, a2, a1, a0 (Number): Servo motor angles for GCubes.
 
-### setAGcubeServoAngle(cubeIndex: number, servoAngle: number)
+### setAGCubeServoAngle(cubeIndex: number, servoAngle: number)
 	* Description: Sets a GCube's servo motor to a specific angle.
 	* Parameters:
 	cubeIndex (Number): The index of the target GCube.
 	servoAngle (Number): The angle (in degrees) to set the servo motor to.
 
-### setAllGcubeRotationAngle(dm: string, r3: number, r2: number, r1: number, r0: number)
+### setAllGCubeRotationAngle(dm: string, r3: number, r2: number, r1: number, r0: number)
 	* Description: Sets the rotation angles of all GCube motors.
 	* Parameters:
 	dm (String): Dummy index.
 	r3, r2, r1, r0 (Number): Rotation angles (in degrees) for Cube 3 or 7, Cube 2 or 6, Cube 1 or 5, and Cube 0 or 4, respectively.
 
-### setAGcubeRotationAngle(cubeIndex: number, rotationAngle: number)
+### setAGCubeRotationAngle(cubeIndex: number, rotationAngle: number)
 	* Description: Sets a GCube's motor to a specific rotation angle.
 	* Parameters:
 	cubeIndex (Number): The index of the target GCube.
 	rotationAngle (Number): The rotation angle in degrees, in the range of -1000 to 1000.
 
-### stopAllGcubeMotor()
+### stopAllGCubeMotor()
 	* Description: Stops all GCube motors.
 	* Parameters: None.
 
-### setAllGcubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number)
+### setAllGCubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number)
 	* Description: Sets the speeds of all GCube motors.
 	* Parameters:
 	dm (String): Dummy index.
 	s7, s6, s5, s4, s3, s2, s1, s0 (Number): Speed values for Cube 7, Cube 6, Cube 5, Cube 4, Cube 3, Cube 2, Cube 1, and Cube 0, respectively.
 
-### setAGcubeSpeed(cubeIndex: number, motorSpeed: number)
+### setAGCubeSpeed(cubeIndex: number, motorSpeed: number)
 	* Description: Sets a GCube's motor to a specific speed.
 	* Parameters:
 	cubeIndex (Number): The index of the target GCube.
 	motorSpeed (Number): The motor speed value.
 
-### waitAllGcubesConnect(cnumber: number)
+### waitAllGCubesConnect(cnumber: number)
 	* Description: Waits for a specified number of GCubes to be connected before proceeding with the user's project.
 	* Parameters:
 	cnumber (Number): The desired number of GCubes to wait for.
 
-### waitFirstGcubeConnect()
+### waitFirstGCubeConnect()
 	* Description: Waits for the first GCube to be connected before proceeding with the user's project.
 	* Parameters: None.
 
