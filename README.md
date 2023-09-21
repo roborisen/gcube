@@ -33,11 +33,8 @@ www.roborisen.com   qna@roborisen.com
 ### sendGCube(xdata: any[])
 
 ``` blocks
-basic.forever(function () {
-basic.showIcon(IconNames.Heart)
-basic.pause(20)
-basic.showIcon(IconNames.SmallHeart)
-})
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(2)
 ```
 
 
