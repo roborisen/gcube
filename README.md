@@ -32,7 +32,7 @@ www.roborisen.com   qna@roborisen.com
 
 ### sendGCube(xdata: any[])
 
-``` blocks
+```blocks
 GCube.waitFirstGCubeConnect()
 GCube.waitAllGCubesConnect(2)
 ```
