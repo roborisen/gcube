@@ -32,15 +32,19 @@ www.roborisen.com   qna@roborisen.com
 
 ### wait for the first GCube is connected
 <img src="./image/1.png">
+This block is to wait for the first GCube is connected to Micro:bit (Micro:bit is monitoring GCube is turned on via serial data)
 
 ### wait for # GCubes are connected
 <img src="./image/2.png">
+This block is to wait for # (user define the GCube number for their project) GCubes are connected
 
 ### set motor speed to # of the GCube #
 <img src="./image/3.png">
+This block is set motor speed to # (-100~100, 100 is maximum speed i.e. 30rpm) of the GCube #
 
-### set all GCube speed #...
+### set all GCube motor speed #...
 <img src="./image/4.png">
+This block is set all GCube motor speed with the 8 argument number from GCube 7 to GCube 0
 
 ### stop all of the GCube motors
 <img src="./image/5.png">
@@ -68,7 +72,6 @@ www.roborisen.com   qna@roborisen.com
 
 ### start shifting matrix image for the GCube #
 <img src="./image/13.png">
-
 
 
 
