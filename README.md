@@ -33,6 +33,42 @@ www.roborisen.com   qna@roborisen.com
 ### wait for the first GCube is connected
 <img src="./image/1.png">
 
+### wait for # GCubes are connected
+<img src="./image/2.png">
+
+### set motor speed to # of the GCube #
+<img src="./image/3.png">
+
+### set all GCube speed #...
+<img src="./image/4.png">
+
+### stop all of the GCube motors
+<img src="./image/5.png">
+
+### set rotation angle to # of the GCube #
+<img src="./image/6.png">
+
+### set all GCube rotation angle #...
+<img src="./image/7.png">
+
+### set servo motor angle to # of the GCube #
+<img src="./image/8.png">
+
+### set all GCube servo motor angle #...
+<img src="./image/9.png">
+
+### set matrix image of the GCube #
+<img src="./image/10.png">
+
+### default rolling matrix image #...
+<img src="./image/11.png">
+
+### start rolling matrix image for # seconds
+<img src="./image/12.png">
+
+### start shifting matrix image for the GCube #
+<img src="./image/13.png">
+
 
 
 
