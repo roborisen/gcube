@@ -15,7 +15,7 @@ www.roborisen.com   qna@roborisen.com
 <br/>
 <br/>
 
-## How to connect Micro:bit to GCube
+## How to connect GCubes to Micro:bit
 * Step 1: Load program to Micro:bit using this GCube custom blocks
 * Step 2: Attach Micro:bit to GCube using GCube-Edge connector module
 * Step 3: Turn on the GCube of Step 2 
@@ -23,11 +23,7 @@ www.roborisen.com   qna@roborisen.com
           (for dot-matrix application, you should attach dot matrix to GCube in advance)
 * Step 5: If all GCubes are connected then the main mission of main routine of user program will be started
 
-#### MetaData(Search keyword)
-
-* for PXT/microbit/GCube/robot
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
-
+<br/>
 <br/>
 <br/>
 
