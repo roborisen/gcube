@@ -69,17 +69,20 @@ This block is to set each GCube's servo motor rotation angle with the 8 argument
 
 ### set matrix image of the GCube #
 <img src="./image/10.png">
+This block is to set 8x8 dot-matrix image of the GCube #
 
 ### default rolling matrix image #...
 <img src="./image/11.png">
+This block is to set default rolling 8x8 dot-matrix image with the 8 row image data
 
 ### start rolling matrix image for # seconds
 <img src="./image/12.png">
+This block is to start rolling 8x8 dot-matrix image from GCube 0 ~ GCube n for # seconds
 
 ### start shifting matrix image for the GCube #
 <img src="./image/13.png">
-
-
+This block is to start shifting 8x8 dot-matrix image from GCube 0 ~ GCube n for # seconds
+Shifting direction is depends on the acceleration sensor data of Micro:bit
 
 
 ## API's of GCube
