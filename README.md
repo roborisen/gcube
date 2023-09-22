@@ -25,7 +25,6 @@ www.roborisen.com   qna@roborisen.com
 
 <br/>
 <br/>
-<br/>
 
 ## Blocks of GCube
 
