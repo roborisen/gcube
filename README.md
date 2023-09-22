@@ -12,6 +12,8 @@ www.roborisen.com   qna@roborisen.com
 
 [Activity] https://youtu.be/wTfnsPbgm3s
 
+<br/>
+<br/>
 
 ## How to connect Micro:bit to GCube
 * Step 1: Load program to Micro:bit using this GCube custom blocks
@@ -21,13 +23,13 @@ www.roborisen.com   qna@roborisen.com
           (for dot-matrix application, you should attach dot matrix to GCube in advance)
 * Step 5: If all GCubes are connected then the main mission of main routine of user program will be started
 
-
-
 #### MetaData(Search keyword)
 
 * for PXT/microbit/GCube/robot
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
 
+<br/>
+<br/>
 
 ## Blocks of GCube
 
@@ -84,6 +86,8 @@ This block is to start rolling 8x8 dot-matrix image from GCube 0 ~ GCube n for #
 This block is to start shifting 8x8 dot-matrix image from GCube 0 ~ GCube n for # seconds
 Shifting direction is depends on the acceleration sensor data of Micro:bit
 
+<br/>
+<br/>
 
 ## API's of GCube
 
