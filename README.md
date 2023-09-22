@@ -30,12 +30,9 @@ www.roborisen.com   qna@roborisen.com
 
 ## Blocks of GCube
 
-### sendGCube(xdata: any[])
+### wait for the first GCube is connected
+<img src="./image/1.PNG">
 
-``` blocks
-GCube.waitFirstGCubeConnect()
-GCube.waitAllGCubesConnect(2)
-```
 
 
 
