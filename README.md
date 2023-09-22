@@ -83,7 +83,30 @@ Shifting direction is depends on the acceleration sensor data of Micro:bit
 
 <br/>
 <br/>
+<br/>
 
+## Examples 
+
+### Example 1
+<img src="./image/ex1.png">
+
+### Example 2
+<img src="./image/ex2.png">
+
+### Example 3
+<img src="./image/ex3.png">
+
+### Example 4
+<img src="./image/ex4.png">
+
+### Example 5
+<img src="./image/ex5.png">
+
+
+<br/>
+<br/>
+<br/>
+  
 ## API's of GCube
 
 ### sendGCube(xdata: any[])
