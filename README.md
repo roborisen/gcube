@@ -1,6 +1,7 @@
 ## About GCube
 
 GCube is a cube type module which include stepper motor, battery, sensors and BLE 5.0 cpu based board.
+It is available to use dot-matrix, RC servo motor or various sensors with GCube, because GCube has general external sensor port.
 With just 1 GCube you are able to make robotics and more and more GCubes you have, you can build any kind of robot.
 We've released this extension for Micro:bit users to use GCube for robotics and IoT projects.
 
@@ -44,22 +45,27 @@ This block is set motor speed to # (-100~100, 100 is maximum speed i.e. 30rpm) o
 
 ### set all GCube motor speed #...
 <img src="./image/4.png">
-This block is set all GCube motor speed with the 8 argument number from GCube 7 to GCube 0
+This block is set all GCube motor speed with the 8 argument numbers from GCube 7 to GCube 0
 
 ### stop all of the GCube motors
 <img src="./image/5.png">
+This block is stop all of the GCube motors
 
 ### set rotation angle to # of the GCube #
 <img src="./image/6.png">
+This block is to set rotation angle to # (-10000 ~ 10000 in degrees) of the GCube #
 
 ### set all GCube rotation angle #...
 <img src="./image/7.png">
+This block is to set each GCube's rotation angle with the 8 argument numbers from GCube 7 to GCube 0
 
 ### set servo motor angle to # of the GCube #
 <img src="./image/8.png">
+This block is to set servo motor angle to # (-10000 ~ 10000 in degrees) of the GCube #
 
 ### set all GCube servo motor angle #...
 <img src="./image/9.png">
+This block is to set each GCube's servo motor rotation angle with the 8 argument numbers from GCube 7 to GCube 0
 
 ### set matrix image of the GCube #
 <img src="./image/10.png">
