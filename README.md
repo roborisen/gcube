@@ -31,7 +31,7 @@ www.roborisen.com   qna@roborisen.com
 ## Blocks of GCube
 
 ### wait for the first GCube is connected
-<img src="./image/1.PNG">
+<img src="./image/1.png">
 
 
 
