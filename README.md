@@ -112,6 +112,11 @@ This example shows<br/>
 
 ### Example 4
 <img src="./image/ex4.png">
+This example shows<br/>
+1. wait fot 3 GCubes are connected to Micro:bit<br/>
+2. when button 'A' is pressed, set motor speed to 100 of GCube 1 and GCube 2 (100(=30rpm): maximum speed of the motor)<br/>
+3. when button 'B' is pressed, stop all of the GCube's motor (GCube 0 ~ 2) <br/>
+<br/>						
 
 ### Example 5
 <img src="./image/ex5.png">
