@@ -105,6 +105,10 @@ This example shows<br/>
 
 ### Example 3
 <img src="./image/ex3.png">
+This example shows<br/>
+1. wait fot 3 GCubes are connected to Micro:bit<br/>
+2. set 8x8 dot-matrix image of GCube 1 (#: LED ON -: LED OFF)<br/>
+<br/>						
 
 ### Example 4
 <img src="./image/ex4.png">
