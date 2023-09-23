@@ -114,19 +114,34 @@ This example shows<br/>
 <img src="./image/ex4.png">
 This example shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
-2. when button 'A' is pressed, set motor speed to 100 of GCube 1 and GCube 2 (100(=30rpm): maximum speed of the motor)<br/>
+2. when button 'A' is pressed, set motor speed of GCube 1 and GCube 2 to 100 (-100~100, 100: maximum speed of the motor, i.e. 30rpm)<br/>
 3. when button 'B' is pressed, stop all of the GCube's motor (GCube 0 ~ 2) <br/>
 <br/>						
 
 ### Example 5
 <img src="./image/ex5.png">
+This example shows<br/>
+1. wait fot 3 GCubes are connected to Micro:bit<br/>
+2. when button 'A' is pressed, set motor rotation angle of GCube 1 and GCube 2 to 180 degree<br/>
+3. when button 'B' is pressed, set motor rotation angle of GCube 1 and GCube 2 to -300 degree<br/>
+<br/>						
 
 ### Example 6
 <img src="./image/ex6.png">
+<img src="./image/ex5.png">
+This example shows<br/>
+1. wait fot 3 GCubes are connected to Micro:bit<br/>
+2. when button 'A' is pressed, set motor rotation angle of GCube 0~2 to 180 degree<br/>
+3. when button 'B' is pressed, set motor rotation angle of GCube 0~2 to -300 degree<br/>
+<br/>						
 
 ### Example 7
 <img src="./image/ex7.png">
-
+This example shows<br/>
+1. wait fot 3 GCubes are connected to Micro:bit<br/>
+2. when button 'A' is pressed, set servor motor angle of GCube 1 to 30 degree<br/>
+3. when button 'B' is pressed, set servor motor angle of GCube 2 to 45 degree<br/>
+4. when button 'A+B' is pressed, set servor motor angle of GCube 1~2 to 90 degree<br/>
 
 <br/>
 <br/>
