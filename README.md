@@ -89,17 +89,19 @@ Shifting direction is depends on the acceleration sensor data of Micro:bit
 
 ### Example 1
 <img src="./image/ex1.png">
-This example shows 
-1. wait for the first GCube (GCube 0) is connected to Micro:bit 
-2. wait for the other two GCubes (GCube 1, GCube 2) are connected to Micro:bit
-3. then three GCubes will be connected to Micro:bit
+This example shows <br/>
+1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
+2. wait for the other two GCubes (GCube 1, GCube 2) are connected to Micro:bit<br/>
+3. then three GCubes will be connected to Micro:bit<br/>
+<br/>
 
 ### Example 2
 <img src="./image/ex2.png">
-This example shows
-1. wait fot 3 GCubes are connected to Micro:bit
-2. set rolling 8x8 dot-matrix image
-3. start rolling 8x8 dot-matrix (attatched to GCube 1 ... N) from GCube 1 to GCube 2
+This example shows<br/>
+1. wait fot 3 GCubes are connected to Micro:bit<br/>
+2. set rolling 8x8 dot-matrix image<br/>
+3. start rolling 8x8 dot-matrix (attatched to GCube 1 ... N) from GCube 1 to GCube 2<br/>
+<br/>
 
 ### Example 3
 <img src="./image/ex3.png">
