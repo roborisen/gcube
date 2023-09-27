@@ -205,7 +205,7 @@ namespace GCube {
      * @param a1 angle of Cube 1 servo, eg: 0
      * @param a0 angle of Cube 0 servo, eg: 0
      */
-    //% block
+    //% block="set All GCubes servo motor andgle to $a7, $a6, $a5, $a4, $a3, $a2, $a1, $a0"
     export function setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
@@ -240,7 +240,7 @@ namespace GCube {
      * @param r1 rotation angle of Cube 1, eg: 180
      * @param r0 rotation angle of Cube 0, eg: 180
      */
-    //% block
+    //% block="set All GCube rotation angle to $r7, $r6, $r5, $r4, $r3, $r2, $r1, $r0"
     export function setAllGCubeRotationAngle(dm: string, r7: number, r6: number, r5: number, r4: number, r3: number, r2: number, r1: number, r0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
@@ -316,7 +316,7 @@ namespace GCube {
      * @param s1 speed of Cube 1, eg: 0
      * @param s0 speed of Cube 0, eg: 0
      */
-    //% block
+    //% block="set all GCube motor's speed to  $s7, $s6, $s5, $s4, $s3, $s2, $s1, $s0"
     export function setAllGCubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
