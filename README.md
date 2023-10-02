@@ -215,6 +215,34 @@ This example shows<br/>
 
 ### Example 6
 ```blocks
+input.onButtonPressed(Button.A, function () {
+    GCube.setAllGCubeRotationAngle(
+    "A",
+    0,
+    0,
+    0,
+    0,
+    0,
+    180,
+    180,
+    180
+    )
+})
+input.onButtonPressed(Button.B, function () {
+    GCube.setAllGCubeRotationAngle(
+    "A",
+    0,
+    0,
+    0,
+    0,
+    0,
+    -300,
+    -300,
+    -300
+    )
+})
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(3)
 ```
 This example shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
@@ -224,6 +252,18 @@ This example shows<br/>
 
 ### Example 7
 ```blocks
+input.onButtonPressed(Button.A, function () {
+    GCube.setAGCubeServoAngle(1, 30)
+})
+input.onButtonPressed(Button.AB, function () {
+    GCube.setAGCubeServoAngle(1, 90)
+    GCube.setAGCubeServoAngle(2, 90)
+})
+input.onButtonPressed(Button.B, function () {
+    GCube.setAGCubeServoAngle(2, 45)
+})
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(3)
 ```
 This example shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
