@@ -114,7 +114,10 @@ Shifting direction is depends on the acceleration sensor data of Micro:bit
 ## Examples 
 
 ### Example 1
-<img src="./image/ex1.png">
+```blocks
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(3)
+```
 This example shows <br/>
 1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
 2. wait for the other two GCubes (GCube 1, GCube 2) are connected to Micro:bit<br/>
@@ -122,7 +125,26 @@ This example shows <br/>
 <br/>
 
 ### Example 2
-<img src="./image/ex2.png">
+```blocks
+input.onButtonPressed(Button.A, function () {
+    GCube.defaultRollingMatrixImage(
+    "A",
+    "__-__-__-__-__-__-__-__-__",
+    "__-__-__-__-__-__-__-__-__",
+    "__-__-__-__#__#__-__-__-__",
+    "__-__-__#__#__#__#__-__-__",
+    "__-__-__#__#__#__#__-__-__",
+    "__-__-__-__#__#__-__-__-__",
+    "__-__-__-__-__-__-__-__-__",
+    "__-__-__-__-__-__-__-__-__"
+    )
+})
+input.onButtonPressed(Button.B, function () {
+    GCube.startRollingMatrixImage(1000)
+})
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(3)
+```
 This example shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. set rolling 8x8 dot-matrix image<br/>
@@ -130,14 +152,40 @@ This example shows<br/>
 <br/>
 
 ### Example 3
-<img src="./image/ex3.png">
+```blocks
+input.onButtonPressed(Button.A, function () {
+    GCube.setMatrixDisplay(
+    1,
+    "__-__-__-__-__-__-__-__-__",
+    "__-__-__-__-__-__-__-__-__",
+    "__-__-__-__#__#__-__-__-__",
+    "__-__-__#__-__-__#__-__-__",
+    "__-__-__#__-__-__#__-__-__",
+    "__-__-__-__#__#__-__-__-__",
+    "__-__-__-__-__-__-__-__-__",
+    "__-__-__-__-__-__-__-__-__"
+    )
+})
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(3)
+```
 This example shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. set 8x8 dot-matrix image of GCube 1 (#: LED ON -: LED OFF)<br/>
 <br/>						
 
 ### Example 4
-<img src="./image/ex4.png">
+```blocks
+input.onButtonPressed(Button.A, function () {
+    GCube.setAGCubeSpeed(1, 100)
+    GCube.setAGCubeSpeed(2, 100)
+})
+input.onButtonPressed(Button.B, function () {
+    GCube.stopAllGCubeMotor()
+})
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(3)
+```
 This example shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. when button 'A' is pressed, set motor speed of GCube 1 and GCube 2 to 100 (-100~100, 100: maximum speed of the motor, i.e. 30rpm)<br/>
@@ -145,16 +193,29 @@ This example shows<br/>
 <br/>						
 
 ### Example 5
-<img src="./image/ex5.png">
+```blocks
+input.onButtonPressed(Button.A, function () {
+    GCube.setAGCubeRotationAngle(0, 180)
+    GCube.setAGCubeRotationAngle(1, 180)
+    GCube.setAGCubeRotationAngle(2, 180)
+})
+input.onButtonPressed(Button.B, function () {
+    GCube.setAGCubeRotationAngle(0, -300)
+    GCube.setAGCubeRotationAngle(1, -300)
+    GCube.setAGCubeRotationAngle(2, -300)
+})
+GCube.waitFirstGCubeConnect()
+GCube.waitAllGCubesConnect(3)
+```
 This example shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
-2. when button 'A' is pressed, set motor rotation angle of GCube 1 and GCube 2 to 180 degree<br/>
-3. when button 'B' is pressed, set motor rotation angle of GCube 1 and GCube 2 to -300 degree<br/>
+2. when button 'A' is pressed, set motor rotation angle of GCube 0 ~ 2 to 180 degree<br/>
+3. when button 'B' is pressed, set motor rotation angle of GCube 0 ~ 2 to -300 degree<br/>
 <br/>						
 
 ### Example 6
-<img src="./image/ex6.png">
-<img src="./image/ex5.png">
+```blocks
+```
 This example shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. when button 'A' is pressed, set motor rotation angle of GCube 0~2 to 180 degree<br/>
@@ -162,7 +223,8 @@ This example shows<br/>
 <br/>						
 
 ### Example 7
-<img src="./image/ex7.png">
+```blocks
+```
 This example shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. when button 'A' is pressed, set servor motor angle of GCube 1 to 30 degree<br/>
