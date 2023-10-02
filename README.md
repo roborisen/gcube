@@ -77,7 +77,6 @@ GCube.setAGCubeServoAngle(cubeIndex: number, servoAngle: number): void
 This block is to set servo motor angle to # (-10000 ~ 10000 in degrees) of the GCube #
 
 ### set all GCube servo motor angle #...
-<img src="./image/9.png">
 ```sig
 GCube.setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number): void
 ```
@@ -90,7 +89,6 @@ GCube.setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: strin
 This block is to set 8x8 dot-matrix image of the GCube #
 
 ### default rolling matrix image #...
-<img src="./image/11.png">
 ```sig
 GCube.defaultRollingMatrixImage(dm: string, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void
 ```
