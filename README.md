@@ -29,55 +29,83 @@ www.roborisen.com   qna@roborisen.com
 ## Blocks of GCube
 
 ### wait for the first GCube is connected
-<img src="./image/1.png">
+```sig
+GCube.waitFirstGCubeConnect(): void
+```
 This block is to wait for the first GCube is connected to Micro:bit (Micro:bit is monitoring GCube is turned on via serial data)
 
 ### wait for # GCubes are connected
-<img src="./image/2.png">
+```sig
+GCube.waitAllGCubesConnect(cnumber: number): void
+```
 This block is to wait for # (user define the GCube number for their project) GCubes are connected
 
 ### set motor speed to # of the GCube #
-<img src="./image/3.png">
+```sig
+GCube.setAGCubeSpeed(cubeIndex: number, motorSpeed: number): void
+```
 This block is set motor speed to # (-100~100, 100 is maximum speed i.e. 30rpm) of the GCube #
 
 ### set all GCube motor speed #...
-<img src="./image/4.png">
+```sig
+GCube.setAllGCubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number): void
+```
 This block is set all GCube motor speed with the 8 argument numbers from GCube 7 to GCube 0
 
 ### stop all of the GCube motors
-<img src="./image/5.png">
+```sig
+GCube.stopAllGCubeMotor(): void
+```
 This block is stop all of the GCube motors
 
 ### set rotation angle to # of the GCube #
-<img src="./image/6.png">
+```sig
+GCube.setAGCubeRotationAngle(cubeIndex: number, rotationAngle: number): void
+```
 This block is to set rotation angle to # (-10000 ~ 10000 in degrees) of the GCube #
 
 ### set all GCube rotation angle #...
-<img src="./image/7.png">
+```sig
+GCube.setAllGCubeRotationAngle(dm: string, r7: number, r6: number, r5: number, r4: number, r3: number, r2: number, r1: number, r0: number): void : void
+```
 This block is to set each GCube's rotation angle with the 8 argument numbers from GCube 7 to GCube 0
 
 ### set servo motor angle to # of the GCube #
-<img src="./image/8.png">
+```sig
+GCube.setAGCubeServoAngle(cubeIndex: number, servoAngle: number): void
+```
 This block is to set servo motor angle to # (-10000 ~ 10000 in degrees) of the GCube #
 
 ### set all GCube servo motor angle #...
 <img src="./image/9.png">
+```sig
+GCube.setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number): void
+```
 This block is to set each GCube's servo motor rotation angle with the 8 argument numbers from GCube 7 to GCube 0
 
 ### set matrix image of the GCube #
-<img src="./image/10.png">
+```sig
+GCube.setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void
+```
 This block is to set 8x8 dot-matrix image of the GCube #
 
 ### default rolling matrix image #...
 <img src="./image/11.png">
+```sig
+GCube.defaultRollingMatrixImage(dm: string, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void
+```
 This block is to set default rolling 8x8 dot-matrix image with the 8 row image data
 
 ### start rolling matrix image for # seconds
-<img src="./image/12.png">
+```sig
+GCube.startRollingMatrixImage(duration: number): void
+```
 This block is to start rolling 8x8 dot-matrix image from GCube 0 ~ GCube n for # seconds
 
 ### start shifting matrix image for the GCube #
-<img src="./image/13.png">
+```sig
+startShiftingMatrixImage(cubeIndex: number): void
+```
 This block is to start shifting 8x8 dot-matrix image from GCube 0 ~ GCube n for # seconds
 Shifting direction is depends on the acceleration sensor data of Micro:bit
 
