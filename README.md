@@ -118,7 +118,7 @@ Shifting direction is depends on the acceleration sensor data of Micro:bit
 GCube.waitFirstGCubeConnect()
 GCube.waitAllGCubesConnect(3)
 ```
-This example shows <br/>
+<a href="https://makecode.microbit.org/S52088-96748-89161-23790">This example</a> shows <br/>
 1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
 2. wait for the other two GCubes (GCube 1, GCube 2) are connected to Micro:bit<br/>
 3. then three GCubes will be connected to Micro:bit<br/>
