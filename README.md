@@ -279,6 +279,24 @@ GCube.waitAllGCubesConnect(3)
 4. when button 'B' is pressed, set servor motor angle of GCube 2 to 45 degree<br/>
 5. when button 'A+B' is pressed, set servor motor angle of GCube 1~2 to 90 degree<br/>
 * RC servo motor (such as MG90S) should be connected to GCube 1 & 2 for this example <br/>
+<br/>						
+
+### Example 8 (test.ts)
+```blocks
+```
+<a href="https://makecode.microbit.org/S93202-21130-73675-67640">This example</a> shows<br/>
+1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
+2. wait for the other two GCubes (GCube 1, GCube 2) are connected to GCube 0<br/>
+3. when button 'A' or 'B' is pressed, set the rotation angle of GCube 0 and the speed of GCube 1 & 2<br/>
+4. when button 'A+B' is pressed, stop all of the GCube's motor<br/>
+5. when 'tilt left' event is occured, set dot-matrix of GCube 1 to "Left arrow icon" and set servo motor of GCube 3 to 45 degree<br/>
+6. when 'tilt right' event is occured, set dot-matrix of GCube 1 to "Right arrow icon" and set servo motor of GCube 3 to 135 degree<br/>
+7. when 'logo up' event is occured, start rolling dot-matrix image of GCube 1 & 2 <br/>
+8. when 'logo down' event is occured, start shifting dot-matrix image of GCube 1 <br/>
+* 8x8 dot-matrix should be connected to GCube 1 & 2 for this example <br/>
+* RC servo motor (such as MG90S) should be connected to GCube 3 for this example <br/>
+<br/>
+
 <br/>
 <br/>
 <br/>
