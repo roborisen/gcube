@@ -145,7 +145,7 @@ input.onButtonPressed(Button.B, function () {
 GCube.waitFirstGCubeConnect()
 GCube.waitAllGCubesConnect(3)
 ```
-This example shows<br/>
+<a href="https://makecode.microbit.org/S35219-78808-31549-03051">This example</a> shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. set rolling 8x8 dot-matrix image<br/>
 3. start rolling 8x8 dot-matrix (attatched to GCube 1 ... N) from GCube 1 to GCube 2<br/>
@@ -169,7 +169,7 @@ input.onButtonPressed(Button.A, function () {
 GCube.waitFirstGCubeConnect()
 GCube.waitAllGCubesConnect(3)
 ```
-This example shows<br/>
+<a href="https://makecode.microbit.org/S51633-60732-00552-64204">This example</a> shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. set 8x8 dot-matrix image of GCube 1 (#: LED ON -: LED OFF)<br/>
 <br/>						
@@ -186,7 +186,7 @@ input.onButtonPressed(Button.B, function () {
 GCube.waitFirstGCubeConnect()
 GCube.waitAllGCubesConnect(3)
 ```
-This example shows<br/>
+<a href="https://makecode.microbit.org/S83314-90357-19040-82123">This example</a> shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. when button 'A' is pressed, set motor speed of GCube 1 and GCube 2 to 100 (-100~100, 100: maximum speed of the motor, i.e. 30rpm)<br/>
 3. when button 'B' is pressed, stop all of the GCube's motor (GCube 0 ~ 2) <br/>
@@ -207,7 +207,7 @@ input.onButtonPressed(Button.B, function () {
 GCube.waitFirstGCubeConnect()
 GCube.waitAllGCubesConnect(3)
 ```
-This example shows<br/>
+<a href="https://makecode.microbit.org/S48642-39369-42354-73859">This example</a> shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. when button 'A' is pressed, set motor rotation angle of GCube 0 ~ 2 to 180 degree<br/>
 3. when button 'B' is pressed, set motor rotation angle of GCube 0 ~ 2 to -300 degree<br/>
@@ -244,7 +244,7 @@ input.onButtonPressed(Button.B, function () {
 GCube.waitFirstGCubeConnect()
 GCube.waitAllGCubesConnect(3)
 ```
-This example shows<br/>
+<a href="https://makecode.microbit.org/S10341-71019-59343-30137">This example</a> shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. when button 'A' is pressed, set motor rotation angle of GCube 0~2 to 180 degree<br/>
 3. when button 'B' is pressed, set motor rotation angle of GCube 0~2 to -300 degree<br/>
@@ -265,7 +265,7 @@ input.onButtonPressed(Button.B, function () {
 GCube.waitFirstGCubeConnect()
 GCube.waitAllGCubesConnect(3)
 ```
-This example shows<br/>
+<a href="https://makecode.microbit.org/S14821-35391-54690-59634">This example</a> shows<br/>
 1. wait fot 3 GCubes are connected to Micro:bit<br/>
 2. when button 'A' is pressed, set servor motor angle of GCube 1 to 30 degree<br/>
 3. when button 'B' is pressed, set servor motor angle of GCube 2 to 45 degree<br/>
