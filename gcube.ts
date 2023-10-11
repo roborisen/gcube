@@ -366,6 +366,11 @@ namespace GCube {
                             led.plot(2, 3)
                             led.plot(3, 3)
                             connectStage = 2
+
+                            //Send connection complete message to GCube 0
+                            numData = [0x2A, invValue(0x2A), cnumber, 0, 0, 0, 0, 0, 0, 0]
+                            sendGCube(numData)
+
                             break
                         }
                     }
