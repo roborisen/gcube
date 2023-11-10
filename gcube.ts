@@ -49,6 +49,10 @@ namespace GCube {
     let connectStage = 0
     let connectedCubeNumber = 0
 
+    enum wheelType{
+        withGear,
+        withoutGear
+    }
 
     serial.redirect(SerialPin.P1, SerialPin.P0, 115200)
     serial.setRxBufferSize(10)
@@ -64,13 +68,13 @@ namespace GCube {
             let rotation = -90 * 164;
             rotation = rotation / 100;
             let d_time = -90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
         } else if (actionType == "UP") {
             let rotation = 90 * 164;
             rotation = rotation / 100;
             let d_time = 90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
         }
     }
@@ -86,13 +90,13 @@ namespace GCube {
             let rotation = -90 * 164;
             rotation = rotation / 100;
             let d_time = -90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
         } else if (actionType == "UP") {
             let rotation = 90 * 164;
             rotation = rotation / 100;
             let d_time = 90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
         }
     }
@@ -108,13 +112,13 @@ namespace GCube {
             let rotation = -90 * 164;
             rotation = rotation / 100;
             let d_time = -90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
         } else if (actionType == "UP"){
             let rotation = 90 * 164;
             rotation = rotation / 100;
             let d_time = 90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
         }
     }
@@ -122,44 +126,50 @@ namespace GCube {
 
     /**
      * The rotation command for the Car-type PingPong robot model
-     * @param gearExist Gear exist eg:1
+     * @param gearExist Gear exist eg:wheelType.withGear
      * @param angle Rotate angle eg:90
      */
     //% block="rotate wheel type PingPong robot $angle degree with $gearExist gear"
-    export function rotateWheelRobot(gearExist: number, angleValue: number): void {
-        if (gearExist == 1) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+    export function rotateWheelRobot(gearExist: string, angleValue: number): void {
+        if (gearExist == "withGear") { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
             rotation = rotation / 100;
             let d_time = angleValue * 11;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
+            if (connectedCubeNumber==2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
+            else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
+
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
             let rotation = angleValue * 164;
             rotation = rotation / 100;
             let d_time = angleValue * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
+            if (connectedCubeNumber == 2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
+            else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
+
             pause(d_time);
         }
     }
 
     /**
      * The move command for the Car-type PingPong robot model
-     * @param gearExist Gear exist eg:1
+     * @param gearExist Gear exist eg:wheelType.withGear
      * @param moveLength Move length eg:10
      */
     //% block="move wheel type PingPong robot $moveLength cm with $gearExist gear"
-    export function moveWheelRobot(gearExist: number, moveLength: number): void {
-        if (gearExist == 1) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+    export function moveWheelRobot(gearExist: string, moveLength: number): void {
+        if (gearExist == "withGear") { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let length = moveLength * 44;
             length = length / 10;
             let d_time = moveLength * 120;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
+            if (connectedCubeNumber == 2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
+            else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
             let length = moveLength * 176;
             length = length / 10;
             let d_time = moveLength * 480;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
+            if (connectedCubeNumber == 2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
+            else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
             pause(d_time);
         }
     }
