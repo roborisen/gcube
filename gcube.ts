@@ -31,11 +31,36 @@ enum gripperStatus {
     gripperclose
 }
 
+enum sensorType {
+    //% block="proximitysensor"
+    proximitysensor,
+    //% block="externalportsensor"
+    externalportsensor
+};
+
+enum cubeAccelerometer{
+    //% block="xdata"
+    xdata,
+    //% block="ydata"
+    ydata
+};
+
+enum analogPort {
+    //% block="a0"
+    a0,
+    //% block="a1"
+    a1,
+    //% block="a2"
+    a2,
+    //% block="a3"
+    a3
+};
+
 /**
  * GCube blocks
  */
 //% weight=100 color=#111111 icon="\uf0fe"
-//% groups='["Connection", "Cube motor", "Servo motor", "Dot matrix", "PingPong robot"]'
+//% groups='["Connection", "GCube motor", "Servo motor", "Dot matrix", "GCube sensor", "PingPong robot"]'
 namespace GCube {
 
     function sendGCube(xdata: any[]) { //Send UART data to GCube
@@ -88,7 +113,7 @@ namespace GCube {
 
     /**
      * The gripper control command for the Ant Bot
-     * @param actionType Rotate angle eg:OPEN
+     * @param actionType Rotate angle
      */
     //% block="$actionType of Ant Bot"
     //% group="PingPong robot"
@@ -109,7 +134,7 @@ namespace GCube {
 
     /**
      * The lever control command for the Battle Bot
-     * @param actionType Rotate angle eg:UP
+     * @param actionType Rotate angle
      */
     //% block="$actionType of Battle Bot"
     //% group="PingPong robot"
@@ -130,7 +155,7 @@ namespace GCube {
 
     /**
      * The pen control command for the Drawing Bot
-     * @param actionType Rotate angle eg:penStatus.pendown
+     * @param actionType Rotate angle
      */
     //% block="$actionType of Drawing Bot"
     //% group="PingPong robot"
@@ -195,6 +220,49 @@ namespace GCube {
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
             pause(d_time);
         }
+    }
+
+    /**
+     * The read GCube's sensor command
+     * @param cubeNumber Cube Number eg:1
+     * @param sensorSelect Sensor selection
+     */
+    //% block="$sensorSelect value of GCube $cubeNumber"
+    //% group="GCube sensor"
+    export function readCubeSensor(cubeNumber: number, sensorSelect: sensorType): number {
+        if(sensorSelect==sensorType.proximitysensor){
+            numData = [0xAA, invValue(0xAA), cubeNumber, 0, 0, 0, 0, 0, 0, 0]
+            sendGCube(numData)
+
+            rowData = serial.readBuffer(3)
+            if (rowData.length == 3) return rowData[2];
+        } else if (sensorSelect == sensorType.externalportsensor){
+            numData = [0xB0 + cubeNumber, invValue(0xB0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
+            sendGCube(numData)
+
+            rowData = serial.readBuffer(3)
+            if (rowData.length == 3) return (256*rowData[1]+rowData[2]);
+        }
+        return 0;
+    }
+
+    /**
+     * The read GCube's accelerometer sensor command
+     * @param cubeNumber Cube Number eg:1
+     * @param sensorSelect Sensor selection eg:10
+     */
+    //% block="$axisSelect value of GCube $cubeNumber"
+    //% group="GCube sensor"
+    export function readCubeAccelerometer(cubeNumber: number, axisSelect: cubeAccelerometer): number {
+        numData = [0xA0 + cubeNumber, invValue(0xA0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
+        sendGCube(numData)
+
+        rowData = serial.readBuffer(3)
+        if (rowData.length == 3){
+            if (axisSelect == cubeAccelerometer.xdata) return rowData[1];
+            else return rowData[2];
+        }
+        return 0;
     }
 
     /**
@@ -389,7 +457,7 @@ namespace GCube {
      * @param r0 rotation angle of Cube 0, eg: 0
      */
     //% block="set All GCube rotation angle to $dm, $r7, $r6, $r5, $r4, $r3, $r2, $r1, $r0"
-    //% group="Cube motor"
+    //% group="GCube motor"
     export function setAllGCubeRotationAngle(dm: string, r7: number, r6: number, r5: number, r4: number, r3: number, r2: number, r1: number, r0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
@@ -430,7 +498,7 @@ namespace GCube {
      * @param rotationAngle GCube number(-1000~1000), eg: 180
      */
     //% block="set rotation angle to $rotationAngle of the GCube $cubeIndex"
-    //% group="Cube motor"
+    //% group="GCube motor"
     export function setAGCubeRotationAngle(cubeIndex: number, rotationAngle: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
             rotationAngle = 100 * rotationAngle / 18
@@ -444,7 +512,7 @@ namespace GCube {
      * stop all of the GCube's motor
      */
     //% block="stop all of the GCube's motor"
-    //% group="Cube motor"
+    //% group="GCube motor"
     export function stopAllGCubeMotor(): void {
         if (connectStage == 2) {
             for (let i = 0; i < connectedCubeNumber; i++) {
@@ -468,7 +536,7 @@ namespace GCube {
      * @param s0 speed of Cube 0, eg: 0
      */
     //% block="set all GCube motor's speed to  $dm, $s7, $s6, $s5, $s4, $s3, $s2, $s1, $s0"
-    //% group="Cube motor"
+    //% group="GCube motor"
     export function setAllGCubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
@@ -484,7 +552,7 @@ namespace GCube {
      * @param motorSpeed GCube number, eg: 100
      */
     //% block="set motor speed to $motorSpeed of the GCube $cubeIndex"
-    //% group="Cube motor"
+    //% group="GCube motor"
     export function setAGCubeSpeed(cubeIndex: number, motorSpeed: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
             numData = [0x30, invValue(0x30), cubeIndex, motorSpeed, 0, 0, 0, 0, 0, 0]
