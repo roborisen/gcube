@@ -88,14 +88,12 @@ namespace GCube {
     //% block="$actionType of Ant Bot"
     export function gripperControl(actionType: gripperStatus): void {
         if (actionType == gripperStatus.gripperclose) {
-            let rotation = -90 * 164;
-            rotation = rotation / 100;
+            let rotation = -90 * 2;
             let d_time = -90 * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
         } else if (actionType == gripperStatus.gripperopen) {
-            let rotation = 90 * 164;
-            rotation = rotation / 100;
+            let rotation = 90 * 2;
             let d_time = 90 * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
@@ -110,14 +108,12 @@ namespace GCube {
     //% block="$actionType of Battle Bot"
     export function leverControl(actionType: leverStatus): void {
         if (actionType == leverStatus.leverdown) {
-            let rotation = -90 * 164;
-            rotation = rotation / 100;
+            let rotation = -90;
             let d_time = -90 * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
         } else if (actionType == leverStatus.leverup) {
-            let rotation = 90 * 164;
-            rotation = rotation / 100;
+            let rotation = 90;
             let d_time = 90 * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
@@ -132,14 +128,12 @@ namespace GCube {
     //% block="$actionType of Drawing Bot"
     export function penControl(actionType: penStatus): void {
         if (actionType == penStatus.pendown) {
-            let rotation = -90 * 164;
-            rotation = rotation / 100;
+            let rotation = -90;
             let d_time = -90 * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
         } else if (actionType == penStatus.penup) {
-            let rotation = 90 * 164;
-            rotation = rotation / 100;
+            let rotation = 90;
             let d_time = 90 * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
@@ -164,7 +158,7 @@ namespace GCube {
             else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
-            let rotation = angleValue * 164;
+            let rotation = angleValue * 135;
             rotation = rotation / 100;
             let d_time = angleValue * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
