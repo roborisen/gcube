@@ -50,8 +50,31 @@ namespace GCube {
     let connectedCubeNumber = 0
 
     enum wheelType{
+        //% block="withGear"
         withGear,
+        //% block="withoutGear"
         withoutGear
+    }
+
+    enum penStatus{
+        //% block="raise the Pen"
+        penUp,
+        //% block="put down the Pen"
+        penDown
+    }
+
+    enum leverStatus {
+        //% block="raise the Lever"
+        leverUp,
+        //% block="put down the Lever"
+        leverDown
+    }
+
+    enum gripperStatus {
+        //% block="open the Gripper"
+        gripperOpen,
+        //% block="close the Gripper"
+        gripperClose
     }
 
     serial.redirect(SerialPin.P1, SerialPin.P0, 115200)
@@ -62,15 +85,15 @@ namespace GCube {
      * The gripper control command for the Ant Bot
      * @param actionType Rotate angle eg:OPEN
      */
-    //% block="gripper $actionType of Ant Bot"
-    export function gripperControl(actionType: string): void {
-        if (actionType == "DOWN") {
+    //% block="$actionType of Ant Bot"
+    export function gripperControl(actionType: gripperStatus): void {
+        if (actionType == gripperStatus.gripperClose) {
             let rotation = -90 * 164;
             rotation = rotation / 100;
             let d_time = -90 * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
-        } else if (actionType == "UP") {
+        } else if (actionType == gripperStatus.gripperOpen) {
             let rotation = 90 * 164;
             rotation = rotation / 100;
             let d_time = 90 * 44;
@@ -84,15 +107,15 @@ namespace GCube {
      * The lever control command for the Battle Bot
      * @param actionType Rotate angle eg:UP
      */
-    //% block="lever $actionType of Battle Bot"
-    export function leverControl(actionType: string): void {
-        if (actionType == "DOWN") {
+    //% block="$actionType of Battle Bot"
+    export function leverControl(actionType: leverStatus): void {
+        if (actionType == leverStatus.leverDown) {
             let rotation = -90 * 164;
             rotation = rotation / 100;
             let d_time = -90 * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
-        } else if (actionType == "UP") {
+        } else if (actionType == leverStatus.leverUp) {
             let rotation = 90 * 164;
             rotation = rotation / 100;
             let d_time = 90 * 44;
@@ -106,15 +129,15 @@ namespace GCube {
      * The pen control command for the Drawing Bot
      * @param actionType Rotate angle eg:DOWN
      */
-    //% block="pen $actionType of Drawing Bot"
-    export function penControl(actionType: string): void {
-        if(actionType == "DOWN"){
+    //% block="$actionType of Drawing Bot"
+    export function penControl(actionType: penStatus): void {
+        if (actionType == penStatus.penDown){
             let rotation = -90 * 164;
             rotation = rotation / 100;
             let d_time = -90 * 44;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
             pause(d_time);
-        } else if (actionType == "UP"){
+        } else if (actionType == penStatus.penUp){
             let rotation = 90 * 164;
             rotation = rotation / 100;
             let d_time = 90 * 44;
@@ -126,38 +149,35 @@ namespace GCube {
 
     /**
      * The rotation command for the Car-type PingPong robot model
-     * @param gearExist Gear exist eg:wheelType.withGear
+     * @param gearExist Gear exist
      * @param angleValue Rotate angle eg:90
      */
-    //% block="rotate wheel type PingPong robot $angleValue degree with $gearExist gear"
-    export function rotateWheelRobot(gearExist: string, angleValue: number): void {
-        if (gearExist == "withGear") { //Geared-wheel type : AutoCar, BattleBot, AntBot
+    //% block="rotate PingPong robot $angleValue degree for $gearExist wheel"
+    export function rotateWheelRobot(gearExist: wheelType, angleValue: number): void {
+        if (gearExist == wheelType.withGear) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
             rotation = rotation / 100;
             let d_time = angleValue * 11;
-            if (connectedCubeNumber==2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
+            if (connectedCubeNumber == 2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
             else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
-
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
             let rotation = angleValue * 164;
             rotation = rotation / 100;
             let d_time = angleValue * 44;
-            if (connectedCubeNumber == 2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
-            else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
-
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
             pause(d_time);
         }
     }
 
     /**
      * The move command for the Car-type PingPong robot model
-     * @param gearExist Gear exist eg:wheelType.withGear
+     * @param gearExist Gear exist
      * @param moveLength Move length eg:10
      */
-    //% block="move wheel type PingPong robot $moveLength cm with $gearExist gear"
-    export function moveWheelRobot(gearExist: string, moveLength: number): void {
-        if (gearExist == "withGear") { //Geared-wheel type : AutoCar, BattleBot, AntBot
+    //% block="move PingPong robot $moveLength cm for $gearExist wheel"
+    export function moveWheelRobot(gearExist: wheelType, moveLength: number): void {
+        if (gearExist == wheelType.withGear) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let length = moveLength * 44;
             length = length / 10;
             let d_time = moveLength * 120;
@@ -168,8 +188,7 @@ namespace GCube {
             let length = moveLength * 176;
             length = length / 10;
             let d_time = moveLength * 480;
-            if (connectedCubeNumber == 2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
-            else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
             pause(d_time);
         }
     }
