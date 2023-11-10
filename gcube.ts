@@ -48,14 +48,7 @@ namespace GCube {
     let rowData: Buffer = null
     let connectStage = 0
     let connectedCubeNumber = 0
-
-    enum wheelType{
-        //% block="withGear"
-        withGear,
-        //% block="withoutGear"
-        withoutGear
-    };
-
+/*
     enum penStatus{
         //% block="raise the Pen"
         penUp,
@@ -76,76 +69,17 @@ namespace GCube {
         //% block="close the Gripper"
         gripperClose
     }
+*/
+    enum wheelType {
+        //% block="with Gear"
+        withGear,
+        //% block="without Gear"
+        withoutGear
+    };
 
     serial.redirect(SerialPin.P1, SerialPin.P0, 115200)
     serial.setRxBufferSize(10)
     serial.setTxBufferSize(10)
-
-    /**
-     * The gripper control command for the Ant Bot
-     * @param actionType Rotate angle eg:OPEN
-     */
-    //% block="$actionType of Ant Bot"
-    export function gripperControl(actionType: gripperStatus): void {
-        if (actionType == gripperStatus.gripperClose) {
-            let rotation = -90 * 164;
-            rotation = rotation / 100;
-            let d_time = -90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
-            pause(d_time);
-        } else if (actionType == gripperStatus.gripperOpen) {
-            let rotation = 90 * 164;
-            rotation = rotation / 100;
-            let d_time = 90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
-            pause(d_time);
-        }
-    }
-
-
-    /**
-     * The lever control command for the Battle Bot
-     * @param actionType Rotate angle eg:UP
-     */
-    //% block="$actionType of Battle Bot"
-    export function leverControl(actionType: leverStatus): void {
-        if (actionType == leverStatus.leverDown) {
-            let rotation = -90 * 164;
-            rotation = rotation / 100;
-            let d_time = -90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
-            pause(d_time);
-        } else if (actionType == leverStatus.leverUp) {
-            let rotation = 90 * 164;
-            rotation = rotation / 100;
-            let d_time = 90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
-            pause(d_time);
-        }
-    }
-
-
-    /**
-     * The pen control command for the Drawing Bot
-     * @param actionType Rotate angle eg:DOWN
-     */
-    //% block="$actionType of Drawing Bot"
-    export function penControl(actionType: penStatus): void {
-        if (actionType == penStatus.penDown){
-            let rotation = -90 * 164;
-            rotation = rotation / 100;
-            let d_time = -90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
-            pause(d_time);
-        } else if (actionType == penStatus.penUp){
-            let rotation = 90 * 164;
-            rotation = rotation / 100;
-            let d_time = 90 * 44;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
-            pause(d_time);
-        }
-    }
-
 
     /**
      * The rotation command for the Car-type PingPong robot model
