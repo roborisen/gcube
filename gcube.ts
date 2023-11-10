@@ -54,6 +54,115 @@ namespace GCube {
     serial.setRxBufferSize(10)
     serial.setTxBufferSize(10)
 
+    /**
+     * The gripper control command for the Ant Bot
+     * @param actionType Rotate angle eg:OPEN
+     */
+    //% block="gripper $actionType of Ant Bot"
+    export function gripperControl(actionType: string): void {
+        if (actionType == "DOWN") {
+            let rotation = -90 * 164;
+            rotation = rotation / 100;
+            let d_time = -90 * 44;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            pause(d_time);
+        } else if (actionType == "UP") {
+            let rotation = 90 * 164;
+            rotation = rotation / 100;
+            let d_time = 90 * 44;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            pause(d_time);
+        }
+    }
+
+
+    /**
+     * The lever control command for the Battle Bot
+     * @param actionType Rotate angle eg:UP
+     */
+    //% block="lever $actionType of Battle Bot"
+    export function leverControl(actionType: string): void {
+        if (actionType == "DOWN") {
+            let rotation = -90 * 164;
+            rotation = rotation / 100;
+            let d_time = -90 * 44;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            pause(d_time);
+        } else if (actionType == "UP") {
+            let rotation = 90 * 164;
+            rotation = rotation / 100;
+            let d_time = 90 * 44;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            pause(d_time);
+        }
+    }
+
+
+    /**
+     * The pen control command for the Drawing Bot
+     * @param actionType Rotate angle eg:DOWN
+     */
+    //% block="pen $actionType of Drawing Bot"
+    export function penControl(actionType: string): void {
+        if(actionType == "DOWN"){
+            let rotation = -90 * 164;
+            rotation = rotation / 100;
+            let d_time = -90 * 44;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            pause(d_time);
+        } else if (actionType == "UP"){
+            let rotation = 90 * 164;
+            rotation = rotation / 100;
+            let d_time = 90 * 44;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, rotation, 0, 0);
+            pause(d_time);
+        }
+    }
+
+
+    /**
+     * The rotation command for the Car-type PingPong robot model
+     * @param gearExist Gear exist eg:1
+     * @param angle Rotate angle eg:90
+     */
+    //% block="rotate PingPong robot $angle degree"
+    export function rotateWheelRobot(gearExist: number, angleValue: number): void {
+        if (gearExist == 1) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+            let rotation = angleValue * 41;
+            rotation = rotation / 100;
+            let d_time = angleValue * 11;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
+            pause(d_time);
+        } else { //Not geared-wheel type : Drawing bot
+            let rotation = angleValue * 164;
+            rotation = rotation / 100;
+            let d_time = angleValue * 44;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
+            pause(d_time);
+        }
+    }
+
+    /**
+     * The move command for the Car-type PingPong robot model
+     * @param gearExist Gear exist eg:1
+     * @param moveLength Move length eg:10
+     */
+    //% block="move PingPong robot $moveLength cm"
+    export function moveWheelRobot(gearExist: number, moveLength: number): void {
+        if (gearExist == 1) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+            let length = moveLength * 44;
+            length = length / 10;
+            let d_time = moveLength * 120;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
+            pause(d_time);
+        } else { //Not geared-wheel type : Drawing bot
+            let length = moveLength * 176;
+            length = length / 10;
+            let d_time = moveLength * 480;
+            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
+            pause(d_time);
+        }
+    }
 
     /**
      * The image moves according to the micro:bit's acceleration sensor value.
@@ -151,14 +260,14 @@ namespace GCube {
     /**
      * set default rolling display image of 8x8 dot Matrix of a GCube
      * @param dm Dummy index, eg: A
-     * @param t1 image line, eg: "__-__-__-__-__-__-__-__-__"
-     * @param t2 image line, eg: "__-__-__-__-__-__-__-__-__"
-     * @param t3 image line, eg: "__-__-__-__#__#__-__-__-__"
-     * @param t4 image line, eg: "__-__-__#__#__#__#__-__-__"
-     * @param t5 image line, eg: "__-__-__#__#__#__#__-__-__"
-     * @param t6 image line, eg: "__-__-__-__#__#__-__-__-__"
-     * @param t7 image line, eg: "__-__-__-__-__-__-__-__-__"
-     * @param t8 image line, eg: "__-__-__-__-__-__-__-__-__"
+     * @param t1 image line, eg: "__0__0__0__0__0__0__0__0__"
+     * @param t2 image line, eg: "__0__0__0__0__0__0__0__0__"
+     * @param t3 image line, eg: "__0__0__0__1__1__0__0__0__"
+     * @param t4 image line, eg: "__0__0__1__1__1__1__0__0__"
+     * @param t5 image line, eg: "__0__0__1__1__1__1__0__0__"
+     * @param t6 image line, eg: "__0__0__0__1__1__0__0__0__"
+     * @param t7 image line, eg: "__0__0__0__0__0__0__0__0__"
+     * @param t8 image line, eg: "__0__0__0__0__0__0__0__0__"
      */
     //% block
     export function defaultRollingMatrixImage(dm: string, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void {
@@ -176,14 +285,14 @@ namespace GCube {
     /**
      * set display image for 8x8 dot matrix of GCube from GCube 1 ~ GCube 8
      * @param cn GCube index, eg: 1
-     * @param t1 image line, eg: "__-__-__-__-__-__-__-__-__"
-     * @param t2 image line, eg: "__-__-__-__-__-__-__-__-__"
-     * @param t3 image line, eg: "__-__-__-__#__#__-__-__-__"
-     * @param t4 image line, eg: "__-__-__#__-__-__#__-__-__"
-     * @param t5 image line, eg: "__-__-__#__-__-__#__-__-__"
-     * @param t6 image line, eg: "__-__-__-__#__#__-__-__-__"
-     * @param t7 image line, eg: "__-__-__-__-__-__-__-__-__"
-     * @param t8 image line, eg: "__-__-__-__-__-__-__-__-__"
+     * @param t1 image line, eg: "__0__0__0__0__0__0__0__0__"
+     * @param t2 image line, eg: "__0__0__0__0__0__0__0__0__"
+     * @param t3 image line, eg: "__0__0__0__1__1__0__0__0__"
+     * @param t4 image line, eg: "__0__0__1__0__0__1__0__0__"
+     * @param t5 image line, eg: "__0__0__1__0__0__1__0__0__"
+     * @param t6 image line, eg: "__0__0__0__1__1__0__0__0__"
+     * @param t7 image line, eg: "__0__0__0__0__0__0__0__0__"
+     * @param t8 image line, eg: "__0__0__0__0__0__0__0__0__"
      */
     //% block="set matrix'image of the GCube $cn $t1 $t2 $t3 $t4 $t5 $t6 $t7 $t8"
     export function setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void {
@@ -209,7 +318,7 @@ namespace GCube {
     export function setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
-            numData = [0x41 + temp, invValue(0x40 + temp), a7, a6, a5, a4, a3, a2, a1, a0]
+            numData = [0x41 + temp, invValue(0x41 + temp), a7, a6, a5, a4, a3, a2, a1, a0]
             sendGCube(numData)
         }
     }
