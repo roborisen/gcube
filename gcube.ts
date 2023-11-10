@@ -1,9 +1,13 @@
 
-enum wheelType {
-    //% block="withgear"
-    withgear,
-    //% block="withoutgear"
-    withoutgear
+enum robotName {
+    //% block="autocar"
+    autocar,
+    //% block="drawingbot"
+    drawingbot,
+    //% block="battlebot"
+    battlebot,
+    //% block="antbot"
+    antbot
 };
 
 enum penStatus {
@@ -141,19 +145,18 @@ namespace GCube {
     }
 
 
-
     /**
      * The rotation command for the Car-type PingPong robot model
-     * @param gearExist Gear exist
+     * @param pingpongRobot model name
      * @param angleValue Rotate angle eg:90
      */
-    //% block="rotate PingPong robot $angleValue degree for $gearExist wheel"
-    export function rotateWheelRobot(gearExist: wheelType, angleValue: number): void {
-        if (gearExist == wheelType.withgear) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+    //% block="rotate PingPong robot $angleValue degree for $pingpongRobot"
+    export function rotateWheelRobot(pingpongRobot: robotName, angleValue: number): void {
+        if (pingpongRobot != robotName.drawingbot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
             rotation = rotation / 100;
             let d_time = angleValue * 10;
-            if (connectedCubeNumber == 2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
+            if (pingpongRobot == robotName.autocar) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
             else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
@@ -167,16 +170,16 @@ namespace GCube {
 
     /**
      * The move command for the Car-type PingPong robot model
-     * @param gearExist Gear exist
+     * @param pingpongRobot model name
      * @param moveLength Move length eg:10
      */
-    //% block="move PingPong robot $moveLength cm for $gearExist wheel"
-    export function moveWheelRobot(gearExist: wheelType, moveLength: number): void {
-        if (gearExist == wheelType.withgear) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+    //% block="move PingPong robot $moveLength cm for $pingpongRobot"
+    export function moveWheelRobot(pingpongRobot: robotName, moveLength: number): void {
+        if (pingpongRobot != robotName.drawingbot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let length = moveLength * 44;
             length = length / 10;
             let d_time = moveLength * 100;
-            if (connectedCubeNumber == 2) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
+            if (pingpongRobot == robotName.autocar) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
             else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
