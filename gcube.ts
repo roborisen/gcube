@@ -7,23 +7,23 @@ enum wheelType {
 };
 
 enum penStatus {
-    //% block="raise the Pen"
+    //% block="penup"
     penup,
-    //% block="put down the Pen"
+    //% block="pendown"
     pendown
 };
 
 enum leverStatus {
-    //% block="raise the Lever"
+    //% block="leverup"
     leverup,
-    //% block="put down the Lever"
+    //% block="leverdown"
     leverdown
 };
 
 enum gripperStatus {
-    //% block="open the Gripper"
+    //% block="gripperopen"
     gripperopen,
-    //% block="close the Gripper"
+    //% block="gripperclose"
     gripperclose
 }
 
