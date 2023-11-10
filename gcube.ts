@@ -54,21 +54,21 @@ namespace GCube {
         withGear,
         //% block="withoutGear"
         withoutGear
-    }
+    };
 
     enum penStatus{
         //% block="raise the Pen"
         penUp,
         //% block="put down the Pen"
         penDown
-    }
+    };
 
     enum leverStatus {
         //% block="raise the Lever"
         leverUp,
         //% block="put down the Lever"
         leverDown
-    }
+    };
 
     enum gripperStatus {
         //% block="open the Gripper"
