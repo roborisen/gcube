@@ -35,6 +35,7 @@ enum gripperStatus {
  * GCube blocks
  */
 //% weight=100 color=#111111 icon="\uf0fe"
+//% groups='["Connection", "Cube motor", "Servo motor", "Dot matrix", "PingPong robot"]'
 namespace GCube {
 
     function sendGCube(xdata: any[]) { //Send UART data to GCube
@@ -90,6 +91,7 @@ namespace GCube {
      * @param actionType Rotate angle eg:OPEN
      */
     //% block="$actionType of Ant Bot"
+    //% group="PingPong robot"
     export function gripperControl(actionType: gripperStatus): void {
         if (actionType == gripperStatus.gripperclose) {
             let rotation = -180 * 2;
@@ -110,6 +112,7 @@ namespace GCube {
      * @param actionType Rotate angle eg:UP
      */
     //% block="$actionType of Battle Bot"
+    //% group="PingPong robot"
     export function leverControl(actionType: leverStatus): void {
         if (actionType == leverStatus.leverdown) {
             let rotation = -90;
@@ -130,6 +133,7 @@ namespace GCube {
      * @param actionType Rotate angle eg:penStatus.pendown
      */
     //% block="$actionType of Drawing Bot"
+    //% group="PingPong robot"
     export function penControl(actionType: penStatus): void {
         if (actionType == penStatus.pendown) {
             let rotation = -90;
@@ -151,6 +155,7 @@ namespace GCube {
      * @param angleValue Rotate angle eg:90
      */
     //% block="rotate PingPong robot $angleValue degree for $pingpongRobot"
+    //% group="PingPong robot"
     export function rotateWheelRobot(pingpongRobot: robotName, angleValue: number): void {
         if (pingpongRobot != robotName.drawingbot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
@@ -174,6 +179,7 @@ namespace GCube {
      * @param moveLength Move length eg:10
      */
     //% block="move PingPong robot $moveLength cm for $pingpongRobot"
+    //% group="PingPong robot"
     export function moveWheelRobot(pingpongRobot: robotName, moveLength: number): void {
         if (pingpongRobot != robotName.drawingbot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let length = moveLength * 44;
@@ -196,6 +202,7 @@ namespace GCube {
      * @param cubeIndex Cube index number eg:1
      */
     //% block="start shifting matrix image for the GCube $cubeIndex"
+    //% group="Dot matrix"
     export function startShiftingMatrixImage(cubeIndex: number): void {
         if (connectStage < 2) return
 
@@ -251,6 +258,7 @@ namespace GCube {
      * @param duration time(rotation number) eg:1000
      */
     //% block="start rolling matrix image for $duration seconds"
+    //% group="Dot matrix"
     export function startRollingMatrixImage(duration: number): void {
         if (connectStage < 2) return
 
@@ -297,6 +305,7 @@ namespace GCube {
      * @param t8 image line, eg: "__0__0__0__0__0__0__0__0__"
      */
     //% block
+    //% group="Dot matrix"
     export function defaultRollingMatrixImage(dm: string, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void {
         rollingImage[0] = t1
         rollingImage[1] = t2
@@ -322,6 +331,7 @@ namespace GCube {
      * @param t8 image line, eg: "__0__0__0__0__0__0__0__0__"
      */
     //% block="set matrix'image of the GCube $cn $t1 $t2 $t3 $t4 $t5 $t6 $t7 $t8"
+    //% group="Dot matrix"
     export function setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void {
         if (connectStage == 2) {
             sendMatrixData(cn, matrixLine(t1), matrixLine(t2), matrixLine(t3), matrixLine(t4), matrixLine(t5), matrixLine(t6), matrixLine(t7), matrixLine(t8))
@@ -342,6 +352,7 @@ namespace GCube {
      * @param a0 angle of Cube 0 servo, eg: 0
      */
     //% block="set All GCubes servo motor andgle to $dm, $a7, $a6, $a5, $a4, $a3, $a2, $a1, $a0"
+    //% group="Servo motor"
     export function setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
@@ -357,6 +368,7 @@ namespace GCube {
      * @param servoAngle GCube number, eg: 90
      */
     //% block="set servo motor angle to $servoAngle of the GCube $cubeIndex"
+    //% group="Servo motor"
     export function setAGCubeServoAngle(cubeIndex: number, servoAngle: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
             numData = [0x40, invValue(0x40), cubeIndex, servoAngle, 0, 0, 0, 0, 0, 0]
@@ -377,6 +389,7 @@ namespace GCube {
      * @param r0 rotation angle of Cube 0, eg: 0
      */
     //% block="set All GCube rotation angle to $dm, $r7, $r6, $r5, $r4, $r3, $r2, $r1, $r0"
+    //% group="Cube motor"
     export function setAllGCubeRotationAngle(dm: string, r7: number, r6: number, r5: number, r4: number, r3: number, r2: number, r1: number, r0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
@@ -417,6 +430,7 @@ namespace GCube {
      * @param rotationAngle GCube number(-1000~1000), eg: 180
      */
     //% block="set rotation angle to $rotationAngle of the GCube $cubeIndex"
+    //% group="Cube motor"
     export function setAGCubeRotationAngle(cubeIndex: number, rotationAngle: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
             rotationAngle = 100 * rotationAngle / 18
@@ -430,6 +444,7 @@ namespace GCube {
      * stop all of the GCube's motor
      */
     //% block="stop all of the GCube's motor"
+    //% group="Cube motor"
     export function stopAllGCubeMotor(): void {
         if (connectStage == 2) {
             for (let i = 0; i < connectedCubeNumber; i++) {
@@ -453,6 +468,7 @@ namespace GCube {
      * @param s0 speed of Cube 0, eg: 0
      */
     //% block="set all GCube motor's speed to  $dm, $s7, $s6, $s5, $s4, $s3, $s2, $s1, $s0"
+    //% group="Cube motor"
     export function setAllGCubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
@@ -468,6 +484,7 @@ namespace GCube {
      * @param motorSpeed GCube number, eg: 100
      */
     //% block="set motor speed to $motorSpeed of the GCube $cubeIndex"
+    //% group="Cube motor"
     export function setAGCubeSpeed(cubeIndex: number, motorSpeed: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
             numData = [0x30, invValue(0x30), cubeIndex, motorSpeed, 0, 0, 0, 0, 0, 0]
@@ -481,6 +498,7 @@ namespace GCube {
      * @param cnumber GCube number, eg: 2
      */
     //% block="wait for $cnumber GCubes are connected"
+    //% group="Connection"
     export function waitAllGCubesConnect(cnumber: number): void {
         if (connectStage == 1) {
             while (1) {
@@ -519,6 +537,7 @@ namespace GCube {
      * wait for first GCube is connected
      */
     //% block="wait for the first GCube is connected"
+    //% group="Connection"
     export function waitFirstGCubeConnect(): void {
         if (connectStage == 0) {
             rowData = serial.readBuffer(3)
