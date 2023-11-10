@@ -266,6 +266,24 @@ namespace GCube {
     }
 
     /**
+     * The read GCube's Arduino analog port command
+     * @param cubeNumber Cube Number eg:1
+     * @param portSelect Arduino analog port selection eg:0
+     */
+    //% block="Arduino $portSelect port value of GCube $cubeNumber"
+    //% group="GCube sensor"
+    export function readCubeArduinoAnalog(cubeNumber: number, portSelect: number): number {
+        numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), portSelect, 0, 0, 0, 0, 0, 0, 0]
+        sendGCube(numData)
+
+        rowData = serial.readBuffer(3)
+        if (rowData.length == 3) {
+            return (256 * rowData[1] + rowData[2]);
+        }
+        return 0;
+    }
+
+    /**
      * The image moves according to the micro:bit's acceleration sensor value.
      * @param cubeIndex Cube index number eg:1
      */
