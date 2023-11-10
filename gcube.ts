@@ -88,13 +88,13 @@ namespace GCube {
     //% block="$actionType of Ant Bot"
     export function gripperControl(actionType: gripperStatus): void {
         if (actionType == gripperStatus.gripperclose) {
-            let rotation = -90 * 2;
-            let d_time = 90 * 40;
+            let rotation = -180 * 2;
+            let d_time = 180 * 40;
             setAGCubeRotationAngle(0, rotation);
             pause(d_time);
         } else if (actionType == gripperStatus.gripperopen) {
-            let rotation = 90 * 2;
-            let d_time = 90 * 40;
+            let rotation = 180 * 2;
+            let d_time = 180 * 40;
             setAGCubeRotationAngle(0, rotation);
             pause(d_time);
         }
@@ -123,7 +123,7 @@ namespace GCube {
 
     /**
      * The pen control command for the Drawing Bot
-     * @param actionType Rotate angle eg:DOWN
+     * @param actionType Rotate angle eg:penStatus.pendown
      */
     //% block="$actionType of Drawing Bot"
     export function penControl(actionType: penStatus): void {
