@@ -1,11 +1,31 @@
 
 enum wheelType {
-    //% block="with Gear"
-    withGear,
-    //% block="without Gear"
-    withoutGear
+    //% block="withgear"
+    withgear,
+    //% block="withoutgear"
+    withoutgear
 };
 
+enum penStatus {
+    //% block="raise the Pen"
+    penup,
+    //% block="put down the Pen"
+    pendown
+};
+
+enum leverStatus {
+    //% block="raise the Lever"
+    leverup,
+    //% block="put down the Lever"
+    leverdown
+};
+
+enum gripperStatus {
+    //% block="open the Gripper"
+    gripperopen,
+    //% block="close the Gripper"
+    gripperclose
+}
 
 /**
  * GCube blocks
@@ -55,26 +75,7 @@ namespace GCube {
     let connectStage = 0
     let connectedCubeNumber = 0
 /*
-    enum penStatus{
-        //% block="raise the Pen"
-        penUp,
-        //% block="put down the Pen"
-        penDown
-    };
 
-    enum leverStatus {
-        //% block="raise the Lever"
-        leverUp,
-        //% block="put down the Lever"
-        leverDown
-    };
-
-    enum gripperStatus {
-        //% block="open the Gripper"
-        gripperOpen,
-        //% block="close the Gripper"
-        gripperClose
-    }
 */
 
     serial.redirect(SerialPin.P1, SerialPin.P0, 115200)
@@ -88,7 +89,7 @@ namespace GCube {
      */
     //% block="rotate PingPong robot $angleValue degree for $gearExist wheel"
     export function rotateWheelRobot(gearExist: wheelType, angleValue: number): void {
-        if (gearExist == wheelType.withGear) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+        if (gearExist == wheelType.withgear) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
             rotation = rotation / 100;
             let d_time = angleValue * 11;
@@ -111,7 +112,7 @@ namespace GCube {
      */
     //% block="move PingPong robot $moveLength cm for $gearExist wheel"
     export function moveWheelRobot(gearExist: wheelType, moveLength: number): void {
-        if (gearExist == wheelType.withGear) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+        if (gearExist == wheelType.withgear) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let length = moveLength * 44;
             length = length / 10;
             let d_time = moveLength * 120;
