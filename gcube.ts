@@ -127,9 +127,9 @@ namespace GCube {
     /**
      * The rotation command for the Car-type PingPong robot model
      * @param gearExist Gear exist eg:wheelType.withGear
-     * @param angle Rotate angle eg:90
+     * @param angleValue Rotate angle eg:90
      */
-    //% block="rotate wheel type PingPong robot $angle degree with $gearExist gear"
+    //% block="rotate wheel type PingPong robot $angleValue degree with $gearExist gear"
     export function rotateWheelRobot(gearExist: string, angleValue: number): void {
         if (gearExist == "withGear") { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
