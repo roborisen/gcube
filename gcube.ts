@@ -90,12 +90,12 @@ namespace GCube {
         if (actionType == gripperStatus.gripperclose) {
             let rotation = -90 * 2;
             let d_time = 90 * 40;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
+            setAGCubeRotationAngle(0, rotation);
             pause(d_time);
         } else if (actionType == gripperStatus.gripperopen) {
             let rotation = 90 * 2;
             let d_time = 90 * 40;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
+            setAGCubeRotationAngle(0, rotation);
             pause(d_time);
         }
     }
@@ -110,12 +110,12 @@ namespace GCube {
         if (actionType == leverStatus.leverdown) {
             let rotation = -90;
             let d_time = 90 * 40;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
+            setAGCubeRotationAngle(0, rotation);
             pause(d_time);
         } else if (actionType == leverStatus.leverup) {
             let rotation = 90;
             let d_time = 90 * 40;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
+            setAGCubeRotationAngle(0, rotation);
             pause(d_time);
         }
     }
@@ -130,12 +130,12 @@ namespace GCube {
         if (actionType == penStatus.pendown) {
             let rotation = -90;
             let d_time = 90 * 40;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
+            setAGCubeRotationAngle(0, rotation);
             pause(d_time);
         } else if (actionType == penStatus.penup) {
             let rotation = 90;
             let d_time = 90 * 40;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, 0, rotation);
+            setAGCubeRotationAngle(0, rotation);
             pause(d_time);
         }
     }
