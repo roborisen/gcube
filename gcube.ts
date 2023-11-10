@@ -125,7 +125,7 @@ namespace GCube {
      * @param gearExist Gear exist eg:1
      * @param angle Rotate angle eg:90
      */
-    //% block="rotate PingPong robot $angle degree"
+    //% block="rotate wheel type PingPong robot $angle degree with $gearExist gear"
     export function rotateWheelRobot(gearExist: number, angleValue: number): void {
         if (gearExist == 1) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
@@ -147,7 +147,7 @@ namespace GCube {
      * @param gearExist Gear exist eg:1
      * @param moveLength Move length eg:10
      */
-    //% block="move PingPong robot $moveLength cm"
+    //% block="move wheel type PingPong robot $moveLength cm with $gearExist gear"
     export function moveWheelRobot(gearExist: number, moveLength: number): void {
         if (gearExist == 1) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let length = moveLength * 44;
