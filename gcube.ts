@@ -1,4 +1,10 @@
 
+enum wheelType {
+    //% block="with Gear"
+    withGear,
+    //% block="without Gear"
+    withoutGear
+};
 
 
 /**
@@ -70,12 +76,6 @@ namespace GCube {
         gripperClose
     }
 */
-    enum wheelType {
-        //% block="with Gear"
-        withGear,
-        //% block="without Gear"
-        withoutGear
-    };
 
     serial.redirect(SerialPin.P1, SerialPin.P0, 115200)
     serial.setRxBufferSize(10)
