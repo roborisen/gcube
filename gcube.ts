@@ -69,7 +69,8 @@ namespace GCube {
             sendData.setNumber(NumberFormat.UInt8LE, i, xdata[i]);
         }
         serial.writeBuffer(sendData)
-        if(d_flag==1) pause(50) //Wait for the next command
+        //if(d_flag==1) pause(50) //Wait for the next command
+        pause(50)
     }
 
     function invValue(a: number) {
