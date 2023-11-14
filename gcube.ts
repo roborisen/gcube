@@ -63,13 +63,13 @@ enum analogPort {
 //% groups='["Connection", "GCube motor", "Servo motor", "Dot matrix", "GCube sensor", "PingPong robot"]'
 namespace GCube {
 
-    function sendGCube(xdata: any[]) { //Send UART data to GCube
+    function sendGCube(xdata: any[], d_flag: number) { //Send UART data to GCube
         let sendData = pins.createBuffer(10);
         for (let i = 0; i <= 9; i++) {
             sendData.setNumber(NumberFormat.UInt8LE, i, xdata[i]);
         }
         serial.writeBuffer(sendData)
-        pause(50) //Wait for the next command
+        if(d_flag==1) pause(50) //Wait for the next command
     }
 
     function invValue(a: number) {
@@ -95,7 +95,7 @@ namespace GCube {
         let temp = cn - 1;
         numData[0] = 0x51 + temp
         numData[1] = invValue(0x51 + temp)
-        sendGCube(numData)
+        sendGCube(numData,1)
     }
 
 
@@ -232,13 +232,13 @@ namespace GCube {
     export function readCubeSensor(cubeNumber: number, sensorSelect: sensorType): number {
         if(sensorSelect==sensorType.proximitysensor){
             numData = [0xAA, invValue(0xAA), cubeNumber, 0, 0, 0, 0, 0, 0, 0]
-            sendGCube(numData)
+            sendGCube(numData,0)
 
             rowData = serial.readBuffer(3)
             if (rowData.length == 3) return rowData[2];
         } else if (sensorSelect == sensorType.externalportsensor){
             numData = [0xB0 + cubeNumber, invValue(0xB0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
-            sendGCube(numData)
+            sendGCube(numData,0)
 
             rowData = serial.readBuffer(3)
             if (rowData.length == 3) return (256*rowData[1]+rowData[2]);
@@ -255,7 +255,7 @@ namespace GCube {
     //% group="GCube sensor"
     export function readCubeAccelerometer(cubeNumber: number, axisSelect: cubeAccelerometer): number {
         numData = [0xA0 + cubeNumber, invValue(0xA0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
-        sendGCube(numData)
+        sendGCube(numData,0)
 
         rowData = serial.readBuffer(3)
         if (rowData.length == 3){
@@ -274,7 +274,7 @@ namespace GCube {
     //% group="GCube sensor"
     export function readCubeArduinoAnalog(cubeNumber: number, portSelect: number): number {
         numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), portSelect, 0, 0, 0, 0, 0, 0, 0]
-        sendGCube(numData)
+        sendGCube(numData,0)
 
         rowData = serial.readBuffer(3)
         if (rowData.length == 3) {
@@ -443,7 +443,7 @@ namespace GCube {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
             numData = [0x41 + temp, invValue(0x41 + temp), a7, a6, a5, a4, a3, a2, a1, a0]
-            sendGCube(numData)
+            sendGCube(numData,1)
         }
     }
 
@@ -458,7 +458,7 @@ namespace GCube {
     export function setAGCubeServoAngle(cubeIndex: number, servoAngle: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
             numData = [0x40, invValue(0x40), cubeIndex, servoAngle, 0, 0, 0, 0, 0, 0]
-            sendGCube(numData)
+            sendGCube(numData,1)
         }
     }
 
@@ -487,7 +487,7 @@ namespace GCube {
                 r0 = 100 * r0 / 18;
 
                 numData = [0x39 + temp, invValue(0x39 + temp), (r3 >> 8) & 0xFF, r3 & 0xFF, (r2 >> 8) & 0xFF, r2 & 0xFF, (r1 >> 8) & 0xFF, r1 & 0xFF, (r0 >> 8) & 0xFF, r0 & 0xFF]
-                sendGCube(numData);
+                sendGCube(numData,1);
             }else{
                 r3 = 100 * r3 / 18;
                 r2 = 100 * r2 / 18;
@@ -495,7 +495,7 @@ namespace GCube {
                 r0 = 100 * r0 / 18;
 
                 numData = [0x39 + 2, invValue(0x39 + 2), (r3 >> 8) & 0xFF, r3 & 0xFF, (r2 >> 8) & 0xFF, r2 & 0xFF, (r1 >> 8) & 0xFF, r1 & 0xFF, (r0 >> 8) & 0xFF, r0 & 0xFF]
-                sendGCube(numData);
+                sendGCube(numData,1);
 
                 r7 = 100 * r7 / 18;
                 r6 = 100 * r6 / 18;
@@ -503,7 +503,7 @@ namespace GCube {
                 r4 = 100 * r4 / 18;
 
                 numData = [0x39 + temp, invValue(0x39 + temp), (r7 >> 8) & 0xFF, r7 & 0xFF, (r6 >> 8) & 0xFF, r6 & 0xFF, (r5 >> 8) & 0xFF, r5 & 0xFF, (r4 >> 8) & 0xFF, r4 & 0xFF]
-                sendGCube(numData);
+                sendGCube(numData,1);
 
             }
         }
@@ -521,7 +521,7 @@ namespace GCube {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
             rotationAngle = 100 * rotationAngle / 18
             numData = [0x38, invValue(0x38), cubeIndex, (rotationAngle >> 8) & 0xFF, rotationAngle & 0xFF, 0, 0, 0, 0, 0]
-            sendGCube(numData)
+            sendGCube(numData,1)
         }
     }
 
@@ -535,7 +535,7 @@ namespace GCube {
         if (connectStage == 2) {
             for (let i = 0; i < connectedCubeNumber; i++) {
                 numData = [0x30, invValue(0x30), i, 0, 0, 0, 0, 0, 0, 0]
-                sendGCube(numData)
+                sendGCube(numData,1)
             }
         }
     }
@@ -558,8 +558,8 @@ namespace GCube {
     export function setAllGCubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
-            numData = [0x31 + temp, invValue(0x30 + temp), s7, s6, s5, s4, s3, s2, s1, s0]
-            sendGCube(numData)
+            numData = [0x31 + temp, invValue(0x31 + temp), s7, s6, s5, s4, s3, s2, s1, s0]
+            sendGCube(numData,1)
         }
     }
 
@@ -574,7 +574,7 @@ namespace GCube {
     export function setAGCubeSpeed(cubeIndex: number, motorSpeed: number): void {
         if (connectStage == 2 && cubeIndex < connectedCubeNumber) {
             numData = [0x30, invValue(0x30), cubeIndex, motorSpeed, 0, 0, 0, 0, 0, 0]
-            sendGCube(numData)
+            sendGCube(numData,1)
         }
     }
 
@@ -590,7 +590,7 @@ namespace GCube {
             while (1) {
                 pause(1000)
                 numData = [0x21, invValue(0x21), 0, 0, 0, 0, 0, 0, 0, 0]
-                sendGCube(numData)
+                sendGCube(numData,1)
 
                 rowData = serial.readBuffer(3)
                 if (rowData.length == 3) {
@@ -609,7 +609,7 @@ namespace GCube {
 
                             //Send connection complete message to GCube 0
                             numData = [0x2A, invValue(0x2A), cnumber, 0, 0, 0, 0, 0, 0, 0]
-                            sendGCube(numData)
+                            sendGCube(numData,1)
 
                             break
                         }
@@ -632,7 +632,7 @@ namespace GCube {
                     led.plot(2, 2)
                     pause(20);
                     numData = [0x10, invValue(0x10), 0, 0, 0, 112, 0, 0, 0, 0]
-                    sendGCube(numData)
+                    sendGCube(numData,1)
                     connectStage = 1;
                 }
             }
