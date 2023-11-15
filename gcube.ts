@@ -34,6 +34,8 @@ enum gripperStatus {
 enum sensorType {
     //% block="proximitysensor"
     proximitysensor,
+    //% block="buttonsensor"
+    buttonsensor,
     //% block="externalportsensor"
     externalportsensor
 };
@@ -236,13 +238,19 @@ namespace GCube {
             sendGCube(numData,0)
 
             rowData = serial.readBuffer(3)
-            if (rowData.length == 3) return rowData[2];
+            return rowData[2];
+        } else if (sensorSelect == sensorType.buttonsensor) {
+            numData = [0xAB, invValue(0xAB), cubeNumber, 0, 0, 0, 0, 0, 0, 0]
+            sendGCube(numData, 0)
+
+            rowData = serial.readBuffer(3)
+            return rowData[2];
         } else if (sensorSelect == sensorType.externalportsensor){
             numData = [0xB0 + cubeNumber, invValue(0xB0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
             sendGCube(numData,0)
 
             rowData = serial.readBuffer(3)
-            if (rowData.length == 3) return (256*rowData[1]+rowData[2]);
+            return (256*rowData[1]+rowData[2]);
         }
         return 0;
     }
