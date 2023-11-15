@@ -79,7 +79,7 @@ namespace GCube {
 
     function matrixLine(aaa: string) {
         let tMatrix = 0
-        for (let i = 0; i < 8; i++) { if (aaa.charAt(3 * i + 2) == '#') tMatrix = tMatrix | (1 << (7 - i)) }
+        for (let i = 0; i < 8; i++) { if (aaa.charAt(3 * i + 2) == '1') tMatrix = tMatrix | (1 << (7 - i)) }
         return tMatrix
     }
 
