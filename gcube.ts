@@ -188,14 +188,14 @@ namespace GCube {
         if (pingpongRobot != robotName.drawingbot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
             rotation = rotation / 100;
-            let d_time = angleValue * 10;
+            let d_time = Math.abs(angleValue) * 10;
             if (pingpongRobot == robotName.autocar) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
             else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
             let rotation = angleValue * 135;
             rotation = rotation / 100;
-            let d_time = angleValue * 40;
+            let d_time = Math.abs(angleValue) * 40;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
             pause(d_time);
         }
@@ -212,14 +212,14 @@ namespace GCube {
         if (pingpongRobot != robotName.drawingbot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let length = moveLength * 44;
             length = length / 10;
-            let d_time = moveLength * 100;
+            let d_time = Math.abs(moveLength) * 100;
             if (pingpongRobot == robotName.autocar) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
             else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
             let length = moveLength * 176;
             length = length / 10;
-            let d_time = moveLength * 400;
+            let d_time = Math.abs(moveLength) * 400;
             setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
             pause(d_time);
         }
@@ -250,7 +250,7 @@ namespace GCube {
             sendGCube(numData,0)
 
             rowData = serial.readBuffer(3)
-            return (256*rowData[1]+rowData[2]);
+            return (16*rowData[1]+rowData[2]); // 12 bit resolution
         }
         return 0;
     }
@@ -287,7 +287,7 @@ namespace GCube {
 
         rowData = serial.readBuffer(3)
         if (rowData.length == 3) {
-            return (256 * rowData[1] + rowData[2]);
+            return (16 * rowData[1] + rowData[2]); // 12 bit resolution
         }
         return 0;
     }
