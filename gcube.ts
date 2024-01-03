@@ -189,14 +189,14 @@ namespace GCube {
             let rotation = angleValue * 41;
             rotation = rotation / 100;
             let d_time = Math.abs(angleValue) * 10;
-            if (pingpongRobot == robotName.autocar) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation);
-            else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
+            if (pingpongRobot == robotName.autocar) setAllGCubeRotationAngle("A", -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0, 0);
+            else setAllGCubeRotationAngle("A", 0, -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
             let rotation = angleValue * 135;
             rotation = rotation / 100;
             let d_time = Math.abs(angleValue) * 40;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, -1 * rotation, -1 * rotation, 0);
+            setAllGCubeRotationAngle("A", 0, -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0);
             pause(d_time);
         }
     }
@@ -213,14 +213,14 @@ namespace GCube {
             let length = moveLength * 44;
             length = length / 10;
             let d_time = Math.abs(moveLength) * 100;
-            if (pingpongRobot == robotName.autocar) setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, 0, length, -1 * length);
-            else setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
+            if (pingpongRobot == robotName.autocar) setAllGCubeRotationAngle("A", -1 * length, length, 0, 0, 0, 0, 0, 0 );
+            else setAllGCubeRotationAngle("A", 0, -1 * length, length, 0, 0, 0, 0, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
             let length = moveLength * 176;
             length = length / 10;
             let d_time = Math.abs(moveLength) * 400;
-            setAllGCubeRotationAngle("A", 0, 0, 0, 0, 0, length, -1 * length, 0);
+            setAllGCubeRotationAngle("A", 0, -1 * length, length, 0, 0, 0, 0, 0);
             pause(d_time);
         }
     }
@@ -446,9 +446,9 @@ namespace GCube {
      * @param a1 angle of Cube 1 servo, eg: 0
      * @param a0 angle of Cube 0 servo, eg: 0
      */
-    //% block="set All GCubes servo motor andgle to $dm, $a7, $a6, $a5, $a4, $a3, $a2, $a1, $a0"
+    //% block="set All GCubes servo motor andgle to $dm, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7"
     //% group="Servo motor"
-    export function setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number): void {
+    export function setAllGCubeServoMotorAngle(dm: string, a0: number, a1: number, a2: number, a3: number, a4: number, a5: number, a6: number, a7: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
             numData = [0x41 + temp, invValue(0x41 + temp), a7, a6, a5, a4, a3, a2, a1, a0]
@@ -483,9 +483,9 @@ namespace GCube {
      * @param r1 rotation angle of Cube 1, eg: 0
      * @param r0 rotation angle of Cube 0, eg: 0
      */
-    //% block="set All GCube rotation angle to $dm, $r7, $r6, $r5, $r4, $r3, $r2, $r1, $r0"
+    //% block="set All GCube rotation angle to $dm, $r0, $r1, $r2, $r3, $r4, $r5, $r6, $r7"
     //% group="GCube motor"
-    export function setAllGCubeRotationAngle(dm: string, r7: number, r6: number, r5: number, r4: number, r3: number, r2: number, r1: number, r0: number): void {
+    export function setAllGCubeRotationAngle(dm: string, r0: number, r1: number, r2: number, r3: number, r4: number, r5: number, r6: number, r7: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
 
@@ -562,9 +562,9 @@ namespace GCube {
      * @param s1 speed of Cube 1, eg: 0
      * @param s0 speed of Cube 0, eg: 0
      */
-    //% block="set all GCube motor's speed to  $dm, $s7, $s6, $s5, $s4, $s3, $s2, $s1, $s0"
+    //% block="set all GCube motor's speed to  $dm, $s0, $s1, $s2, $s3, $s4, $s5, $s6, $s7"
     //% group="GCube motor"
-    export function setAllGCubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number): void {
+    export function setAllGCubeSpeed(dm: string, s0: number, s1: number, s2: number, s3: number, s4: number, s5: number, s6: number, s7: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
             numData = [0x31 + temp, invValue(0x31 + temp), s7, s6, s5, s4, s3, s2, s1, s0]
