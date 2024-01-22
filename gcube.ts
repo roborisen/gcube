@@ -622,6 +622,7 @@ namespace GCube {
                             //Send connection complete message to GCube 0
                             numData = [0x2A, invValue(0x2A), cnumber, 0, 0, 0, 0, 0, 0, 0]
                             sendGCube(numData,1)
+                            pause(1000)
 
                             break
                         }
