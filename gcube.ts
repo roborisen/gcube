@@ -268,10 +268,10 @@ namespace GCube {
 
         rowData = serial.readBuffer(3)
         if (rowData.length == 3){
-//            if (axisSelect == cubeAccelerometer.xdata) return rowData[1];
-//            else return rowData[2];
-            if (axisSelect == cubeAccelerometer.xdata) return 10;
-            else return 20;
+            if (axisSelect == cubeAccelerometer.xdata) return rowData[1];
+            else return rowData[2];
+//            if (axisSelect == cubeAccelerometer.xdata) return 10;
+//            else return 20;
         }
         return 0;
     }
