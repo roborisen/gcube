@@ -59,11 +59,11 @@ enum analogPort {
 };
 
 /**
- * GCube blocks
+ * gcube blocks
  */
 //% weight=100 color=#111111 icon="\uf0fe"
 //% groups='["Connection", "GCube motor", "Servo motor", "Dot matrix", "GCube sensor", "PingPong robot"]'
-namespace GCube {
+namespace gcube {
 
     function sendGCube(xdata: any[], d_flag: number) { //Send UART data to GCube
         let sendData = pins.createBuffer(10);
