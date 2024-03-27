@@ -30,73 +30,73 @@ www.roborisen.com   qna@roborisen.com
 
 ### wait for the first GCube is connected
 ```sig
-GCube.waitFirstGCubeConnect(): void
+gcube.waitFirstGCubeConnect(): void
 ```
 This block is to wait for the first GCube is connected to Micro:bit (Micro:bit is monitoring GCube is turned on via serial data)
 
 ### wait for # GCubes are connected
 ```sig
-GCube.waitAllGCubesConnect(cnumber: number): void
+gcube.waitAllGCubesConnect(cnumber: number): void
 ```
 This block is to wait for # (user define the GCube number for their project) GCubes are connected
 
 ### set motor speed to # of the GCube #
 ```sig
-GCube.setAGCubeSpeed(cubeIndex: number, motorSpeed: number): void
+gcube.setAGCubeSpeed(cubeIndex: number, motorSpeed: number): void
 ```
 This block is set motor speed to # (-100~100, 100 is maximum speed i.e. 30rpm) of the GCube #
 
 ### set all GCube motor speed #...
 ```sig
-GCube.setAllGCubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number): void
+gcube.setAllGCubeSpeed(dm: string, s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number): void
 ```
 This block is set all GCube motor speed with the 8 argument numbers from GCube 7 to GCube 0
 
 ### stop all of the GCube motors
 ```sig
-GCube.stopAllGCubeMotor(): void
+gcube.stopAllGCubeMotor(): void
 ```
 This block is stop all of the GCube motors
 
 ### set rotation angle to # of the GCube #
 ```sig
-GCube.setAGCubeRotationAngle(cubeIndex: number, rotationAngle: number): void
+gcube.setAGCubeRotationAngle(cubeIndex: number, rotationAngle: number): void
 ```
 This block is to set rotation angle to # (-10000 ~ 10000 in degrees) of the GCube #
 
 ### set all GCube rotation angle #...
 ```sig
-GCube.setAllGCubeRotationAngle(dm: string, r7: number, r6: number, r5: number, r4: number, r3: number, r2: number, r1: number, r0: number): void : void
+gcube.setAllGCubeRotationAngle(dm: string, r7: number, r6: number, r5: number, r4: number, r3: number, r2: number, r1: number, r0: number): void : void
 ```
 This block is to set each GCube's rotation angle with the 8 argument numbers from GCube 7 to GCube 0
 
 ### set servo motor angle to # of the GCube #
 ```sig
-GCube.setAGCubeServoAngle(cubeIndex: number, servoAngle: number): void
+gcube.setAGCubeServoAngle(cubeIndex: number, servoAngle: number): void
 ```
 This block is to set servo motor angle to # (-10000 ~ 10000 in degrees) of the GCube #
 
 ### set all GCube servo motor angle #...
 ```sig
-GCube.setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number): void
+gcube.setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number): void
 ```
 This block is to set each GCube's servo motor rotation angle with the 8 argument numbers from GCube 7 to GCube 0
 
 ### set matrix image of the GCube #
 ```sig
-GCube.setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void
+gcube.setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void
 ```
 This block is to set 8x8 dot-matrix image of the GCube #
 
 ### default rolling matrix image #...
 ```sig
-GCube.defaultRollingMatrixImage(dm: string, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void
+gcube.defaultRollingMatrixImage(dm: string, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void
 ```
 This block is to set default rolling 8x8 dot-matrix image with the 8 row image data
 
 ### start rolling matrix image for # seconds
 ```sig
-GCube.startRollingMatrixImage(duration: number): void
+gcube.startRollingMatrixImage(duration: number): void
 ```
 This block is to start rolling 8x8 dot-matrix image from GCube 0 ~ GCube n for # seconds
 
@@ -115,8 +115,8 @@ Shifting direction is depends on the acceleration sensor data of Micro:bit
 
 ### Example 1
 ```blocks
-GCube.waitFirstGCubeConnect()
-GCube.waitAllGCubesConnect(3)
+gcube.waitFirstGCubeConnect()
+gcube.waitAllGCubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S52088-96748-89161-23790">This example</a> shows <br/>
 1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
@@ -127,7 +127,7 @@ GCube.waitAllGCubesConnect(3)
 ### Example 2
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    GCube.defaultRollingMatrixImage(
+    gcube.defaultRollingMatrixImage(
     "A",
     "__-__-__-__-__-__-__-__-__",
     "__-__-__-__-__-__-__-__-__",
@@ -140,10 +140,10 @@ input.onButtonPressed(Button.A, function () {
     )
 })
 input.onButtonPressed(Button.B, function () {
-    GCube.startRollingMatrixImage(1000)
+    gcube.startRollingMatrixImage(1000)
 })
-GCube.waitFirstGCubeConnect()
-GCube.waitAllGCubesConnect(3)
+gcube.waitFirstGCubeConnect()
+gcube.waitAllGCubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S35219-78808-31549-03051">This example</a> shows<br/>
 1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
@@ -156,7 +156,7 @@ GCube.waitAllGCubesConnect(3)
 ### Example 3
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    GCube.setMatrixDisplay(
+    gcube.setMatrixDisplay(
     1,
     "__-__-__-__-__-__-__-__-__",
     "__-__-__-__-__-__-__-__-__",
@@ -168,8 +168,8 @@ input.onButtonPressed(Button.A, function () {
     "__-__-__-__-__-__-__-__-__"
     )
 })
-GCube.waitFirstGCubeConnect()
-GCube.waitAllGCubesConnect(3)
+gcube.waitFirstGCubeConnect()
+gcube.waitAllGCubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S51633-60732-00552-64204">This example</a> shows<br/>
 1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
@@ -181,14 +181,14 @@ GCube.waitAllGCubesConnect(3)
 ### Example 4
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    GCube.setAGCubeSpeed(1, 100)
-    GCube.setAGCubeSpeed(2, 100)
+    gcube.setAGCubeSpeed(1, 100)
+    gcube.setAGCubeSpeed(2, 100)
 })
 input.onButtonPressed(Button.B, function () {
-    GCube.stopAllGCubeMotor()
+    gcube.stopAllGCubeMotor()
 })
-GCube.waitFirstGCubeConnect()
-GCube.waitAllGCubesConnect(3)
+gcube.waitFirstGCubeConnect()
+gcube.waitAllGCubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S83314-90357-19040-82123">This example</a> shows<br/>
 1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
@@ -200,17 +200,17 @@ GCube.waitAllGCubesConnect(3)
 ### Example 5
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    GCube.setAGCubeRotationAngle(0, 180)
-    GCube.setAGCubeRotationAngle(1, 180)
-    GCube.setAGCubeRotationAngle(2, 180)
+    gcube.setAGCubeRotationAngle(0, 180)
+    gcube.setAGCubeRotationAngle(1, 180)
+    gcube.setAGCubeRotationAngle(2, 180)
 })
 input.onButtonPressed(Button.B, function () {
-    GCube.setAGCubeRotationAngle(0, -300)
-    GCube.setAGCubeRotationAngle(1, -300)
-    GCube.setAGCubeRotationAngle(2, -300)
+    gcube.setAGCubeRotationAngle(0, -300)
+    gcube.setAGCubeRotationAngle(1, -300)
+    gcube.setAGCubeRotationAngle(2, -300)
 })
-GCube.waitFirstGCubeConnect()
-GCube.waitAllGCubesConnect(3)
+gcube.waitFirstGCubeConnect()
+gcube.waitAllGCubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S48642-39369-42354-73859">This example</a> shows<br/>
 1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
@@ -222,7 +222,7 @@ GCube.waitAllGCubesConnect(3)
 ### Example 6
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    GCube.setAllGCubeRotationAngle(
+    gcube.setAllGCubeRotationAngle(
     "A",
     0,
     0,
@@ -235,7 +235,7 @@ input.onButtonPressed(Button.A, function () {
     )
 })
 input.onButtonPressed(Button.B, function () {
-    GCube.setAllGCubeRotationAngle(
+    gcube.setAllGCubeRotationAngle(
     "A",
     0,
     0,
@@ -247,8 +247,8 @@ input.onButtonPressed(Button.B, function () {
     -300
     )
 })
-GCube.waitFirstGCubeConnect()
-GCube.waitAllGCubesConnect(3)
+gcube.waitFirstGCubeConnect()
+gcube.waitAllGCubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S10341-71019-59343-30137">This example</a> shows<br/>
 1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
@@ -260,17 +260,17 @@ GCube.waitAllGCubesConnect(3)
 ### Example 7
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    GCube.setAGCubeServoAngle(1, 30)
+    gcube.setAGCubeServoAngle(1, 30)
 })
 input.onButtonPressed(Button.AB, function () {
-    GCube.setAGCubeServoAngle(1, 90)
-    GCube.setAGCubeServoAngle(2, 90)
+    gcube.setAGCubeServoAngle(1, 90)
+    gcube.setAGCubeServoAngle(2, 90)
 })
 input.onButtonPressed(Button.B, function () {
-    GCube.setAGCubeServoAngle(2, 45)
+    gcube.setAGCubeServoAngle(2, 45)
 })
-GCube.waitFirstGCubeConnect()
-GCube.waitAllGCubesConnect(3)
+gcube.waitFirstGCubeConnect()
+gcube.waitAllGCubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S14821-35391-54690-59634">This example</a> shows<br/>
 1. wait for the first GCube (GCube 0) is connected to Micro:bit <br/>
@@ -284,15 +284,15 @@ GCube.waitAllGCubesConnect(3)
 ### Example 8 (test.ts)
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    GCube.setAGCubeRotationAngle(0, 360)
-    GCube.setAGCubeSpeed(1, 100)
-    GCube.setAGCubeSpeed(2, 50)
+    gcube.setAGCubeRotationAngle(0, 360)
+    gcube.setAGCubeSpeed(1, 100)
+    gcube.setAGCubeSpeed(2, 50)
 })
 input.onGesture(Gesture.LogoUp, function () {
-    GCube.startRollingMatrixImage(1000)
+    gcube.startRollingMatrixImage(1000)
 })
 input.onGesture(Gesture.TiltLeft, function () {
-    GCube.setMatrixDisplay(
+    gcube.setMatrixDisplay(
     1,
     "__-__-__-__-__-__-__-__-__",
     "__-__-__#__-__-__-__-__-__",
@@ -303,18 +303,18 @@ input.onGesture(Gesture.TiltLeft, function () {
     "__-__-__#__-__-__-__-__-__",
     "__-__-__-__-__-__-__-__-__"
     )
-    GCube.setAGCubeServoAngle(3, 45)
+    gcube.setAGCubeServoAngle(3, 45)
 })
 input.onButtonPressed(Button.AB, function () {
-    GCube.stopAllGCubeMotor()
+    gcube.stopAllGCubeMotor()
 })
 input.onButtonPressed(Button.B, function () {
-    GCube.setAGCubeRotationAngle(0, -360)
-    GCube.setAGCubeSpeed(1, -100)
-    GCube.setAGCubeSpeed(2, -50)
+    gcube.setAGCubeRotationAngle(0, -360)
+    gcube.setAGCubeSpeed(1, -100)
+    gcube.setAGCubeSpeed(2, -50)
 })
 input.onGesture(Gesture.TiltRight, function () {
-    GCube.setMatrixDisplay(
+    gcube.setMatrixDisplay(
     1,
     "__-__-__-__-__-__-__-__-__",
     "__-__-__-__-__-__#__-__-__",
@@ -325,14 +325,14 @@ input.onGesture(Gesture.TiltRight, function () {
     "__-__-__-__-__-__#__-__-__",
     "__-__-__-__-__-__-__-__-__"
     )
-    GCube.setAGCubeServoAngle(3, 135)
+    gcube.setAGCubeServoAngle(3, 135)
 })
 input.onGesture(Gesture.LogoDown, function () {
-    GCube.startShiftingMatrixImage(1)
+    gcube.startShiftingMatrixImage(1)
 })
-GCube.waitFirstGCubeConnect()
-GCube.waitAllGCubesConnect(4)
-GCube.defaultRollingMatrixImage(
+gcube.waitFirstGCubeConnect()
+gcube.waitAllGCubesConnect(4)
+gcube.defaultRollingMatrixImage(
 "A",
 "__-__-__-__-__-__-__-__-__",
 "__-__-__-__-__-__-__-__-__",
@@ -364,7 +364,7 @@ GCube.defaultRollingMatrixImage(
 ## API's of GCube
 
 ### sendGCube(xdata: any[])
-	* Description: Sends serial data to a device referred to as "GCube."
+	* Description: Sends serial data to a device referred to as "gcube."
 	* Parameters:
 	xdata (Array): An array containing data to be transmitted over serial.
 
@@ -375,7 +375,7 @@ GCube.defaultRollingMatrixImage(
 	t1, t2, t3, t4, t5, t6, t7, t8 (Number): Numeric data for the matrix.
 
 ### startShiftingMatrixImage(cubeIndex: number)
-	* Description: Initiates the shifting of a matrix image on the specified GCube.
+	* Description: Initiates the shifting of a matrix image on the specified gcube.
 	* Parameters:
 	cubeIndex (Number): The index of the target GCube to display the shifting matrix image.
 
@@ -385,15 +385,15 @@ GCube.defaultRollingMatrixImage(
 	duration (Number): The duration (in seconds) for which the matrix image should roll. Use 0 for continuous rolling.
 
 ### defaultRollingMatrixImage(dm: string, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string)
-	* Description: Sets the default rolling display image for the 8x8 dot matrix of GCube.
+	* Description: Sets the default rolling display image for the 8x8 dot matrix of gcube.
 	* Parameters:
 	dm (String): Dummy index.
 	t1, t2, t3, t4, t5, t6, t7, t8 (String): Image lines for the 8x8 dot matrix.
 
 ### setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string)
-	* Description: Sets the matrix image of a specific GCube.
+	* Description: Sets the matrix image of a specific gcube.
 	* Parameters:
-	cn (Number): The index of the target GCube.
+	cn (Number): The index of the target gcube.
 	t1, t2, t3, t4, t5, t6, t7, t8 (String): Image lines for the 8x8 dot matrix.
 
 ### setAllGCubeServoMotorAngle(dm: string, a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number)
@@ -405,7 +405,7 @@ GCube.defaultRollingMatrixImage(
 ### setAGCubeServoAngle(cubeIndex: number, servoAngle: number)
 	* Description: Sets a GCube's servo motor to a specific angle.
 	* Parameters:
-	cubeIndex (Number): The index of the target GCube.
+	cubeIndex (Number): The index of the target gcube.
 	servoAngle (Number): The angle (in degrees) to set the servo motor to.
 
 ### setAllGCubeRotationAngle(dm: string, r3: number, r2: number, r1: number, r0: number)
@@ -417,7 +417,7 @@ GCube.defaultRollingMatrixImage(
 ### setAGCubeRotationAngle(cubeIndex: number, rotationAngle: number)
 	* Description: Sets a GCube's motor to a specific rotation angle.
 	* Parameters:
-	cubeIndex (Number): The index of the target GCube.
+	cubeIndex (Number): The index of the target gcube.
 	rotationAngle (Number): The rotation angle in degrees, in the range of -1000 to 1000.
 
 ### stopAllGCubeMotor()
@@ -433,7 +433,7 @@ GCube.defaultRollingMatrixImage(
 ### setAGCubeSpeed(cubeIndex: number, motorSpeed: number)
 	* Description: Sets a GCube's motor to a specific speed.
 	* Parameters:
-	cubeIndex (Number): The index of the target GCube.
+	cubeIndex (Number): The index of the target gcube.
 	motorSpeed (Number): The motor speed value.
 
 ### waitAllGCubesConnect(cnumber: number)
