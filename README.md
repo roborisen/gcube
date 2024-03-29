@@ -371,7 +371,9 @@ gcube.defaultRollingMatrixImage(
 
 <br/>
 <br/>
-<br/>  
+<br/> 
+
+
 ## API's of Gcube
 
 ### sendGcube(xdata: any[])
