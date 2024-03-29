@@ -9,6 +9,7 @@ More information:
 www.roborisen.com   qna@roborisen.com
 
 [Manual-Microbit-Gcube/PingPong] https://drive.google.com/file/d/1Cx2xfd_jyGv8ZZpOsOfL8Q2vWVdp0YYe <BR>
+[Manual-Microbit-Gcube/test.ts] https://drive.google.com/file/d/1KvSzr9H3UgrDJRcgs3GJok3t5EzW4rfu <BR>
 [Movie-Microbit-Gcube/PingPong] https://drive.google.com/file/d/1Nlr_0LPiVet9XcCz7VrC1GY5_dgytKP2 <BR>
 [Material-Gcube/PingPong] https://drive.google.com/drive/folders/1fqJUBc3_YiFQwCtpSOFDAteLwlszzoH4 <BR>
 [Movie-Gcube/PingPong] https://youtu.be/wTfnsPbgm3s
