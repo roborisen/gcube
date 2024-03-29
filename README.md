@@ -8,9 +8,10 @@ We've released this extension for Micro:bit users to use Gcube for robotics and 
 More information:
 www.roborisen.com   qna@roborisen.com
 
-[Manual] https://drive.google.com/drive/folders/1fqJUBc3_YiFQwCtpSOFDAteLwlszzoH4
-
-[Activity] https://youtu.be/wTfnsPbgm3s
+[Manual-Microbit-Gcube/PingPong] https://drive.google.com/file/d/1Cx2xfd_jyGv8ZZpOsOfL8Q2vWVdp0YYe
+[Movie-Microbit-Gcube/PingPong] https://drive.google.com/file/d/1Nlr_0LPiVet9XcCz7VrC1GY5_dgytKP2
+[Material-Gcube/PingPong] https://drive.google.com/drive/folders/1fqJUBc3_YiFQwCtpSOFDAteLwlszzoH4
+[Movie-Gcube/PingPong] https://youtu.be/wTfnsPbgm3s
 
 <br/>
 <br/>
