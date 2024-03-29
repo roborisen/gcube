@@ -358,11 +358,20 @@ gcube.defaultRollingMatrixImage(
 * 8x8 dot-matrix should be connected to Gcube 1 & 2 for this example <br/>
 * RC servo motor (such as MG90S) should be connected to Gcube 3 for this example <br/>
 <br/>
+<br/>
+
+
+## This is a limitation when using Microbit-GCube.
+
+1. USB serial communication cannot be used because there are P0 and P1 in serial communication between the Micro:bit and GCube. <BR>
+2. The code uploaded to the Micro:bit communicates with GCube and executes the project without being connected to a PC. <BR>
+3. Music output function is not available for GCube and P0. <BR>
+   * We plan to provide the GCube extension block for music so that you can use the buzzer included in the GCube. <BR>
+4. When using the GCube connection, do not use any other sensors from the Micro:bit's basic sensor. <BR>
 
 <br/>
 <br/>
-<br/>
-  
+<br/>  
 ## API's of Gcube
 
 ### sendGcube(xdata: any[])
