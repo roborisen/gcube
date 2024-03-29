@@ -367,7 +367,7 @@ gcube.defaultRollingMatrixImage(
 2. The code uploaded to the Micro:bit communicates with GCube and executes the project without being connected to a PC. <BR>
 3. Music output function is not available for GCube and P0. <BR>
    * We plan to provide the GCube extension block for music so that you can use the buzzer included in the GCube. <BR>
-4. When using the GCube connection, do not use any other sensors from the Micro:bit's basic sensor. <BR>
+4. When using the GCube connection, do not use any other external sensors except the Micro:bit's basic sensor. <BR>
 
 <br/>
 <br/>
