@@ -365,8 +365,8 @@ gcube.defaultRollingMatrixImage(
 
 1. USB serial communication cannot be used because there are P0 and P1 in serial communication between the Micro:bit and GCube. <BR>
 2. The code uploaded to the Micro:bit communicates with GCube and executes the project without being connected to a PC. <BR>
-3. Music output function is not available for GCube and P0. <BR>
-   * We plan to provide the GCube extension block for music so that you can use the buzzer included in the GCube. <BR>
+3. Music output function is not available for because GCube is using P0 port. <BR>
+   * We have a plan to provide the GCube extension block for music so that you can use the buzzer included in the GCube. <BR>
 4. When using the GCube connection, do not use any other external sensors except the Micro:bit's basic sensor. <BR>
 
 <br/>
