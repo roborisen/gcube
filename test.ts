@@ -1,14 +1,11 @@
 input.onButtonPressed(Button.A, function () {
-    gcube.setAGcubeRotationAngle(0, 360)
-    gcube.setAGcubeSpeed(1, 100)
-    gcube.setAGcubeSpeed(2, 50)
-})
-input.onGesture(Gesture.LogoUp, function () {
-    gcube.startRollingMatrixImage(1000)
+    gcube.setAGcubeRotationAngle(2, 720)
+    gcube.setAGcubeSpeed(3, 50)
 })
 input.onGesture(Gesture.TiltLeft, function () {
+    gcube.setAGcubeServoAngle(2, 45)
     gcube.setMatrixDisplay(
-        1,
+        3,
         "__-__-__-__-__-__-__-__-__",
         "__-__-__#__-__-__-__-__-__",
         "__-__#__#__-__-__-__-__-__",
@@ -18,19 +15,18 @@ input.onGesture(Gesture.TiltLeft, function () {
         "__-__-__#__-__-__-__-__-__",
         "__-__-__-__-__-__-__-__-__"
     )
-    gcube.setAGcubeServoAngle(3, 45)
 })
 input.onButtonPressed(Button.AB, function () {
     gcube.stopAllGcubeMotor()
 })
 input.onButtonPressed(Button.B, function () {
-    gcube.setAGcubeRotationAngle(0, -360)
-    gcube.setAGcubeSpeed(1, -100)
-    gcube.setAGcubeSpeed(2, -50)
+    gcube.setAGcubeRotationAngle(2, -720)
+    gcube.setAGcubeSpeed(3, -50)
 })
 input.onGesture(Gesture.TiltRight, function () {
+    gcube.setAGcubeServoAngle(2, 135)
     gcube.setMatrixDisplay(
-        1,
+        3,
         "__-__-__-__-__-__-__-__-__",
         "__-__-__-__-__-__#__-__-__",
         "__-__-__-__-__-__#__#__-__",
@@ -40,21 +36,12 @@ input.onGesture(Gesture.TiltRight, function () {
         "__-__-__-__-__-__#__-__-__",
         "__-__-__-__-__-__-__-__-__"
     )
-    gcube.setAGcubeServoAngle(3, 135)
-})
-input.onGesture(Gesture.LogoDown, function () {
-    gcube.startShiftingMatrixImage(1)
 })
 gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(4)
-gcube.defaultRollingMatrixImage(
-    "A",
-    "__-__-__-__-__-__-__-__-__",
-    "__-__-__-__-__-__-__-__-__",
-    "__-__-__-__#__#__-__-__-__",
-    "__-__-__#__#__#__#__-__-__",
-    "__-__-__#__#__#__#__-__-__",
-    "__-__-__-__#__#__-__-__-__",
-    "__-__-__-__-__-__-__-__-__",
-    "__-__-__-__-__-__-__-__-__"
-)
+basic.forever(function () {
+    if (gcube.readCubeSensor(3, sensorType.proximitysensor) < 200) {
+        gcube.rotateWheelRobot(robotName.autocar, gcube.readCubeAccelerometer(3, cubeAccelerometer.xdata))
+        gcube.moveWheelRobot(robotName.autocar, gcube.readCubeAccelerometer(3, cubeAccelerometer.ydata) / 3)
+    }
+})
