@@ -1,6 +1,6 @@
 {
     "name": "gcube",
-    "version": "1.2.26",
+    "version": "1.2.27",
     "description": "With micro:bit and Gcubes, you can conduct various robot education and IoT project classes.",
     "license": "MIT",
     "dependencies": {
