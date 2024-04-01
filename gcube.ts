@@ -1,61 +1,3 @@
-enum robotName {
-    //% block="autocar"
-    autocar,
-    //% block="drawingbot"
-    drawingbot,
-    //% block="battlebot"
-    battlebot,
-    //% block="antbot"
-    antbot
-};
-
-enum penStatus {
-    //% block="penup"
-    penup,
-    //% block="pendown"
-    pendown
-};
-
-enum leverStatus {
-    //% block="leverup"
-    leverup,
-    //% block="leverdown"
-    leverdown
-};
-
-enum gripperStatus {
-    //% block="gripperopen"
-    gripperopen,
-    //% block="gripperclose"
-    gripperclose
-}
-
-enum sensorType {
-    //% block="proximitysensor"
-    proximitysensor,
-    //% block="buttonsensor"
-    buttonsensor,
-    //% block="externalportsensor"
-    externalportsensor
-};
-
-enum cubeAccelerometer {
-    //% block="xdata"
-    xdata,
-    //% block="ydata"
-    ydata
-};
-
-enum analogPort {
-    //% block="a0"
-    a0,
-    //% block="a1"
-    a1,
-    //% block="a2"
-    a2,
-    //% block="a3"
-    a3
-};
 
 
 /**
@@ -65,6 +7,64 @@ enum analogPort {
 //% groups='["Connection", "Gcube motor", "Servo motor", "Dot matrix", "Gcube sensor", "PingPong robot"]'
 namespace gcube {
 
+    export enum robotName {
+        //% block="autocar"
+        autocar,
+        //% block="drawingbot"
+        drawingbot,
+        //% block="battlebot"
+        battlebot,
+        //% block="antbot"
+        antbot
+    };
+
+    export enum penStatus {
+        //% block="penup"
+        penup,
+        //% block="pendown"
+        pendown
+    };
+
+    export enum leverStatus {
+        //% block="leverup"
+        leverup,
+        //% block="leverdown"
+        leverdown
+    };
+
+    export enum gripperStatus {
+        //% block="gripperopen"
+        gripperopen,
+        //% block="gripperclose"
+        gripperclose
+    }
+
+    export enum sensorType {
+        //% block="proximitysensor"
+        proximitysensor,
+        //% block="buttonsensor"
+        buttonsensor,
+        //% block="externalportsensor"
+        externalportsensor
+    };
+
+    export enum cubeAccelerometer {
+        //% block="xdata"
+        xdata,
+        //% block="ydata"
+        ydata
+    };
+
+    export enum analogPort {
+        //% block="a0"
+        a0,
+        //% block="a1"
+        a1,
+        //% block="a2"
+        a2,
+        //% block="a3"
+        a3
+    };
 
 
     function sendGcube(xdata: any[], d_flag: number) { //Send UART data to Gcube
