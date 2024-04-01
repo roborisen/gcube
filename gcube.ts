@@ -456,7 +456,7 @@ namespace gcube {
      * @param a1 angle of Cube 1 servo, eg: 0
      * @param a0 angle of Cube 0 servo, eg: 0
      */
-    //% block="set each Gcubes servo motor angle $dm, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7"
+    //% block="set each Gcubes servo motor angle $dm, Gcube0 = $a0, Gcube1 = $a1, Gcube2 = $a2, Gcube3 = $a3, Gcube4 = $a4, Gcube5 = $a5, Gcube6 = $a6, Gcube7 = $a7"
     //% group="Servo motor"
     export function setAllGcubeServoMotorAngle(dm: string, a0: number, a1: number, a2: number, a3: number, a4: number, a5: number, a6: number, a7: number): void {
         if (connectStage == 2) {
@@ -493,7 +493,7 @@ namespace gcube {
      * @param r1 rotation angle of Cube 1, eg: 0
      * @param r0 rotation angle of Cube 0, eg: 0
      */
-    //% block="set each Gcube rotation angle $dm, $r0, $r1, $r2, $r3, $r4, $r5, $r6, $r7"
+    //% block="set each Gcube rotation angle $dm, Gcube0 = $r0, Gcube1 = $r1, Gcube2 = $r2, Gcube3 = $r3, Gcube4 = $r4, Gcube5 = $r5, Gcube6 = $r6, Gcube7 = $r7"
     //% group="Gcube motor"
     export function setAllGcubeRotationAngle(dm: string, r0: number, r1: number, r2: number, r3: number, r4: number, r5: number, r6: number, r7: number): void {
         if (connectStage == 2) {
@@ -572,7 +572,7 @@ namespace gcube {
      * @param s1 speed of Cube 1, eg: 0
      * @param s0 speed of Cube 0, eg: 0
      */
-    //% block="set each Gcube motor's speed $dm, Gcube0 = $s0, Gcube1 = $s1, $s2, $s3, $s4, $s5, $s6, $s7"
+    //% block="set each Gcube motor's speed $dm, Gcube0 = $s0, Gcube1 = $s1, Gcube2 = $s2, Gcube3 = $s3, Gcube4 = $s4, Gcube5 = $s5, Gcube6 = $s6, Gcube7 = $s7"
     //% group="Gcube motor"
     export function setAllGcubeSpeed(dm: string, s0: number, s1: number, s2: number, s3: number, s4: number, s5: number, s6: number, s7: number): void {
         if (connectStage == 2) {
