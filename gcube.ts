@@ -399,7 +399,7 @@ namespace gcube {
 
     /**
      * set default rolling display image of 8x8 dot Matrix of a Gcube
-     * @param dm Dummy index, eg: A
+     * @param dm Dummy index, eg: :
      * @param t1 image line, eg: "__0__0__0__0__0__0__0__0__"
      * @param t2 image line, eg: "__0__0__0__0__0__0__0__0__"
      * @param t3 image line, eg: "__0__0__0__1__1__0__0__0__"
