@@ -1,62 +1,4 @@
 
-enum robotName {
-    //% block="autocar"
-    autocar,
-    //% block="drawingbot"
-    drawingbot,
-    //% block="battlebot"
-    battlebot,
-    //% block="antbot"
-    antbot
-};
-
-enum penStatus {
-    //% block="penup"
-    penup,
-    //% block="pendown"
-    pendown
-};
-
-enum leverStatus {
-    //% block="leverup"
-    leverup,
-    //% block="leverdown"
-    leverdown
-};
-
-enum gripperStatus {
-    //% block="gripperopen"
-    gripperopen,
-    //% block="gripperclose"
-    gripperclose
-}
-
-enum sensorType {
-    //% block="proximitysensor"
-    proximitysensor,
-    //% block="buttonsensor"
-    buttonsensor,
-    //% block="externalportsensor"
-    externalportsensor
-};
-
-enum cubeAccelerometer {
-    //% block="xdata"
-    xdata,
-    //% block="ydata"
-    ydata
-};
-
-enum analogPort {
-    //% block="a0"
-    a0,
-    //% block="a1"
-    a1,
-    //% block="a2"
-    a2,
-    //% block="a3"
-    a3
-};
 
 /**
  * gcube blocks
@@ -64,6 +6,66 @@ enum analogPort {
 //% weight=100 color=#111111 icon="\uf0fe"
 //% groups='["Connection", "Gcube motor", "Servo motor", "Dot matrix", "Gcube sensor", "PingPong robot"]'
 namespace gcube {
+
+    enum robotName {
+        //% block="autocar"
+        autocar,
+        //% block="drawingbot"
+        drawingbot,
+        //% block="battlebot"
+        battlebot,
+        //% block="antbot"
+        antbot
+    };
+
+    enum penStatus {
+        //% block="penup"
+        penup,
+        //% block="pendown"
+        pendown
+    };
+
+    enum leverStatus {
+        //% block="leverup"
+        leverup,
+        //% block="leverdown"
+        leverdown
+    };
+
+    enum gripperStatus {
+        //% block="gripperopen"
+        gripperopen,
+        //% block="gripperclose"
+        gripperclose
+    }
+
+    enum sensorType {
+        //% block="proximitysensor"
+        proximitysensor,
+        //% block="buttonsensor"
+        buttonsensor,
+        //% block="externalportsensor"
+        externalportsensor
+    };
+
+    enum cubeAccelerometer {
+        //% block="xdata"
+        xdata,
+        //% block="ydata"
+        ydata
+    };
+
+    enum analogPort {
+        //% block="a0"
+        a0,
+        //% block="a1"
+        a1,
+        //% block="a2"
+        a2,
+        //% block="a3"
+        a3
+    };
+
 
     function sendGcube(xdata: any[], d_flag: number) { //Send UART data to Gcube
         let sendData = pins.createBuffer(10);
@@ -109,7 +111,7 @@ namespace gcube {
     let connectedCubeNumber = 0
 
 
-    serial.redirect(SerialPin.P1, SerialPin.P0, 115200)
+    serial.redirect(SerialPin.P1, SerialPin.P2, 115200)
     serial.setRxBufferSize(10)
     serial.setTxBufferSize(10)
 
@@ -594,7 +596,7 @@ namespace gcube {
      * wait for all Gcubes are connected for user's project
      * @param cnumber Gcube number, eg: 2
      */
-    //% block="wait for $cnumber Gcubes are connected"
+    //% block="wait until $cnumber Gcubes are connected"
     //% group="Connection"
     export function waitAllGcubesConnect(cnumber: number): void {
         if (connectStage == 1) {
@@ -635,7 +637,7 @@ namespace gcube {
     /**
      * wait for first Gcube is connected
      */
-    //% block="wait for the first Gcube is connected"
+    //% block="wait until the first Gcube is connected"
     //% group="Connection"
     export function waitFirstGcubeConnect(): void {
         if (connectStage == 0) {
