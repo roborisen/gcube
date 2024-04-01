@@ -270,8 +270,12 @@ namespace gcube {
 
         rowData = serial.readBuffer(3)
         if (rowData.length == 3) {
-            if (axisSelect == cubeAccelerometer.xdata) return rowData[1];
-            else return rowData[2];
+            if (axisSelect == cubeAccelerometer.xdata) {
+                if(rowData[1]>=128) return -1*(256-rowData[1]);
+                else return rowData[1];
+            }
+            else { rowData[2] = 255-rowData[2];
+                return rowData[2];}
             //            if (axisSelect == cubeAccelerometer.xdata) return 10;
             //            else return 20;
         }
