@@ -562,7 +562,7 @@ namespace gcube {
 
     /**
      * set all Gcube's motor to each speed
-     * @param dm Dummy index, eg: Z
+     * @param dm Dummy index, eg: 0~7
      * @param s7 speed of Cube 7, eg: 0
      * @param s6 speed of Cube 6, eg: 0
      * @param s5 speed of Cube 5, eg: 0
@@ -572,7 +572,7 @@ namespace gcube {
      * @param s1 speed of Cube 1, eg: 0
      * @param s0 speed of Cube 0, eg: 0
      */
-    //% block="set each Gcube motor's speed to $dm, $s0, $s1, $s2, $s3, $s4, $s5, $s6, $s7"
+    //% block="set each Gcube $dm motor's speed to $s0, $s1, $s2, $s3, $s4, $s5, $s6, $s7"
     //% group="Gcube motor"
     export function setAllGcubeSpeed(dm: string, s0: number, s1: number, s2: number, s3: number, s4: number, s5: number, s6: number, s7: number): void {
         if (connectStage == 2) {
