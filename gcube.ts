@@ -562,7 +562,7 @@ namespace gcube {
 
     /**
      * set all Gcube's motor to each speed
-     * @param dm Dummy index, eg: =
+     * @param dm Dummy index, eg: :
      * @param s7 speed of Cube 7, eg: 0
      * @param s6 speed of Cube 6, eg: 0
      * @param s5 speed of Cube 5, eg: 0
