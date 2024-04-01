@@ -548,7 +548,7 @@ namespace gcube {
     /**
      * stop all of the Gcube's motor
      */
-    //% block="stop all of the Gcube's motor"
+    //% block="stop all of the Gcubes motor"
     //% group="Gcube motor"
     export function stopAllGcubeMotor(): void {
         if (connectStage == 2) {
