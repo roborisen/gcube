@@ -8,9 +8,7 @@
     },
     "files": [
         "README.md",
-        "gcube.ts",
-        "main.py",
-        "main.ts"
+        "gcube.ts"
     ],
     "testFiles": [
         "test.ts"
