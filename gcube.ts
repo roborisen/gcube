@@ -562,7 +562,6 @@ namespace gcube {
 
     /**
      * set all Gcube's motor to each speed
-     * @param dm Dummy index, eg: :
      * @param s7 speed of Cube 7, eg: 0
      * @param s6 speed of Cube 6, eg: 0
      * @param s5 speed of Cube 5, eg: 0
@@ -572,9 +571,9 @@ namespace gcube {
      * @param s1 speed of Cube 1, eg: 0
      * @param s0 speed of Cube 0, eg: 0
      */
-    //% block="set each Gcube motor's speed $dm, Gcube0 = $s0, Gcube1 = $s1, Gcube2 = $s2, Gcube3 = $s3, Gcube4 = $s4, Gcube5 = $s5, Gcube6 = $s6, Gcube7 = $s7"
+    //% block="set each Gcube motor's speed| Gcube0 = $s0| Gcube1 = $s1| Gcube2 = $s2| Gcube3 = $s3| Gcube4 = $s4| Gcube5 = $s5| Gcube6 = $s6| Gcube7 = $s7"
     //% group="Gcube motor"
-    export function setAllGcubeSpeed(dm: string, s0: number, s1: number, s2: number, s3: number, s4: number, s5: number, s6: number, s7: number): void {
+    export function setAllGcubeSpeed( s0: number, s1: number, s2: number, s3: number, s4: number, s5: number, s6: number, s7: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
             numData = [0x31 + temp, invValue(0x31 + temp), s7, s6, s5, s4, s3, s2, s1, s0]
