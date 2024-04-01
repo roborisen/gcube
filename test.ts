@@ -40,8 +40,8 @@ input.onGesture(Gesture.TiltRight, function () {
 gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(4)
 basic.forever(function () {
-    if (gcube.readCubeSensor(3, gcube.sensorType.proximitysensor) < 200) {
-        gcube.rotateWheelRobot(gcube.robotName.autocar, gcube.readCubeAccelerometer(3, gcube.cubeAccelerometer.xdata))
-        gcube.moveWheelRobot(gcube.robotName.autocar, gcube.readCubeAccelerometer(3, gcube.cubeAccelerometer.ydata) / 3)
+    if (gcube.readCubeSensor(3, gcube.SensorType.ProximitySensor) < 200) {
+        gcube.rotateWheelRobot(gcube.RobotName.AutoCar, gcube.readCubeAccelerometer(3, gcube.CubeAccelerometer.Xdata))
+        gcube.moveWheelRobot(gcube.RobotName.AutoCar, gcube.readCubeAccelerometer(3, gcube.CubeAccelerometer.Ydata) / 3)
     }
 })

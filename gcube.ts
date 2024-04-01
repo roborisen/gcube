@@ -7,63 +7,63 @@
 //% groups='["Connection", "Gcube motor", "Servo motor", "Dot matrix", "Gcube sensor", "PingPong robot"]'
 namespace gcube {
 
-    export enum robotName {
+    export enum RobotName {
         //% block="autocar"
-        autocar,
+        AutoCar,
         //% block="drawingbot"
-        drawingbot,
+        DrawingBot,
         //% block="battlebot"
-        battlebot,
+        BattleBot,
         //% block="antbot"
-        antbot
+        AntBot
     };
 
-    export enum penStatus {
+    export enum PenStatus {
         //% block="penup"
-        penup,
+        PenUp,
         //% block="pendown"
-        pendown
+        PenDown
     };
 
-    export enum leverStatus {
+    export enum LeverStatus {
         //% block="leverup"
-        leverup,
+        LeverUp,
         //% block="leverdown"
-        leverdown
+        LeverDown
     };
 
-    export enum gripperStatus {
+    export enum GripperStatus {
         //% block="gripperopen"
-        gripperopen,
+        GripperOpen,
         //% block="gripperclose"
-        gripperclose
+        GripperClose
     }
 
-    export enum sensorType {
+    export enum SensorType {
         //% block="proximitysensor"
-        proximitysensor,
+        ProximitySensor,
         //% block="buttonsensor"
-        buttonsensor,
+        ButtonSensor,
         //% block="externalportsensor"
-        externalportsensor
+        ExternalportSensor
     };
 
-    export enum cubeAccelerometer {
+    export enum CubeAccelerometer {
         //% block="xdata"
-        xdata,
+        Xdata,
         //% block="ydata"
-        ydata
+        Ydata
     };
 
-    export enum analogPort {
+    export enum AnalogPort {
         //% block="a0"
-        a0,
+        A0,
         //% block="a1"
-        a1,
+        A1,
         //% block="a2"
-        a2,
+        A2,
         //% block="a3"
-        a3
+        A3
     };
 
 
@@ -122,13 +122,13 @@ namespace gcube {
      */
     //% block="$actionType of Ant Bot"
     //% group="PingPong robot"
-    export function gripperControl(actionType: gripperStatus): void {
-        if (actionType == gripperStatus.gripperclose) {
+    export function gripperControl(actionType: GripperStatus): void {
+        if (actionType == GripperStatus.GripperClose) {
             let rotation = -180 * 2;
             let d_time = 180 * 40;
             setAGcubeRotationAngle(0, rotation);
             pause(d_time);
-        } else if (actionType == gripperStatus.gripperopen) {
+        } else if (actionType == GripperStatus.GripperOpen) {
             let rotation = 180 * 2;
             let d_time = 180 * 40;
             setAGcubeRotationAngle(0, rotation);
@@ -143,13 +143,13 @@ namespace gcube {
      */
     //% block="$actionType of Battle Bot"
     //% group="PingPong robot"
-    export function leverControl(actionType: leverStatus): void {
-        if (actionType == leverStatus.leverdown) {
+    export function leverControl(actionType: LeverStatus): void {
+        if (actionType == LeverStatus.LeverDown) {
             let rotation = -90;
             let d_time = 90 * 40;
             setAGcubeRotationAngle(0, rotation);
             pause(d_time);
-        } else if (actionType == leverStatus.leverup) {
+        } else if (actionType == LeverStatus.LeverUp) {
             let rotation = 90;
             let d_time = 90 * 40;
             setAGcubeRotationAngle(0, rotation);
@@ -164,13 +164,13 @@ namespace gcube {
      */
     //% block="$actionType of Drawing Bot"
     //% group="PingPong robot"
-    export function penControl(actionType: penStatus): void {
-        if (actionType == penStatus.pendown) {
+    export function penControl(actionType: PenStatus): void {
+        if (actionType == PenStatus.PenDown) {
             let rotation = -90;
             let d_time = 90 * 40;
             setAGcubeRotationAngle(0, rotation);
             pause(d_time);
-        } else if (actionType == penStatus.penup) {
+        } else if (actionType == PenStatus.PenUp) {
             let rotation = 90;
             let d_time = 90 * 40;
             setAGcubeRotationAngle(0, rotation);
@@ -186,12 +186,12 @@ namespace gcube {
      */
     //% block="rotate PingPong robot $angleValue degree for $pingpongRobot"
     //% group="PingPong robot"
-    export function rotateWheelRobot(pingpongRobot: robotName, angleValue: number): void {
-        if (pingpongRobot != robotName.drawingbot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+    export function rotateWheelRobot(pingpongRobot: RobotName, angleValue: number): void {
+        if (pingpongRobot != RobotName.DrawingBot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
             rotation = rotation / 100;
             let d_time = Math.abs(angleValue) * 10;
-            if (pingpongRobot == robotName.autocar) setAllGcubeRotationAngle("A", -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0, 0);
+            if (pingpongRobot == RobotName.AutoCar) setAllGcubeRotationAngle("A", -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0, 0);
             else setAllGcubeRotationAngle("A", 0, -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
@@ -210,12 +210,12 @@ namespace gcube {
      */
     //% block="move PingPong robot $moveLength cm for $pingpongRobot"
     //% group="PingPong robot"
-    export function moveWheelRobot(pingpongRobot: robotName, moveLength: number): void {
-        if (pingpongRobot != robotName.drawingbot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
+    export function moveWheelRobot(pingpongRobot: RobotName, moveLength: number): void {
+        if (pingpongRobot != RobotName.DrawingBot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let length = moveLength * 44;
             length = length / 10;
             let d_time = Math.abs(moveLength) * 100;
-            if (pingpongRobot == robotName.autocar) setAllGcubeRotationAngle("A", -1 * length, length, 0, 0, 0, 0, 0, 0);
+            if (pingpongRobot == RobotName.AutoCar) setAllGcubeRotationAngle("A", -1 * length, length, 0, 0, 0, 0, 0, 0);
             else setAllGcubeRotationAngle("A", 0, -1 * length, length, 0, 0, 0, 0, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
@@ -234,20 +234,20 @@ namespace gcube {
      */
     //% block="$sensorSelect value of Gcube $cubeNumber"
     //% group="Gcube sensor"
-    export function readCubeSensor(cubeNumber: number, sensorSelect: sensorType): number {
-        if (sensorSelect == sensorType.proximitysensor) {
+    export function readCubeSensor(cubeNumber: number, sensorSelect: SensorType): number {
+        if (sensorSelect == SensorType.ProximitySensor) {
             numData = [0xAA, invValue(0xAA), cubeNumber, 0, 0, 0, 0, 0, 0, 0]
             sendGcube(numData, 0)
 
             rowData = serial.readBuffer(3)
             return rowData[2];
-        } else if (sensorSelect == sensorType.buttonsensor) {
+        } else if (sensorSelect == SensorType.ButtonSensor) {
             numData = [0xAB, invValue(0xAB), cubeNumber, 0, 0, 0, 0, 0, 0, 0]
             sendGcube(numData, 0)
 
             rowData = serial.readBuffer(3)
             return rowData[2];
-        } else if (sensorSelect == sensorType.externalportsensor) {
+        } else if (sensorSelect == SensorType.ExternalportSensor) {
             numData = [0xB0 + cubeNumber, invValue(0xB0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
             sendGcube(numData, 0)
 
@@ -264,21 +264,21 @@ namespace gcube {
      */
     //% block="$axisSelect value of Gcube $cubeNumber"
     //% group="Gcube sensor"
-    export function readCubeAccelerometer(cubeNumber: number, axisSelect: cubeAccelerometer): number {
+    export function readCubeAccelerometer(cubeNumber: number, axisSelect: CubeAccelerometer): number {
         numData = [0xA0 + cubeNumber, invValue(0xA0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
         sendGcube(numData, 0)
 
         rowData = serial.readBuffer(3)
         if (rowData.length == 3) {
-            if (axisSelect == cubeAccelerometer.xdata) {
-                if(rowData[1]>=128) return -1*(256-rowData[1]);
+            if (axisSelect == CubeAccelerometer.Xdata) {
+                if (rowData[1] >= 128) return -1 * (256 - rowData[1]);
                 else return rowData[1];
             }
             else {
                 if (rowData[2] >= 128) return 1 * (256 - rowData[2]);
-                else return -1*rowData[2];
+                else return -1 * rowData[2];
             }
-            //            if (axisSelect == cubeAccelerometer.xdata) return 10;
+            //            if (axisSelect == CubeAccelerometer.Xdata) return 10;
             //            else return 20;
         }
         return 0;
@@ -435,7 +435,7 @@ namespace gcube {
      * @param t7 image line, eg: "__0__0__0__0__0__0__0__0__"
      * @param t8 image line, eg: "__0__0__0__0__0__0__0__0__"
      */
-    //% block="set matrix'image of the Gcube $cn $t1 $t2 $t3 $t4 $t5 $t6 $t7 $t8"
+    //% block="set matrix image of the Gcube $cn $t1 $t2 $t3 $t4 $t5 $t6 $t7 $t8"
     //% group="Dot matrix"
     export function setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void {
         if (connectStage == 2) {
@@ -456,7 +456,7 @@ namespace gcube {
      * @param a1 angle of Cube 1 servo, eg: 0
      * @param a0 angle of Cube 0 servo, eg: 0
      */
-    //% block="set All Gcubes servo motor andgle to $dm, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7"
+    //% block="set all Gcubes servo motor angle to $dm, $a0, $a1, $a2, $a3, $a4, $a5, $a6, $a7"
     //% group="Servo motor"
     export function setAllGcubeServoMotorAngle(dm: string, a0: number, a1: number, a2: number, a3: number, a4: number, a5: number, a6: number, a7: number): void {
         if (connectStage == 2) {
@@ -493,7 +493,7 @@ namespace gcube {
      * @param r1 rotation angle of Cube 1, eg: 0
      * @param r0 rotation angle of Cube 0, eg: 0
      */
-    //% block="set All Gcube rotation angle to $dm, $r0, $r1, $r2, $r3, $r4, $r5, $r6, $r7"
+    //% block="set all Gcube rotation angle to $dm, $r0, $r1, $r2, $r3, $r4, $r5, $r6, $r7"
     //% group="Gcube motor"
     export function setAllGcubeRotationAngle(dm: string, r0: number, r1: number, r2: number, r3: number, r4: number, r5: number, r6: number, r7: number): void {
         if (connectStage == 2) {
