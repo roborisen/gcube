@@ -334,7 +334,7 @@ basic.forever(function () {
 })
 ```
 <a href="https://makecode.microbit.org/S93202-21130-73675-67640">This example</a> shows<br/> <br/>
-[preparation & connection] <br/>
+[Preparation & connection] <br/>
 1. Make Autocar, Mono robot with Gcube 0, 1 ,2 and links <br/>
 2. Attach Micro:bit to Gcube 0 with Edge connector <br/>
 3. Plug Dot matrix into Gcube 3 <br/>
