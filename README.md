@@ -342,7 +342,6 @@ basic.forever(function () {
 5. Double click yellow button of Gcube 1 to 3 in order to connect to Gcube 0 <br/>
 6. Run make code blocks to control PingPong robot and Gcubes
 <br/>
-<br/>
 [Blocks-Connection] <br/>
 1. Wait for the first Gcube (Gcube 0) is connected to Micro:bit <br/>
 2. Wait for the 3 Gcubes (Gcube 1~3) is connected to Gcube 0 <br/>
