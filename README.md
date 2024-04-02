@@ -334,28 +334,28 @@ basic.forever(function () {
 })
 ```
 <a href="https://makecode.microbit.org/S93202-21130-73675-67640">This example</a> shows<br/> <br/>
-<preparation & connection> <br/>
-Make Autocar, Mono robot with Gcube 0, 1 ,2 and links <br/>
-Attach Micro:bit to Gcube 0 with Edge connector <br/>
-Plug Dot matrix into Gcube 3 <br/>
-Turn on Gcube 0 by clicking yellow button on the cube <br/>
-Double click yellow button of Gcube 1 to 3 in order to connect to Gcube 0 <br/>
-Run make code blocks to control PingPong robot and Gcubes <br/> <br/>
-<Blocks-Connection> <br/>
+[preparation & connection] <br/>
+1. Make Autocar, Mono robot with Gcube 0, 1 ,2 and links <br/>
+2. Attach Micro:bit to Gcube 0 with Edge connector <br/>
+3. Plug Dot matrix into Gcube 3 <br/>
+4. Turn on Gcube 0 by clicking yellow button on the cube <br/>
+5. Double click yellow button of Gcube 1 to 3 in order to connect to Gcube 0 <br/>
+6. Run make code blocks to control PingPong robot and Gcubes <br/> <br/>
+[Blocks-Connection] <br/>
 1. Wait for the first Gcube (Gcube 0) is connected to Micro:bit <br/>
 2. Wait for the 3 Gcubes (Gcube 1~3) is connected to Gcube 0 <br/>
-<Blocks-motor control> <br/>
+[Blocks-motor control] <br/>
 1. Button A : Move forward Mono and turn right Gcube 3’s motor <br/>
 2. Button B : Move backward Mono and turn left Gcube 3’s motor <br/>
 3. Button A+B : stop all motors <br/> <br/>
-<Blocks-sensor control> <br/>
+[Blocks-sensor control] <br/>
 1. Tilt Left <br/>
   * Control servo motor of Mono to turn left. <br/>
   * Display Left-arrow image on the dot-matrix of Gcube 3 <br/>
 2. Tilt Right <br/>
   * Control servo motor of Mono to turn right. <br/>
   * Display Right-arrow image on the dot-matrix of Gcube 3 <br/> <br/>
-<Blocks-robot control> <br/>
+[Blocks-robot control] <br/>
 1. Cover the proximity sensor of the Gcube 3 with a finger, and then move the Gcube 3 forward, backward, left, and right. <br/>
 2. Read the gyro sensor values of the Gcube 3 from the Micro:bit. <br/>
 3. The Micro:bit controls the motors of the Autocar (Gcube 0, Gcube 1) based on these gyro sensor values. <br/>
