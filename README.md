@@ -130,7 +130,7 @@ gcube.waitAllGcubesConnect(3)
 ```blocks
 input.onButtonPressed(Button.A, function () {
     gcube.defaultRollingMatrixImage(
-    "A",
+    ":",
     "__-__-__-__-__-__-__-__-__",
     "__-__-__-__-__-__-__-__-__",
     "__-__-__-__#__#__-__-__-__",
@@ -225,7 +225,6 @@ gcube.waitAllGcubesConnect(3)
 ```blocks
 input.onButtonPressed(Button.A, function () {
     gcube.setAllGcubeRotationAngle(
-    "A",
     0,
     0,
     0,
@@ -238,7 +237,6 @@ input.onButtonPressed(Button.A, function () {
 })
 input.onButtonPressed(Button.B, function () {
     gcube.setAllGcubeRotationAngle(
-    "A",
     0,
     0,
     0,
