@@ -55,7 +55,7 @@ namespace gcube {
         Ydata
     };
 
-    export enum AnalogPort {
+    export enum ArduinoAnalogPort {
         //% block="a0"
         A0,
         //% block="a1"
@@ -260,7 +260,7 @@ namespace gcube {
     /**
      * The read Gcube's accelerometer sensor command
      * @param cubeNumber Cube Number eg:1
-     * @param sensorSelect Sensor selection eg:10
+     * @param axisSelect Sensor selection eg:10
      */
     //% block="$axisSelect value of Gcube $cubeNumber"
     //% group="Gcube sensor"
@@ -291,11 +291,20 @@ namespace gcube {
      */
     //% block="Arduino $portSelect port value of Gcube $cubeNumber"
     //% group="Gcube sensor"
-    export function readCubeArduinoAnalog(cubeNumber: number, portSelect: number): number {
-        numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), portSelect, 0, 0, 0, 0, 0, 0, 0]
+    export function readCubeArduinoAnalog(cubeNumber: number, portSelect: ArduinoAnalogPort): number {
+        if (portSelect == ArduinoAnalogPort.A0)
+            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
+        else if (portSelect == ArduinoAnalogPort.A1)
+            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 1, 0, 0, 0, 0, 0, 0, 0]
+        else if (portSelect == ArduinoAnalogPort.A2)
+            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 2, 0, 0, 0, 0, 0, 0, 0]
+        else if (portSelect == ArduinoAnalogPort.A3)
+            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 3, 0, 0, 0, 0, 0, 0, 0]
+
         sendGcube(numData, 0)
 
         rowData = serial.readBuffer(3)
+            
         if (rowData.length == 3) {
             return (16 * rowData[1] + rowData[2]); // 12 bit resolution
         }
