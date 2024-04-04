@@ -342,8 +342,8 @@ basic.forever(function () {
 6. Run make code blocks to control PingPong robot and Gcubes
 <br/>
 [Blocks-Connection] <br/>
-1. Wait for the first Gcube (Gcube 0) is connected to Micro:bit <br/>
-2. Wait for the 3 Gcubes (Gcube 1~3) is connected to Gcube 0 <br/>
+1. Wait until the first Gcube (Gcube 0) is connected to Micro:bit <br/>
+2. Wait until the 3 Gcubes (Gcube 1~3) is connected to Gcube 0 <br/>
 [Blocks-motor control] <br/>
 1. Button A : Move forward Mono and turn right Gcube 3’s motor <br/>
 2. Button B : Move backward Mono and turn left Gcube 3’s motor <br/>
