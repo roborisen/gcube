@@ -325,11 +325,12 @@ input.onGesture(Gesture.TiltRight, function () {
 gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(4)
 basic.forever(function () {
-    if (gcube.readCubeSensor(3, gcube.SensorType.ProximitySensor) < 200) {
+    if (gcube.readInternalCubeSensor(3, gcube.InternalSensor.ProximitySensor) < 200) {
         gcube.rotateWheelRobot(gcube.RobotName.AutoCar, gcube.readCubeAccelerometer(3, gcube.CubeAccelerometer.Xdata))
         gcube.moveWheelRobot(gcube.RobotName.AutoCar, gcube.readCubeAccelerometer(3, gcube.CubeAccelerometer.Ydata) / 3)
     }
 })
+
 ```
 <a href="https://makecode.microbit.org/S93202-21130-73675-67640">This example</a> shows<br/> <br/>
 [Preparation & connection] <br/>
