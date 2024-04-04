@@ -39,13 +39,39 @@ namespace gcube {
         GripperClose
     }
 
-    export enum SensorType {
+    export enum InternalSensor {
         //% block="proximitysensor"
         ProximitySensor,
         //% block="buttonsensor"
-        ButtonSensor,
-        //% block="externalportsensor"
-        ExternalportSensor
+        ButtonSensor
+    };
+
+    export enum ExternalSensor {
+        //% block="lightsensor"
+        LightSensor,
+        //% block="soundsensor"
+        SoundSensor,
+        //% block="magneticsensor"
+        MagneticSensor,
+        //% block="volumesensor"
+        VolumeSensor,
+        //% block="temperaturesensor"
+        TemperatureSensor,
+        //% block="ultrasonicsensor"
+        UltrasonicSensor,
+        //% block="analogsensor"
+        AnalogSensor
+    };
+
+    export enum ColorSensor {
+        //% block="redcolor"
+        RedColor,
+        //% block="greencolor"
+        GreenColor,
+        //% block="bluecolor"
+        BlueColor,
+        //% block="colorkey"
+        ColorKey
     };
 
     export enum CubeAccelerometer {
@@ -192,7 +218,7 @@ namespace gcube {
             rotation = rotation / 100;
             let d_time = Math.abs(angleValue) * 10;
             if (pingpongRobot == RobotName.AutoCar) setAllGcubeRotationAngle(-1 * rotation, -1 * rotation, 0, 0, 0, 0, 0, 0);
-            else setAllGcubeRotationAngle( 0, -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0);
+            else setAllGcubeRotationAngle(0, -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0);
             pause(d_time);
         } else { //Not geared-wheel type : Drawing bot
             let rotation = angleValue * 135;
@@ -228,34 +254,80 @@ namespace gcube {
     }
 
     /**
-     * The read Gcube's sensor command
+     * The read Gcube's Arduino analog port command
      * @param cubeNumber Cube Number eg:1
-     * @param sensorSelect Sensor selection
+     * @param portSelect Arduino analog port selection eg:0
      */
-    //% block="$sensorSelect value of Gcube $cubeNumber"
+    //% block="Arduino $portSelect port value of Gcube $cubeNumber"
     //% group="Gcube sensor"
-    export function readCubeSensor(cubeNumber: number, sensorSelect: SensorType): number {
-        if (sensorSelect == SensorType.ProximitySensor) {
-            numData = [0xAA, invValue(0xAA), cubeNumber, 0, 0, 0, 0, 0, 0, 0]
-            sendGcube(numData, 0)
+    export function readCubeArduinoAnalog(cubeNumber: number, portSelect: ArduinoAnalogPort): number {
+        if (portSelect == ArduinoAnalogPort.A0)
+            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
+        else if (portSelect == ArduinoAnalogPort.A1)
+            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 1, 0, 0, 0, 0, 0, 0, 0]
+        else if (portSelect == ArduinoAnalogPort.A2)
+            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 2, 0, 0, 0, 0, 0, 0, 0]
+        else if (portSelect == ArduinoAnalogPort.A3)
+            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 3, 0, 0, 0, 0, 0, 0, 0]
 
-            rowData = serial.readBuffer(3)
-            return rowData[2];
-        } else if (sensorSelect == SensorType.ButtonSensor) {
-            numData = [0xAB, invValue(0xAB), cubeNumber, 0, 0, 0, 0, 0, 0, 0]
-            sendGcube(numData, 0)
+        sendGcube(numData, 0)
 
-            rowData = serial.readBuffer(3)
-            return rowData[2];
-        } else if (sensorSelect == SensorType.ExternalportSensor) {
-            numData = [0xB0 + cubeNumber, invValue(0xB0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
-            sendGcube(numData, 0)
+        rowData = serial.readBuffer(3)
 
-            rowData = serial.readBuffer(3)
+        if (rowData.length == 3) {
             return (16 * rowData[1] + rowData[2]); // 12 bit resolution
         }
         return 0;
     }
+
+
+    /**
+     * The read Gcube's sensor command
+     * @param cubeNumber Cube Number eg:1
+     * @param sensorSelect Sensor selection
+     */
+    //% block="Color $sensorSelect value of Gcube $cubeNumber"
+    //% group="Gcube sensor"
+    export function readColorSensor(cubeNumber: number, sensorSelect: ColorSensor): number {
+
+        if (sensorSelect == ColorSensor.ColorKey) {
+            numData = [0xE0 + cubeNumber, invValue(0xE0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
+            sendGcube(numData, 0)
+            rowData = serial.readBuffer(3)
+            return (rowData[2]); // color_key
+        } else {
+            numData = [0xE8 + cubeNumber, invValue(0xE8 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
+            sendGcube(numData, 0)
+            rowData = serial.readBuffer(3)
+            if (sensorSelect == ColorSensor.RedColor) return rowData[0];
+            else if (sensorSelect == ColorSensor.GreenColor) return rowData[1];
+            else return rowData[2];
+        }
+    }
+
+
+    /**
+     * The read Gcube's sensor command
+     * @param cubeNumber Cube Number eg:1
+     * @param sensorSelect Sensor selection
+     */
+    //% block="External $sensorSelect value of Gcube $cubeNumber"
+    //% group="Gcube sensor"
+    export function readExternalCubeSensor(cubeNumber: number, sensorSelect: ExternalSensor): number {
+        numData = [0xB0 + cubeNumber, invValue(0xB0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
+        sendGcube(numData, 0)
+        rowData = serial.readBuffer(3)
+
+        if (sensorSelect == ExternalSensor.TemperatureSensor) {
+            return (rowData[1]); // upper digit
+        } else if (sensorSelect == ExternalSensor.VolumeSensor || sensorSelect == ExternalSensor.MagneticSensor || sensorSelect == ExternalSensor.AnalogSensor) {
+            return (16 * rowData[1] + rowData[2]); // 12 bit resolution
+        } else {
+            return (rowData[1]); //
+        }
+    }
+
+
 
     /**
      * The read Gcube's accelerometer sensor command
@@ -284,32 +356,31 @@ namespace gcube {
         return 0;
     }
 
+
     /**
-     * The read Gcube's Arduino analog port command
+     * The read Gcube's sensor command
      * @param cubeNumber Cube Number eg:1
-     * @param portSelect Arduino analog port selection eg:0
+     * @param sensorSelect Sensor selection
      */
-    //% block="Arduino $portSelect port value of Gcube $cubeNumber"
+    //% block="$sensorSelect value of Gcube $cubeNumber"
     //% group="Gcube sensor"
-    export function readCubeArduinoAnalog(cubeNumber: number, portSelect: ArduinoAnalogPort): number {
-        if (portSelect == ArduinoAnalogPort.A0)
-            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
-        else if (portSelect == ArduinoAnalogPort.A1)
-            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 1, 0, 0, 0, 0, 0, 0, 0]
-        else if (portSelect == ArduinoAnalogPort.A2)
-            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 2, 0, 0, 0, 0, 0, 0, 0]
-        else if (portSelect == ArduinoAnalogPort.A3)
-            numData = [0xD0 + cubeNumber, invValue(0xD0 + cubeNumber), 3, 0, 0, 0, 0, 0, 0, 0]
+    export function readInternalCubeSensor(cubeNumber: number, sensorSelect: InternalSensor): number {
+        if (sensorSelect == InternalSensor.ProximitySensor) {
+            numData = [0xAA, invValue(0xAA), cubeNumber, 0, 0, 0, 0, 0, 0, 0]
+            sendGcube(numData, 0)
 
-        sendGcube(numData, 0)
+            rowData = serial.readBuffer(3)
+            return rowData[2];
+        } else if (sensorSelect == InternalSensor.ButtonSensor) {
+            numData = [0xAB, invValue(0xAB), cubeNumber, 0, 0, 0, 0, 0, 0, 0]
+            sendGcube(numData, 0)
 
-        rowData = serial.readBuffer(3)
-            
-        if (rowData.length == 3) {
-            return (16 * rowData[1] + rowData[2]); // 12 bit resolution
+            rowData = serial.readBuffer(3)
+            return rowData[2];
         }
         return 0;
     }
+
 
     /**
      * The image moves according to the micro:bit's acceleration sensor value.
@@ -580,7 +651,7 @@ namespace gcube {
      */
     //% block="set each Gcube motor's speed| Gcube0 = $s0| Gcube1 = $s1| Gcube2 = $s2| Gcube3 = $s3| Gcube4 = $s4| Gcube5 = $s5| Gcube6 = $s6| Gcube7 = $s7"
     //% group="Gcube motor"
-    export function setAllGcubeSpeed( s0: number, s1: number, s2: number, s3: number, s4: number, s5: number, s6: number, s7: number): void {
+    export function setAllGcubeSpeed(s0: number, s1: number, s2: number, s3: number, s4: number, s5: number, s6: number, s7: number): void {
         if (connectStage == 2) {
             let temp = connectedCubeNumber - 2;
             numData = [0x31 + temp, invValue(0x31 + temp), s7, s6, s5, s4, s3, s2, s1, s0]
