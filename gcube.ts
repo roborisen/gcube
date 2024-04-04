@@ -40,9 +40,9 @@ namespace gcube {
     }
 
     export enum InternalSensor {
-        //% block="proximity sensor"
+        //% block="proximitysensor"
         ProximitySensor,
-        //% block="button sensor"
+        //% block="buttonsensor"
         ButtonSensor
     };
 
