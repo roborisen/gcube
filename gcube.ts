@@ -40,26 +40,26 @@ namespace gcube {
     }
 
     export enum InternalSensor {
-        //% block="proximitysensor"
+        //% block="proximity"
         ProximitySensor,
-        //% block="buttonsensor"
+        //% block="button"
         ButtonSensor
     };
 
     export enum ExternalSensor {
-        //% block="lightsensor"
+        //% block="light"
         LightSensor,
-        //% block="soundsensor"
+        //% block="sound"
         SoundSensor,
-        //% block="magneticsensor"
+        //% block="magnetic"
         MagneticSensor,
-        //% block="volumesensor"
+        //% block="volume"
         VolumeSensor,
-        //% block="temperaturesensor"
+        //% block="temperature"
         TemperatureSensor,
-        //% block="ultrasonicsensor"
+        //% block="ultrasonic"
         UltrasonicSensor,
-        //% block="analogsensor"
+        //% block="analog"
         AnalogSensor
     };
 
@@ -286,7 +286,7 @@ namespace gcube {
      * @param cubeNumber Cube Number eg:1
      * @param sensorSelect Sensor selection
      */
-    //% block="Color $sensorSelect value of Gcube $cubeNumber"
+    //% block="color $sensorSelect value of Gcube $cubeNumber"
     //% group="Gcube sensor"
     export function readColorSensor(cubeNumber: number, sensorSelect: ColorSensor): number {
 
@@ -311,7 +311,7 @@ namespace gcube {
      * @param cubeNumber Cube Number eg:1
      * @param sensorSelect Sensor selection
      */
-    //% block="External $sensorSelect value of Gcube $cubeNumber"
+    //% block="external $sensorSelect sensor value of Gcube $cubeNumber"
     //% group="Gcube sensor"
     export function readExternalCubeSensor(cubeNumber: number, sensorSelect: ExternalSensor): number {
         numData = [0xB0 + cubeNumber, invValue(0xB0 + cubeNumber), 0, 0, 0, 0, 0, 0, 0, 0]
@@ -362,7 +362,7 @@ namespace gcube {
      * @param cubeNumber Cube Number eg:1
      * @param sensorSelect Sensor selection
      */
-    //% block="$sensorSelect value of Gcube $cubeNumber"
+    //% block="$sensorSelect sensor value of Gcube $cubeNumber"
     //% group="Gcube sensor"
     export function readInternalCubeSensor(cubeNumber: number, sensorSelect: InternalSensor): number {
         if (sensorSelect == InternalSensor.ProximitySensor) {
