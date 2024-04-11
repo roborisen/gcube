@@ -620,7 +620,20 @@ namespace gcube {
 
 
     /**
-     * plot a pixel of dot matrix of a GCube
+     * Turn off a pixel of dot matrix of a GCube
+     * @param cubeIndex Gcube number, eg: 1
+     * @param xPos X position, eg: 0
+     * @param yPos Y position, eg: 0
+     */
+    //% block="Turn off x $xPos y $yPos dotmatrix of Gcube $cubeIndex"
+    //% group="Dot matrix"
+    export function turnOffMatrix(cubeIndex: number, xPos: number, yPos: number): void {
+
+    }
+
+
+    /**
+     * Turn on a pixel of dot matrix of a GCube
      * @param cubeIndex Gcube number, eg: 1
      * @param xPos X position, eg: 0
      * @param yPos Y position, eg: 0
