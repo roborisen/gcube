@@ -92,6 +92,12 @@ namespace gcube {
         A3
     };
 
+    export enum TurnOnOff {
+        //% block="turnon"
+        TurnOn,
+        //% block="turnoff"
+        TurnOff
+    };
 
     function sendGcube(xdata: any[], d_flag: number) { //Send UART data to Gcube
         let sendData = pins.createBuffer(10);
@@ -136,6 +142,7 @@ namespace gcube {
     let connectStage = 0
     let connectedCubeNumber = 0
 
+    const letter_A = [0B00110000, 0B01111000, 0B11001100, 0B11001100, 0B11111100, 0B11001100, 0B11001100, 0B00000000]; // A
 
     serial.redirect(SerialPin.P1, SerialPin.P2, 115200)
     serial.setRxBufferSize(10)
@@ -522,6 +529,37 @@ namespace gcube {
             sendMatrixData(cn, matrixLine(t1), matrixLine(t2), matrixLine(t3), matrixLine(t4), matrixLine(t5), matrixLine(t6), matrixLine(t7), matrixLine(t8))
         }
     }
+
+
+    /**
+     * Draw string on dot matrix of a GCube
+     * @param cubeIndex GCube number, eg: 1
+     * @param matrixMessage string message, eg: "Hello"
+     */
+    //% block="Show $matrixMessage on the matrix of the Gcube $cubeIndex"
+    //% group="Dot matrix"
+    export function showMessageOnMatrix(cubeIndex: number, matrixMessage: string): void {
+        sendMatrixData(cubeIndex, letter_A[0], letter_A[1], letter_A[2], letter_A[3], letter_A[4], letter_A[5], letter_A[6], letter_A[7])
+    }
+
+
+    /**
+     * plot a pixel of dot matrix of a GCube
+     * @param cubeIndex Gcube number, eg: 1
+     * @param actionType Turn on/off
+     * @param xPos X position, eg: 0
+     * @param yPos Y position, eg: 0
+     */
+    //% block="$actionType x $xPos y $yPos dotmatrix of the Gcube $cubeIndex"
+    //% group="Dot matrix"
+    export function plotPixelOnMatrix(cubeIndex: number, actionType: TurnOnOff, xPos: number, yPos: number): void {
+
+        if (actionType == TurnOnOff.TurnOn) { // Turn on command
+        }
+
+    }
+
+
 
 
     /**
