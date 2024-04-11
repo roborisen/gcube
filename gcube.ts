@@ -612,7 +612,7 @@ namespace gcube {
      * @param cubeIndex GCube number, eg: 1
      * @param matrixMessage string message, eg: "Hello"
      */
-    //% block="Show $matrixMessage on the matrix of the Gcube $cubeIndex"
+    //% block="Show $matrixMessage on the matrix of Gcube $cubeIndex"
     //% group="Dot matrix"
     export function showMessageOnMatrix(cubeIndex: number, matrixMessage: string): void {
         sendMatrixData(cubeIndex, letterA[0], letterA[1], letterA[2], letterA[3], letterA[4], letterA[5], letterA[6], letterA[7])
@@ -622,16 +622,12 @@ namespace gcube {
     /**
      * plot a pixel of dot matrix of a GCube
      * @param cubeIndex Gcube number, eg: 1
-     * @param actionType Turn on/off
      * @param xPos X position, eg: 0
      * @param yPos Y position, eg: 0
      */
-    //% block="$actionType x $xPos y $yPos dotmatrix of the Gcube $cubeIndex"
+    //% block="Turn on x $xPos y $yPos dotmatrix of Gcube $cubeIndex"
     //% group="Dot matrix"
-    export function plotPixelOnMatrix(cubeIndex: number, actionType: TurnOnOff, xPos: number, yPos: number): void {
-
-        if (actionType == TurnOnOff.TurnOn) { // Turn on command
-        }
+    export function turnOnMatrix(cubeIndex: number, xPos: number, yPos: number): void {
 
     }
 
