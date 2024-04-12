@@ -136,7 +136,7 @@ namespace gcube {
     }
 
     function sendMatrixPixelData(cn: number, xpos: number, ypos: number, onoff: number): void {
-        numData[2] = cn
+        numData[2] = cn-1 //Cube number
         numData[3] = xpos
         numData[4] = ypos
         numData[5] = onoff
