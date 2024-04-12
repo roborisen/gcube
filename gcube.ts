@@ -730,9 +730,12 @@ namespace gcube {
         else if (matrixMessage.length == 1) {
             sendMatrixCharData(cubeIndex - 1, matrixMessage.charAt(0));
         } else {
-
+            let tempString: number[] = [0, 0, 0, 0, 0, 0, 0, 0]
+            for (let i = 0; i < matrixMessage.length; i++) {
+                tempString[i] = matrixMessage.charCodeAt(i)
+            }
+            sendMatrixStringData(cubeIndex, tempString[0], tempString[1], tempString[2], tempString[3], tempString[4], tempString[5], tempString[6], tempString[7])
         }
-        sendMatrixImageData(cubeIndex, letterA[0], letterA[1], letterA[2], letterA[3], letterA[4], letterA[5], letterA[6], letterA[7])
     }
 
 
