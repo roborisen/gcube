@@ -119,7 +119,7 @@ namespace gcube {
         return tMatrix
     }
 
-    function sendMatrixData(cn: number, t1: number, t2: number, t3: number, t4: number, t5: number, t6: number, t7: number, t8: number): void {
+    function sendMatrixImageData(cn: number, t1: number, t2: number, t3: number, t4: number, t5: number, t6: number, t7: number, t8: number): void {
         numData[2] = t1
         numData[3] = t2
         numData[4] = t3
@@ -500,7 +500,7 @@ namespace gcube {
                     }
                 }
 
-                sendMatrixData(cubeIndex, roll[0], roll[1], roll[2], roll[3], roll[4], roll[5], roll[6], roll[7])
+                sendMatrixImageData(cubeIndex, roll[0], roll[1], roll[2], roll[3], roll[4], roll[5], roll[6], roll[7])
             } else {
                 for (let i = 0; i < 8; i++) roll[i] = 0
                 for (let y = yPosition; y < 8; y++) {
@@ -513,7 +513,7 @@ namespace gcube {
                 }
 
                 for (let c = 0; c < temp; c++) {
-                    sendMatrixData(c + 1, roll[0], roll[1], roll[2], roll[3], roll[4], roll[5], roll[6], roll[7])
+                    sendMatrixImageData(c + 1, roll[0], roll[1], roll[2], roll[3], roll[4], roll[5], roll[6], roll[7])
                 }
 
             }
@@ -552,7 +552,7 @@ namespace gcube {
             currentRollIndex = currentRollIndex % totalLine
 
             for (let i = 0; i < temp; i++) {
-                sendMatrixData(i + 1, roll[8 * i + 0], roll[8 * i + 1], roll[8 * i + 2], roll[8 * i + 3], roll[8 * i + 4], roll[8 * i + 5], roll[8 * i + 6], roll[8 * i + 7])
+                sendMatrixImageData(i + 1, roll[8 * i + 0], roll[8 * i + 1], roll[8 * i + 2], roll[8 * i + 3], roll[8 * i + 4], roll[8 * i + 5], roll[8 * i + 6], roll[8 * i + 7])
             }
 
             if (duration != 0 && durIndex >= duration * 20) rollingFlag = false // 50msed * 20 = 1sec
@@ -602,7 +602,7 @@ namespace gcube {
     //% group="Dot matrix"
     export function setMatrixDisplay(cn: number, t1: string, t2: string, t3: string, t4: string, t5: string, t6: string, t7: string, t8: string): void {
         if (connectStage == 2) {
-            sendMatrixData(cn, matrixLine(t1), matrixLine(t2), matrixLine(t3), matrixLine(t4), matrixLine(t5), matrixLine(t6), matrixLine(t7), matrixLine(t8))
+            sendMatrixImageData(cn, matrixLine(t1), matrixLine(t2), matrixLine(t3), matrixLine(t4), matrixLine(t5), matrixLine(t6), matrixLine(t7), matrixLine(t8))
         }
     }
 
@@ -615,8 +615,9 @@ namespace gcube {
     //% block="Show $matrixMessage on the matrix of Gcube $cubeIndex"
     //% group="Dot matrix"
     export function showMessageOnMatrix(cubeIndex: number, matrixMessage: string): void {
-        sendMatrixData(cubeIndex, letterA[0], letterA[1], letterA[2], letterA[3], letterA[4], letterA[5], letterA[6], letterA[7])
+        sendMatrixImageData(cubeIndex, letterA[0], letterA[1], letterA[2], letterA[3], letterA[4], letterA[5], letterA[6], letterA[7])
     }
+
 
 
     /**
