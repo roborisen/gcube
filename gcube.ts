@@ -99,13 +99,13 @@ namespace gcube {
         TurnOff
     };
 
-    function sendGcube(xdata: any[], d_flag: number) { //Send UART data to Gcube
+    function sendGcube(xdata: any[], delayFlag: number) { //Send UART data to Gcube
         let sendData = pins.createBuffer(10);
         for (let i = 0; i <= 9; i++) {
             sendData.setNumber(NumberFormat.UInt8LE, i, xdata[i]);
         }
         serial.writeBuffer(sendData)
-        //if(d_flag==1) pause(50) //Wait for the next command
+        //if(delayFlag==1) pause(50) //Wait for the next command
         pause(50)
     }
 
