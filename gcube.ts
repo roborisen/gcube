@@ -119,6 +119,23 @@ namespace gcube {
         return tMatrix
     }
 
+    function sendMatrixStringData(cn: number, t1: number, t2: number, t3: number, t4: number, t5: number, t6: number, t7: number, t8: number): void {
+        numData[2] = t1
+        numData[3] = t2
+        numData[4] = t3
+        numData[5] = t4
+        numData[6] = t5
+        numData[7] = t6
+        numData[8] = t7
+        numData[9] = t8
+
+        let temp = cn - 1;
+        numData[0] = 0x61 + temp
+        numData[1] = invValue(0x61 + temp)
+        sendGcube(numData, 1)
+    }
+
+
     function sendMatrixImageData(cn: number, t1: number, t2: number, t3: number, t4: number, t5: number, t6: number, t7: number, t8: number): void {
         numData[2] = t1
         numData[3] = t2
@@ -136,7 +153,7 @@ namespace gcube {
     }
 
     function sendMatrixPixelData(cn: number, xpos: number, ypos: number, onoff: number): void {
-        numData[2] = cn-1 //Cube number
+        numData[2] = cn - 1 //Cube number
         numData[3] = xpos
         numData[4] = ypos
         numData[5] = onoff
@@ -149,6 +166,83 @@ namespace gcube {
         numData[1] = invValue(0x60)
 
         sendGcube(numData, 1)
+    }
+
+
+    function sendMatrixCharData(cn: number, input: string) {
+        switch (input) {
+            case 'A': sendMatrixImageData(cn, letterA[0], letterA[1], letterA[2], letterA[3], letterA[4], letterA[5], letterA[6], letterA[7]); break;
+            case 'B': sendMatrixImageData(cn, letterB[0], letterB[1], letterB[2], letterB[3], letterB[4], letterB[5], letterB[6], letterB[7]); break;
+            case 'C': sendMatrixImageData(cn, letterC[0], letterC[1], letterC[2], letterC[3], letterC[4], letterC[5], letterC[6], letterC[7]); break;
+            case 'D': sendMatrixImageData(cn, letterD[0], letterD[1], letterD[2], letterD[3], letterD[4], letterD[5], letterD[6], letterD[7]); break;
+            case 'E': sendMatrixImageData(cn, letterE[0], letterE[1], letterE[2], letterE[3], letterE[4], letterE[5], letterE[6], letterE[7]); break;
+            case 'F': sendMatrixImageData(cn, letterF[0], letterF[1], letterF[2], letterF[3], letterF[4], letterF[5], letterF[6], letterF[7]); break;
+            case 'G': sendMatrixImageData(cn, letterG[0], letterG[1], letterG[2], letterG[3], letterG[4], letterG[5], letterG[6], letterG[7]); break;
+            case 'H': sendMatrixImageData(cn, letterH[0], letterH[1], letterH[2], letterH[3], letterH[4], letterH[5], letterH[6], letterH[7]); break;
+            case 'I': sendMatrixImageData(cn, letterI[0], letterI[1], letterI[2], letterI[3], letterI[4], letterI[5], letterI[6], letterI[7]); break;
+            case 'J': sendMatrixImageData(cn, letterJ[0], letterJ[1], letterJ[2], letterJ[3], letterJ[4], letterJ[5], letterJ[6], letterJ[7]); break;
+            case 'K': sendMatrixImageData(cn, letterK[0], letterK[1], letterK[2], letterK[3], letterK[4], letterK[5], letterK[6], letterK[7]); break;
+            case 'L': sendMatrixImageData(cn, letterL[0], letterL[1], letterL[2], letterL[3], letterL[4], letterL[5], letterL[6], letterL[7]); break;
+            case 'M': sendMatrixImageData(cn, letterM[0], letterM[1], letterM[2], letterM[3], letterM[4], letterM[5], letterM[6], letterM[7]); break;
+            case 'N': sendMatrixImageData(cn, letterN[0], letterN[1], letterN[2], letterN[3], letterN[4], letterN[5], letterN[6], letterN[7]); break;
+            case 'O': sendMatrixImageData(cn, letterO[0], letterO[1], letterO[2], letterO[3], letterO[4], letterO[5], letterO[6], letterO[7]); break;
+            case 'P': sendMatrixImageData(cn, letterP[0], letterP[1], letterP[2], letterP[3], letterP[4], letterP[5], letterP[6], letterP[7]); break;
+            case 'Q': sendMatrixImageData(cn, letterQ[0], letterQ[1], letterQ[2], letterQ[3], letterQ[4], letterQ[5], letterQ[6], letterQ[7]); break;
+            case 'R': sendMatrixImageData(cn, letterR[0], letterR[1], letterR[2], letterR[3], letterR[4], letterR[5], letterR[6], letterR[7]); break;
+            case 'S': sendMatrixImageData(cn, letterS[0], letterS[1], letterS[2], letterS[3], letterS[4], letterS[5], letterS[6], letterS[7]); break;
+            case 'T': sendMatrixImageData(cn, letterT[0], letterT[1], letterT[2], letterT[3], letterT[4], letterT[5], letterT[6], letterT[7]); break;
+            case 'U': sendMatrixImageData(cn, letterU[0], letterU[1], letterU[2], letterU[3], letterU[4], letterU[5], letterU[6], letterU[7]); break;
+            case 'V': sendMatrixImageData(cn, letterV[0], letterV[1], letterV[2], letterV[3], letterV[4], letterV[5], letterV[6], letterV[7]); break;
+            case 'W': sendMatrixImageData(cn, letterW[0], letterW[1], letterW[2], letterW[3], letterW[4], letterW[5], letterW[6], letterW[7]); break;
+            case 'X': sendMatrixImageData(cn, letterX[0], letterX[1], letterX[2], letterX[3], letterX[4], letterX[5], letterX[6], letterX[7]); break;
+            case 'Y': sendMatrixImageData(cn, letterY[0], letterY[1], letterY[2], letterY[3], letterY[4], letterY[5], letterY[6], letterY[7]); break;
+            case 'Z': sendMatrixImageData(cn, letterZ[0], letterZ[1], letterZ[2], letterZ[3], letterZ[4], letterZ[5], letterZ[6], letterZ[7]); break;
+
+            case 'a': sendMatrixImageData(cn, lettera[0], lettera[1], lettera[2], lettera[3], lettera[4], lettera[5], lettera[6], lettera[7]); break;
+            case 'b': sendMatrixImageData(cn, letterb[0], letterb[1], letterb[2], letterb[3], letterb[4], letterb[5], letterb[6], letterb[7]); break;
+            case 'c': sendMatrixImageData(cn, letterc[0], letterc[1], letterc[2], letterc[3], letterc[4], letterc[5], letterc[6], letterc[7]); break;
+            case 'd': sendMatrixImageData(cn, letterd[0], letterd[1], letterd[2], letterd[3], letterd[4], letterd[5], letterd[6], letterd[7]); break;
+            case 'e': sendMatrixImageData(cn, lettere[0], lettere[1], lettere[2], lettere[3], lettere[4], lettere[5], lettere[6], lettere[7]); break;
+            case 'f': sendMatrixImageData(cn, letterf[0], letterf[1], letterf[2], letterf[3], letterf[4], letterf[5], letterf[6], letterf[7]); break;
+            case 'g': sendMatrixImageData(cn, letterg[0], letterg[1], letterg[2], letterg[3], letterg[4], letterg[5], letterg[6], letterg[7]); break;
+            case 'h': sendMatrixImageData(cn, letterh[0], letterh[1], letterh[2], letterh[3], letterh[4], letterh[5], letterh[6], letterh[7]); break;
+            case 'i': sendMatrixImageData(cn, letteri[0], letteri[1], letteri[2], letteri[3], letteri[4], letteri[5], letteri[6], letteri[7]); break;
+            case 'j': sendMatrixImageData(cn, letterj[0], letterj[1], letterj[2], letterj[3], letterj[4], letterj[5], letterj[6], letterj[7]); break;
+            case 'k': sendMatrixImageData(cn, letterk[0], letterk[1], letterk[2], letterk[3], letterk[4], letterk[5], letterk[6], letterk[7]); break;
+            case 'l': sendMatrixImageData(cn, letterl[0], letterl[1], letterl[2], letterl[3], letterl[4], letterl[5], letterl[6], letterl[7]); break;
+            case 'm': sendMatrixImageData(cn, letterm[0], letterm[1], letterm[2], letterm[3], letterm[4], letterm[5], letterm[6], letterm[7]); break;
+            case 'n': sendMatrixImageData(cn, lettern[0], lettern[1], lettern[2], lettern[3], lettern[4], lettern[5], lettern[6], lettern[7]); break;
+            case 'o': sendMatrixImageData(cn, lettero[0], lettero[1], lettero[2], lettero[3], lettero[4], lettero[5], lettero[6], lettero[7]); break;
+            case 'p': sendMatrixImageData(cn, letterp[0], letterp[1], letterp[2], letterp[3], letterp[4], letterp[5], letterp[6], letterp[7]); break;
+            case 'q': sendMatrixImageData(cn, letterq[0], letterq[1], letterq[2], letterq[3], letterq[4], letterq[5], letterq[6], letterq[7]); break;
+            case 'r': sendMatrixImageData(cn, letterr[0], letterr[1], letterr[2], letterr[3], letterr[4], letterr[5], letterr[6], letterr[7]); break;
+            case 's': sendMatrixImageData(cn, letters[0], letters[1], letters[2], letters[3], letters[4], letters[5], letters[6], letters[7]); break;
+            case 't': sendMatrixImageData(cn, lettert[0], lettert[1], lettert[2], lettert[3], lettert[4], lettert[5], lettert[6], lettert[7]); break;
+            case 'u': sendMatrixImageData(cn, letteru[0], letteru[1], letteru[2], letteru[3], letteru[4], letteru[5], letteru[6], letteru[7]); break;
+            case 'v': sendMatrixImageData(cn, letterv[0], letterv[1], letterv[2], letterv[3], letterv[4], letterv[5], letterv[6], letterv[7]); break;
+            case 'w': sendMatrixImageData(cn, letterw[0], letterw[1], letterw[2], letterw[3], letterw[4], letterw[5], letterw[6], letterw[7]); break;
+            case 'x': sendMatrixImageData(cn, letterx[0], letterx[1], letterx[2], letterx[3], letterx[4], letterx[5], letterx[6], letterx[7]); break;
+            case 'y': sendMatrixImageData(cn, lettery[0], lettery[1], lettery[2], lettery[3], lettery[4], lettery[5], lettery[6], lettery[7]); break;
+            case 'z': sendMatrixImageData(cn, letterz[0], letterz[1], letterz[2], letterz[3], letterz[4], letterz[5], letterz[6], letterz[7]); break;
+
+            case '0': sendMatrixImageData(cn, letter0[0], letter0[1], letter0[2], letter0[3], letter0[4], letter0[5], letter0[6], letter0[7]); break;
+            case '1': sendMatrixImageData(cn, letter1[0], letter1[1], letter1[2], letter1[3], letter1[4], letter1[5], letter1[6], letter1[7]); break;
+            case '2': sendMatrixImageData(cn, letter2[0], letter2[1], letter2[2], letter2[3], letter2[4], letter2[5], letter2[6], letter2[7]); break;
+            case '3': sendMatrixImageData(cn, letter3[0], letter3[1], letter3[2], letter3[3], letter3[4], letter3[5], letter3[6], letter3[7]); break;
+            case '4': sendMatrixImageData(cn, letter4[0], letter4[1], letter4[2], letter4[3], letter4[4], letter4[5], letter4[6], letter4[7]); break;
+            case '5': sendMatrixImageData(cn, letter5[0], letter5[1], letter5[2], letter5[3], letter5[4], letter5[5], letter5[6], letter5[7]); break;
+            case '6': sendMatrixImageData(cn, letter6[0], letter6[1], letter6[2], letter6[3], letter6[4], letter6[5], letter6[6], letter6[7]); break;
+            case '7': sendMatrixImageData(cn, letter7[0], letter7[1], letter7[2], letter7[3], letter7[4], letter7[5], letter7[6], letter7[7]); break;
+            case '8': sendMatrixImageData(cn, letter8[0], letter8[1], letter8[2], letter8[3], letter8[4], letter8[5], letter8[6], letter8[7]); break;
+            case '9': sendMatrixImageData(cn, letter9[0], letter9[1], letter9[2], letter9[3], letter9[4], letter9[5], letter9[6], letter9[7]); break;
+
+            case '!': sendMatrixImageData(cn, letters1[0], letters1[1], letters1[2], letters1[3], letters1[4], letters1[5], letters1[6], letters1[7]); break;
+            case '#': sendMatrixImageData(cn, letters2[0], letters2[1], letters2[2], letters2[3], letters2[4], letters2[5], letters2[6], letters2[7]); break;
+            case '$': sendMatrixImageData(cn, letters3[0], letters3[1], letters3[2], letters3[3], letters3[4], letters3[5], letters3[6], letters3[7]); break;
+            case '%': sendMatrixImageData(cn, letters4[0], letters4[1], letters4[2], letters4[3], letters4[4], letters4[5], letters4[6], letters4[7]); break;
+            case '&': sendMatrixImageData(cn, letters5[0], letters5[1], letters5[2], letters5[3], letters5[4], letters5[5], letters5[6], letters5[7]); break;
+            case '?': sendMatrixImageData(cn, letters6[0], letters6[1], letters6[2], letters6[3], letters6[4], letters6[5], letters6[6], letters6[7]); break;
+        }
     }
 
 
@@ -631,6 +725,13 @@ namespace gcube {
     //% block="Show $matrixMessage on the matrix of Gcube $cubeIndex"
     //% group="Dot matrix"
     export function showMessageOnMatrix(cubeIndex: number, matrixMessage: string): void {
+
+        if (matrixMessage.length == 0) return
+        else if (matrixMessage.length == 1) {
+            sendMatrixCharData(cubeIndex - 1, matrixMessage.charAt(0));
+        } else {
+
+        }
         sendMatrixImageData(cubeIndex, letterA[0], letterA[1], letterA[2], letterA[3], letterA[4], letterA[5], letterA[6], letterA[7])
     }
 
