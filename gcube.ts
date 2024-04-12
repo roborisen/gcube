@@ -135,6 +135,22 @@ namespace gcube {
         sendGcube(numData, 1)
     }
 
+    function sendMatrixPixelData(cn: number, xpos: number, ypos: number, onoff: number): void {
+        numData[2] = cn
+        numData[3] = xpos
+        numData[4] = ypos
+        numData[5] = onoff
+        numData[6] = 0
+        numData[7] = 0
+        numData[8] = 0
+        numData[9] = 0
+
+        numData[0] = 0x60
+        numData[1] = invValue(0x60)
+
+        sendGcube(numData, 1)
+    }
+
 
     let numData: number[] = []
     let rollingImage: string[] = []
@@ -629,7 +645,7 @@ namespace gcube {
     //% block="Turn off x $xPos y $yPos dotmatrix of Gcube $cubeIndex"
     //% group="Dot matrix"
     export function turnOffMatrix(cubeIndex: number, xPos: number, yPos: number): void {
-
+        sendMatrixPixelData(cubeIndex, xPos, yPos, 0)
     }
 
 
@@ -642,7 +658,7 @@ namespace gcube {
     //% block="Turn on x $xPos y $yPos dotmatrix of Gcube $cubeIndex"
     //% group="Dot matrix"
     export function turnOnMatrix(cubeIndex: number, xPos: number, yPos: number): void {
-
+        sendMatrixPixelData(cubeIndex, xPos, yPos, 1)
     }
 
 
