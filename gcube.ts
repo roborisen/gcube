@@ -344,14 +344,14 @@ namespace gcube {
     export function gripperControl(actionType: GripperStatus): void {
         if (actionType == GripperStatus.GripperClose) {
             let rotation = -180 * 2;
-            let d_time = 180 * 40;
+            let delayTime = 180 * 40;
             setAGcubeRotationAngle(0, rotation);
-            pause(d_time);
+            pause(delayTime);
         } else if (actionType == GripperStatus.GripperOpen) {
             let rotation = 180 * 2;
-            let d_time = 180 * 40;
+            let delayTime = 180 * 40;
             setAGcubeRotationAngle(0, rotation);
-            pause(d_time);
+            pause(delayTime);
         }
     }
 
@@ -365,14 +365,14 @@ namespace gcube {
     export function leverControl(actionType: LeverStatus): void {
         if (actionType == LeverStatus.LeverDown) {
             let rotation = -90;
-            let d_time = 90 * 40;
+            let delayTime = 90 * 40;
             setAGcubeRotationAngle(0, rotation);
-            pause(d_time);
+            pause(delayTime);
         } else if (actionType == LeverStatus.LeverUp) {
             let rotation = 90;
-            let d_time = 90 * 40;
+            let delayTime = 90 * 40;
             setAGcubeRotationAngle(0, rotation);
-            pause(d_time);
+            pause(delayTime);
         }
     }
 
@@ -386,14 +386,14 @@ namespace gcube {
     export function penControl(actionType: PenStatus): void {
         if (actionType == PenStatus.PenDown) {
             let rotation = -90;
-            let d_time = 90 * 40;
+            let delayTime = 90 * 40;
             setAGcubeRotationAngle(0, rotation);
-            pause(d_time);
+            pause(delayTime);
         } else if (actionType == PenStatus.PenUp) {
             let rotation = 90;
-            let d_time = 90 * 40;
+            let delayTime = 90 * 40;
             setAGcubeRotationAngle(0, rotation);
-            pause(d_time);
+            pause(delayTime);
         }
     }
 
@@ -409,16 +409,16 @@ namespace gcube {
         if (pingpongRobot != RobotName.DrawingBot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let rotation = angleValue * 41;
             rotation = rotation / 100;
-            let d_time = Math.abs(angleValue) * 10;
+            let delayTime = Math.abs(angleValue) * 10;
             if (pingpongRobot == RobotName.AutoCar) setAllGcubeRotationAngle(-1 * rotation, -1 * rotation, 0, 0, 0, 0, 0, 0);
             else setAllGcubeRotationAngle(0, -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0);
-            pause(d_time);
+            pause(delayTime);
         } else { //Not geared-wheel type : Drawing bot
             let rotation = angleValue * 135;
             rotation = rotation / 100;
-            let d_time = Math.abs(angleValue) * 40;
+            let delayTime = Math.abs(angleValue) * 40;
             setAllGcubeRotationAngle(0, -1 * rotation, -1 * rotation, 0, 0, 0, 0, 0);
-            pause(d_time);
+            pause(delayTime);
         }
     }
 
@@ -433,16 +433,16 @@ namespace gcube {
         if (pingpongRobot != RobotName.DrawingBot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
             let length = moveLength * 44;
             length = length / 10;
-            let d_time = Math.abs(moveLength) * 100;
+            let delayTime = Math.abs(moveLength) * 100;
             if (pingpongRobot == RobotName.AutoCar) setAllGcubeRotationAngle(-1 * length, length, 0, 0, 0, 0, 0, 0);
             else setAllGcubeRotationAngle(0, -1 * length, length, 0, 0, 0, 0, 0);
-            pause(d_time);
+            pause(delayTime);
         } else { //Not geared-wheel type : Drawing bot
             let length = moveLength * 176;
             length = length / 10;
-            let d_time = Math.abs(moveLength) * 400;
+            let delayTime = Math.abs(moveLength) * 400;
             setAllGcubeRotationAngle(0, -1 * length, length, 0, 0, 0, 0, 0);
-            pause(d_time);
+            pause(delayTime);
         }
     }
 
