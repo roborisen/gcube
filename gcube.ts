@@ -167,6 +167,7 @@ namespace gcube {
 
     function sendMatrixBlinkRate(cn: number, blinkrate: number) {
         numData[0] = 0x5A
+        numData[1] = invValue(0x5A)
         numData[2] = cn
         numData[3] = blinkrate
         numData[4] = 0
@@ -176,10 +177,7 @@ namespace gcube {
         numData[8] = 0
         numData[9] = 0
 
-        numData[1] = invValue(0x5A)
-
         sendGcube(numData, 1)
-
     }
 
     function sendMatrixPixelData(cn: number, xpos: number, ypos: number, onoff: number): void {
