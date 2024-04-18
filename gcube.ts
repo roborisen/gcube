@@ -164,6 +164,24 @@ namespace gcube {
         sendGcube(numData, 1)
     }
 
+
+    function sendMatrixBlinkRate(cn: number, blinkrate: number){
+        numData[0] = 0x5A
+        numData[2] = cn
+        numData[3] = blinkrate
+        numData[4] = 0
+        numData[5] = 0
+        numData[6] = 0
+        numData[7] = 0
+        numData[8] = 0
+        numData[9] = 0
+
+        numData[1] = invValue(0x5A)
+
+        sendGcube(numData, 1)
+
+    }
+
     function sendMatrixPixelData(cn: number, xpos: number, ypos: number, onoff: number): void {
         numData[2] = cn - 1 //Cube number
         numData[3] = xpos
@@ -605,7 +623,7 @@ namespace gcube {
         } else if (blinkRate == BlinkHz.Hz2) {
             blinkValue = 3
         }
-
+        sendMatrixBlinkRate(cubeIndex, blinkValue)
     }
 
 
