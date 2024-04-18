@@ -99,6 +99,18 @@ namespace gcube {
         TurnOff
     };
 
+    export enum BlinkHz {
+        //% block="hz0"
+        Hz0,
+        //% block="hz05"
+        Hz05,
+        //% block="hz1"
+        Hz1,
+        //% block="hz2"
+        Hz2
+    }
+
+
     function sendGcube(xdata: any[], delayFlag: number) { //Send UART data to Gcube
         let sendData = pins.createBuffer(10);
         for (let i = 0; i <= 9; i++) {
@@ -572,6 +584,28 @@ namespace gcube {
             return rowData[2];
         }
         return 0;
+    }
+
+
+    /**
+     * Set blink rate of the matrix.
+     * @param blinkRate blink rate number eg:0
+     * @param cubeIndex Cube index number eg:1
+     */
+    //% block="set blink rate $blinkRate Hz matrix of the Gcube $cubeIndex"
+    //% group="Dot matrix"
+    export function setMatrixBlinkRate(blinkRate: BlinkHz, cubeIndex: number): void {
+        let blinkValue = 0
+        if (blinkRate == BlinkHz.Hz0) {
+            blinkValue = 0
+        } else if (blinkRate == BlinkHz.Hz05) {
+            blinkValue = 1
+        } else if (blinkRate == BlinkHz.Hz1) {
+            blinkValue = 2
+        } else if (blinkRate == BlinkHz.Hz2) {
+            blinkValue = 3
+        }
+
     }
 
 
