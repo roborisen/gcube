@@ -101,13 +101,13 @@ namespace gcube {
 
     export enum BlinkHz {
         //% block="hz0"
-        Hz0,
+        HZ_0,
         //% block="hz05"
-        Hz05,
+        HZ_05,
         //% block="hz1"
-        Hz1,
+        HZ_1,
         //% block="hz2"
-        Hz2
+        HZ_2
     }
 
 
@@ -612,13 +612,13 @@ namespace gcube {
     //% group="Dot matrix"
     export function setMatrixBlinkRate(blinkRate: BlinkHz, cubeIndex: number): void {
         let blinkValue = 0
-        if (blinkRate == BlinkHz.Hz0) {
+        if (blinkRate == BlinkHz.HZ_0) {
             blinkValue = 0
-        } else if (blinkRate == BlinkHz.Hz05) {
+        } else if (blinkRate == BlinkHz.HZ_05) {
             blinkValue = 1
-        } else if (blinkRate == BlinkHz.Hz1) {
+        } else if (blinkRate == BlinkHz.HZ_1) {
             blinkValue = 2
-        } else if (blinkRate == BlinkHz.Hz2) {
+        } else if (blinkRate == BlinkHz.HZ_2) {
             blinkValue = 3
         }
         sendMatrixBlinkRate(cubeIndex, blinkValue)
