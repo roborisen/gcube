@@ -165,7 +165,7 @@ namespace gcube {
     }
 
 
-    function sendMatrixBlinkRate(cn: number, blinkrate: number){
+    function sendMatrixBlinkRate(cn: number, blinkrate: number) {
         numData[0] = 0x5A
         numData[2] = cn
         numData[3] = blinkrate
@@ -780,7 +780,7 @@ namespace gcube {
 
         if (matrixMessage.length == 0) return
         else if (matrixMessage.length == 1) {
-            sendMatrixCharData(cubeIndex - 1, matrixMessage.charAt(0));
+            sendMatrixCharData(cubeIndex, matrixMessage.charAt(0));
         } else {
             let tempString: number[] = [0, 0, 0, 0, 0, 0, 0, 0]
             for (let i = 0; i < matrixMessage.length; i++) {
