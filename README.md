@@ -225,26 +225,26 @@ gcube.waitAllGcubesConnect(3)
 ```blocks
 input.onButtonPressed(Button.A, function () {
     gcube.setAllGcubeRotationAngle(
-    0,
-    0,
-    0,
-    0,
-    0,
     180,
     180,
-    180
+    180,
+    0,
+    0,
+    0,
+    0,
+    0
     )
 })
 input.onButtonPressed(Button.B, function () {
     gcube.setAllGcubeRotationAngle(
-    0,
-    0,
-    0,
-    0,
-    0,
     -300,
     -300,
-    -300
+    -300,
+    0,
+    0,
+    0,
+    0,
+    0
     )
 })
 gcube.waitFirstGcubeConnect()
@@ -414,7 +414,7 @@ basic.forever(function () {
 	cn (Number): The index of the target gcube.
 	t1, t2, t3, t4, t5, t6, t7, t8 (String): Image lines for the 8x8 dot matrix.
 
-### setAllGcubeServoMotorAngle(a7: number, a6: number, a5: number, a4: number, a3: number, a2: number, a1: number, a0: number)
+### setAllGcubeServoMotorAngle(a0: number, a1: number, a2: number, a3: number, a4: number, a5: number, a6: number, a7: number)
 	* Description: Sets the angles of servo motors for all Gcubes.
 	* Parameters:
 	dm (String): Dummy index.
@@ -442,7 +442,7 @@ basic.forever(function () {
 	* Description: Stops all Gcube motors.
 	* Parameters: None.
 
-### setAllGcubeSpeed(s7: number, s6: number, s5: number, s4: number, s3: number, s2: number, s1: number, s0: number)
+### setAllGcubeSpeed(s0: number, s1: number, s2: number, s3: number, s4: number, s5: number, s6: number, s7: number)
 	* Description: Sets the speeds of all Gcube motors.
 	* Parameters:
 	dm (String): Dummy index.
@@ -462,6 +462,3 @@ basic.forever(function () {
 ### waitFirstGcubeConnect()
 	* Description: Waits for the first Gcube to be connected before proceeding with the user's project.
 	* Parameters: None.
-
-
-
