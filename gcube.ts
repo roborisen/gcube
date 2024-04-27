@@ -772,7 +772,7 @@ namespace gcube {
      * @param cubeIndex GCube number, eg: 1
      * @param matrixMessage string message, eg: "Hello"
      */
-    //% block="Show $matrixMessage on the matrix of Gcube $cubeIndex"
+    //% block="show $matrixMessage on the matrix of Gcube $cubeIndex"
     //% group="Dot matrix"
     export function showMessageOnMatrix(cubeIndex: number, matrixMessage: string): void {
 
@@ -796,7 +796,7 @@ namespace gcube {
      * @param xPos X position, eg: 0
      * @param yPos Y position, eg: 0
      */
-    //% block="Turn off x $xPos y $yPos dotmatrix of Gcube $cubeIndex"
+    //% block="turn off x $xPos y $yPos dotmatrix of Gcube $cubeIndex"
     //% group="Dot matrix"
     export function turnOffMatrix(cubeIndex: number, xPos: number, yPos: number): void {
         sendMatrixPixelData(cubeIndex, xPos, yPos, 0)
@@ -809,7 +809,7 @@ namespace gcube {
      * @param xPos X position, eg: 0
      * @param yPos Y position, eg: 0
      */
-    //% block="Turn on x $xPos y $yPos dotmatrix of Gcube $cubeIndex"
+    //% block="turn on x $xPos y $yPos dotmatrix of Gcube $cubeIndex"
     //% group="Dot matrix"
     export function turnOnMatrix(cubeIndex: number, xPos: number, yPos: number): void {
         sendMatrixPixelData(cubeIndex, xPos, yPos, 1)
