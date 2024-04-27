@@ -3,23 +3,23 @@
 Gcube is a cube type module which include stepper motor, battery, sensors and BLE 5.0 cpu based board.
 It is available to use dot-matrix, RC servo motor or various sensors with Gcube, because Gcube has general external sensor port.
 With just 1 Gcube you are able to make robotics and more and more Gcubes you have, you can build any kind of robot.
-We've released this extension for Micro:bit users to use Gcube for robotics and IoT projects.
+We've released this extension for microbit users to use Gcube for robotics and IoT projects.
 
 More information:
 www.roborisen.com   qna@roborisen.com
 
-[Manual-Microbit-Gcube/PingPong] https://drive.google.com/file/d/1Cx2xfd_jyGv8ZZpOsOfL8Q2vWVdp0YYe <BR>
-[Manual-Microbit-Gcube/test.ts] https://drive.google.com/file/d/1KvSzr9H3UgrDJRcgs3GJok3t5EzW4rfu <BR>
-[Movie-Microbit-Gcube/PingPong] https://drive.google.com/file/d/1Nlr_0LPiVet9XcCz7VrC1GY5_dgytKP2 <BR>
+[Manual-microbit-Gcube/PingPong] https://drive.google.com/file/d/1Cx2xfd_jyGv8ZZpOsOfL8Q2vWVdp0YYe <BR>
+[Manual-microbit-Gcube/test.ts] https://drive.google.com/file/d/1KvSzr9H3UgrDJRcgs3GJok3t5EzW4rfu <BR>
+[Movie-microbit-Gcube/PingPong] https://drive.google.com/file/d/1Nlr_0LPiVet9XcCz7VrC1GY5_dgytKP2 <BR>
 [Material-Gcube/PingPong] https://drive.google.com/drive/folders/1fqJUBc3_YiFQwCtpSOFDAteLwlszzoH4 <BR>
 [Movie-Gcube/PingPong] https://youtu.be/wTfnsPbgm3s
 
 <br/>
 <br/>
 
-## How to connect Gcubes to Micro:bit
-* Step 1: Load program to Micro:bit using this Gcube custom blocks
-* Step 2: Attach Micro:bit to Gcube using Gcube-Edge connector module
+## How to connect Gcubes to microbit
+* Step 1: Load program to microbit using this Gcube custom blocks
+* Step 2: Attach microbit to Gcube using Gcube-Edge connector module
 * Step 3: Turn on the Gcube of Step 2 
 * Step 4: Click twice of the other Gcubes (to the number of Gcubes that user defined on user program at Step 1)
           (for dot-matrix application, you should attach dot matrix to Gcube in advance)
@@ -34,7 +34,7 @@ www.roborisen.com   qna@roborisen.com
 ```sig
 gcube.waitFirstGcubeConnect(): void
 ```
-This block is to wait until the first Gcube is connected to Micro:bit (Micro:bit is monitoring Gcube is turned on via serial data)
+This block is to wait until the first Gcube is connected to microbit (microbit is monitoring Gcube is turned on via serial data)
 
 ### wait until # Gcubes are connected
 ```sig
@@ -107,7 +107,7 @@ This block is to start rolling 8x8 dot-matrix image from Gcube 0 ~ Gcube n for #
 startShiftingMatrixImage(cubeIndex: number): void
 ```
 This block is to start shifting 8x8 dot-matrix image from Gcube 0 ~ Gcube n for # seconds
-Shifting direction is depends on the acceleration sensor data of Micro:bit
+Shifting direction is depends on the acceleration sensor data of microbit
 
 <br/>
 <br/>
@@ -121,9 +121,9 @@ gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S52088-96748-89161-23790">This example</a> shows <br/>
-1. wait until the first Gcube (Gcube 0) is connected to Micro:bit <br/>
+1. wait until the first Gcube (Gcube 0) is connected to microbit <br/>
 2. wait until the other two Gcubes (Gcube 1, Gcube 2) are connected to Gcube 0<br/>
-3. then three Gcubes will be connected to Micro:bit<br/>
+3. then three Gcubes will be connected to microbit<br/>
 <br/>
 
 ### Example 2
@@ -148,7 +148,7 @@ gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S35219-78808-31549-03051">This example</a> shows<br/>
-1. wait until the first Gcube (Gcube 0) is connected to Micro:bit <br/>
+1. wait until the first Gcube (Gcube 0) is connected to microbit <br/>
 2. wait until the other two Gcubes (Gcube 1, Gcube 2) are connected to Gcube 0<br/>
 3. set rolling 8x8 dot-matrix image<br/>
 4. start rolling 8x8 dot-matrix (attatched to Gcube 1 ... N) from Gcube 1 to Gcube 2<br/>
@@ -174,7 +174,7 @@ gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S51633-60732-00552-64204">This example</a> shows<br/>
-1. wait until the first Gcube (Gcube 0) is connected to Micro:bit <br/>
+1. wait until the first Gcube (Gcube 0) is connected to microbit <br/>
 2. wait until the other two Gcubes (Gcube 1, Gcube 2) are connected to Gcube 0<br/>
 3. set 8x8 dot-matrix image of Gcube 1 (#: LED ON -: LED OFF)<br/>
 * 8x8 dot-matrix should be connected to Gcube 1 & 2 for this example <br/>
@@ -193,7 +193,7 @@ gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S83314-90357-19040-82123">This example</a> shows<br/>
-1. wait until the first Gcube (Gcube 0) is connected to Micro:bit <br/>
+1. wait until the first Gcube (Gcube 0) is connected to microbit <br/>
 2. wait until the other two Gcubes (Gcube 1, Gcube 2) are connected to Gcube 0<br/>
 3. when button 'A' is pressed, set motor speed of Gcube 1 and Gcube 2 to 100 (-100~100, 100: maximum speed of the motor, i.e. 30rpm)<br/>
 4. when button 'B' is pressed, stop all of the Gcube's motor (Gcube 0 ~ 2) <br/>
@@ -215,7 +215,7 @@ gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S48642-39369-42354-73859">This example</a> shows<br/>
-1. wait until the first Gcube (Gcube 0) is connected to Micro:bit <br/>
+1. wait until the first Gcube (Gcube 0) is connected to microbit <br/>
 2. wait until the other two Gcubes (Gcube 1, Gcube 2) are connected to Gcube 0<br/>
 3. when button 'A' is pressed, set motor rotation angle of Gcube 0 ~ 2 to 180 degree<br/>
 4. when button 'B' is pressed, set motor rotation angle of Gcube 0 ~ 2 to -300 degree<br/>
@@ -251,7 +251,7 @@ gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S10341-71019-59343-30137">This example</a> shows<br/>
-1. wait until the first Gcube (Gcube 0) is connected to Micro:bit <br/>
+1. wait until the first Gcube (Gcube 0) is connected to microbit <br/>
 2. wait until the other two Gcubes (Gcube 1, Gcube 2) are connected to Gcube 0<br/>
 3. when button 'A' is pressed, set motor rotation angle of Gcube 0~2 to 180 degree<br/>
 4. when button 'B' is pressed, set motor rotation angle of Gcube 0~2 to -300 degree<br/>
@@ -273,7 +273,7 @@ gcube.waitFirstGcubeConnect()
 gcube.waitAllGcubesConnect(3)
 ```
 <a href="https://makecode.microbit.org/S14821-35391-54690-59634">This example</a> shows<br/>
-1. wait until the first Gcube (Gcube 0) is connected to Micro:bit <br/>
+1. wait until the first Gcube (Gcube 0) is connected to microbit <br/>
 2. wait until the other two Gcubes (Gcube 1, Gcube 2) are connected to Gcube 0<br/>
 3. when button 'A' is pressed, set servor motor angle of Gcube 1 to 30 degree<br/>
 4. when button 'B' is pressed, set servor motor angle of Gcube 2 to 45 degree<br/>
@@ -335,14 +335,14 @@ basic.forever(function () {
 <a href="https://makecode.microbit.org/S93202-21130-73675-67640">This example</a> shows<br/> <br/>
 [Preparation & connection] <br/>
 1. Make Autocar, Mono robot with Gcube 0, 1 ,2 and links <br/>
-2. Attach Micro:bit to Gcube 0 with Edge connector <br/>
+2. Attach microbit to Gcube 0 with Edge connector <br/>
 3. Plug Dot matrix into Gcube 3 <br/>
 4. Turn on Gcube 0 by clicking yellow button on the cube <br/>
 5. Double click yellow button of Gcube 1 to 3 in order to connect to Gcube 0 <br/>
 6. Run make code blocks to control PingPong robot and Gcubes
 <br/>
 [Blocks-Connection] <br/>
-1. Wait until the first Gcube (Gcube 0) is connected to Micro:bit <br/>
+1. Wait until the first Gcube (Gcube 0) is connected to microbit <br/>
 2. Wait until the 3 Gcubes (Gcube 1~3) is connected to Gcube 0 <br/>
 [Blocks-motor control] <br/>
 1. Button A : Move forward Mono and turn right Gcube 3’s motor <br/>
@@ -361,18 +361,18 @@ basic.forever(function () {
 <br/>
 [Blocks-robot control] <br/>
 1. Cover the proximity sensor of the Gcube 3 with a finger, and then move the Gcube 3 forward, backward, left, and right. <br/>
-2. Read the gyro sensor values of the Gcube 3 from the Micro:bit. <br/>
-3. The Micro:bit controls the motors of the Autocar (Gcube 0, Gcube 1) based on these gyro sensor values. <br/>
+2. Read the gyro sensor values of the Gcube 3 from the microbit. <br/>
+3. The microbit controls the motors of the Autocar (Gcube 0, Gcube 1) based on these gyro sensor values. <br/>
 
 <br/>
 <br/>
 
 
-## This is a limitation when using Microbit-GCube.
+## This is a limitation when using microbit-GCube.
 
-1. USB serial communication cannot be used because there are P1 and P2 in serial communication between the Micro:bit and GCube. <BR>
-2. The code uploaded to the Micro:bit communicates with GCube and executes the project without being connected to a PC. <BR>
-3. When using the GCube connection, do not use any other external sensors except the Micro:bit's basic sensor. <BR>
+1. USB serial communication cannot be used because there are P1 and P2 in serial communication between the microbit and GCube. <BR>
+2. The code uploaded to the microbit communicates with GCube and executes the project without being connected to a PC. <BR>
+3. When using the GCube connection, do not use any other external sensors except the microbit's basic sensor. <BR>
 
 <br/>
 <br/>
