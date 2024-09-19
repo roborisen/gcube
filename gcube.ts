@@ -431,7 +431,7 @@ namespace gcube {
      * @param pingpongRobot model name
      * @param angleValue Rotate angle eg:90
      */
-    //% block="rotate PingPong robot $angleValue degree for $pingpongRobot"
+    //% block="rotate PingPong robot $angleValue degrees for $pingpongRobot"
     //% group="PingPong robot"
     export function rotateWheelRobot(pingpongRobot: RobotName, angleValue: number): void {
         if (pingpongRobot != RobotName.DrawingBot) { //Geared-wheel type : AutoCar, BattleBot, AntBot
