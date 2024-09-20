@@ -9,9 +9,9 @@
     "files": [
         "README.md",
         "gcube.ts",
-		"_locales/ko/gcube-strings.json",
-		"_locales/ko/gcube-jsdocs-strings.json"  
-	],
+        "_locales/ko/gcube-strings.json",
+        "_locales/ko/gcube-jsdocs-strings.json"
+    ],
     "testFiles": [
         "test.ts"
     ],
