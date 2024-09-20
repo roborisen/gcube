@@ -9,7 +9,7 @@
     "files": [
         "README.md",
         "gcube.ts"
-	],
+    ],
     "testFiles": [
         "test.ts"
     ],
