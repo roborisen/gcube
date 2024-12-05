@@ -363,23 +363,6 @@ namespace gcube {
     serial.setTxBufferSize(10)
 
     /**
-     * Show a custom 8x8 pattern
-     * @param pattern the 8x8 pattern to display
-     */
-    //% block="show 8x8 pattern $pattern"
-    //% pattern.shadow="matrix"
-    export function showPattern(pattern: number[][]): void {
-        // 예: 패턴 출력 로직
-        for (let i = 0; i < 8; i++) {
-            let row = pattern[i];
-            for (let j = 0; j < 8; j++) {
-                let value = row[j];
-                // LED 켜기/끄기 로직
-            }
-        }
-    }
-
-    /**
      * The gripper control command for the Ant Bot
      * @param actionType Rotate angle
      */
