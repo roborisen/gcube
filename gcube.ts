@@ -366,7 +366,7 @@ namespace gcube {
      * Show a custom 8x8 pattern
      * @param pattern the 8x8 pattern to display
      */
-    //% block="show 8x8 pattern %pattern"
+    //% block="show 8x8 pattern $pattern"
     //% pattern.shadow="matrix"
     export function showPattern(pattern: number[][]): void {
         // 예: 패턴 출력 로직
