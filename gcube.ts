@@ -1017,6 +1017,14 @@ namespace gcube {
     //% group="Connection"
     export function waitFirstGcubeConnect(): void {
         if (connectStage == 0) {
+
+            // 큐브가 연결되어 있고 실행중인 경우 큐브에 Reset명령 전송함
+
+            if (!input.pinIsPressed(TouchPin.P2)){
+                numData = [0x1F, invValue(0x1F), 0, 0, 0, 0, 0, 0, 0, 0]
+                sendGcube(numData, 1)
+            }
+
             rowData = serial.readBuffer(3)
             if (rowData.length == 3) {
                 if (rowData[0] == 16 && rowData[1] == 0 && rowData[2] == 0) {
