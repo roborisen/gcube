@@ -974,6 +974,7 @@ namespace gcube {
     //% block="check $cnumber Gcubes are connected"
     //% group="Connection"
     export function checkGcubeConnection(cnumber: number): void {
+        basic.clearScreen()
         rowData = serial.readBuffer(3)
         if (rowData.length == 3) {
             if (rowData[0] == 16 && rowData[1] == 0 && rowData[2] == 0) {
@@ -981,7 +982,6 @@ namespace gcube {
                 pause(20);
                 numData = [0x10, invValue(0x10), 0, 0, 0, 112, 0, 0, 0, 0]
                 sendGcube(numData, 1)
-                connectStage = 1;
             }
         }
 
