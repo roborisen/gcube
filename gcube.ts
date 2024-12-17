@@ -967,6 +967,56 @@ namespace gcube {
         }
     }
 
+    /**
+     * wait for all Gcubes are connected for user's project
+     * @param cnumber Gcube number, eg: 2
+     */
+    //% block="check $cnumber Gcubes are connected"
+    //% group="Connection"
+    export function checkGcubeConnection(cnumber: number): void {
+        rowData = serial.readBuffer(3)
+        if (rowData.length == 3) {
+            if (rowData[0] == 16 && rowData[1] == 0 && rowData[2] == 0) {
+                led.plot(2, 2)
+                pause(20);
+                numData = [0x10, invValue(0x10), 0, 0, 0, 112, 0, 0, 0, 0]
+                sendGcube(numData, 1)
+                connectStage = 1;
+            }
+        }
+
+        while (1) {
+            pause(1000)
+            numData = [0x21, invValue(0x21), 0, 0, 0, 0, 0, 0, 0, 0]
+            sendGcube(numData, 1)
+
+            rowData = serial.readBuffer(3)
+            if (rowData.length == 3) {
+                if (rowData[0] == 0x21 && rowData[1] == 0) {
+                    connectedCubeNumber = rowData[2];
+                    if (connectedCubeNumber >= cnumber) {
+                        led.plot(1, 1)
+                        led.plot(2, 1)
+                        led.plot(3, 1)
+                        led.plot(1, 2)
+                        led.plot(3, 2)
+                        led.plot(1, 3)
+                        led.plot(2, 3)
+                        led.plot(3, 3)
+                        connectStage = 2
+
+                        pause(1000)
+                        //Send connection complete message to Gcube 0
+                        numData = [0x2A, invValue(0x2A), cnumber, 0, 0, 0, 0, 0, 0, 0]
+                        sendGcube(numData, 1)
+                        pause(1000)
+
+                        break
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * wait for all Gcubes are connected for user's project
@@ -1037,6 +1087,7 @@ namespace gcube {
             }
         }
     }
+
 
 
 }
